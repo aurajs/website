@@ -31,16 +31,11 @@ def generate_docs
     # returns either `tag` or `tag-numcommits-gSHA`
     describe = `git describe --tags --always`.strip
     sha = describe =~ /-g(.+)/ ? $1 : describe
-
-    Dir.chdir("docs") do
-      system("npm install") unless File.exist?('node_modules')
-      # Unfortunately -q doesn't always work so we get output
-      system("./node_modules/.bin/yuidoc -p -q")
-    end
+    system("grunt yuidoc")
   end
 
   # JSON is valid YAML
-  data = YAML.load_file(File.join(aura_path, "docs/build/data.json"))
+  data = YAML.load_file(File.join(aura_path, "docs/data.json"))
   data["project"]["sha"] = sha
   File.open(File.expand_path("../data/api.yml", __FILE__), "w") do |f|
     YAML.dump(data, f)

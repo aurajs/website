@@ -1,7 +1,9 @@
-require "slim"
 require "sass-getunicode"
-require "./lib/markdown_navigation"
-require "./lib/array_navigation"
+
+require 'redcarpet'
+require 'active_support/core_ext'
+
+Dir['./lib/*'].each { |f| require f }
 
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
@@ -21,8 +23,17 @@ activate :directory_indexes
 activate :markdown_navigation
 activate :array_navigation
 
-page "/*", :layout => :default, :page_type=>'docs'
+page "/",     layout: 'layouts/default'
+page "/api*", layout: 'layouts/default'
+
 page "/sitemap.xml", :layout => false
+
+activate :highlighter
+
+activate :api_docs,
+  default_class: 'Aura',
+  repo_url: 'https://github.com/aurajs/aura'
+
 
 ################################################################################
 # Sass Configuration

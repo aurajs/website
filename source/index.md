@@ -4,11 +4,11 @@ subtitle: A framework-agnostic architecture for decoupled reusable components.
 markdown_navigation: true
 ---
 
-Aura is an **event-driven architecture for wrapping your code into reusable components and extensions that can easily communicate with each other.**
+Aura is an **event-driven extensible architecture for wrapping your code into reusable components and extensions that can easily communicate with each other.**
  
 We work great with **existing** frameworks like [Backbone.js](http://backbonejs.org) or [Ember](http://emberjs.com), but are framework-agnostic, adapting many best-practice patterns for developing maintainable applications.
 
-<img src="assets/images/notmvc.jpg"/>
+<img src="images/docs/notmvc.jpg"/>
 
 Aura has first-class support for modern tools like [Bower](http://bower.io), [Grunt](http://gruntjs.com) and [Yeoman](http://yeoman.io) and uses libraries like [RequireJS](http://requirejs.org/) under the covers (for now). As solutions like ES6 modules and [Polymer](http://www.polymer-project.org) become stable and usable, the project will move towards using them.
 
@@ -18,7 +18,7 @@ A component is something **[atomic](http://juristr.com/blog/2013/04/modularity-i
 
 Consider for example GitHub’s site:
 
-<img src="assets/images/github.jpg"/>
+<img src="images/docs/github.jpg"/>
 
 Separating your application into smaller parts is essential for keeping your architecture clean, reusable and mainly maintainable. The principle is a known concept in computer science: “divide and conquer”. Divide everything up into smaller parts which have lower complexity, are easier to test and cause fewer headaches. Then compose them together to form your larger application.
 
@@ -28,7 +28,7 @@ Aura Components within your application need to communicate with each other. Suc
 
 Therefore, a common practice for creating a modular architecture is to decouple communication among components through event broadcasting mechanisms. Aura comes with global and component-level messaging patterns, making this a breeze.
 
-<img src="assets/images/multi.jpg"/>
+<img src="images/docs/multi.jpg"/>
 
 ## A Quick Example
 

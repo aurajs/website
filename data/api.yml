@@ -1,0 +1,426 @@
+---
+project:
+  name: aura
+  description: ''
+  version: 0.9.0
+  url: http://aurajs.com
+  sha: 26bda6c
+files:
+  lib/ext/components.js:
+    name: lib/ext/components.js
+    modules: {}
+    classes:
+      Component: 1
+    fors: {}
+    namespaces: {}
+  lib/ext/mediator.js:
+    name: lib/ext/mediator.js
+    modules: {}
+    classes:
+      Sandbox: 1
+    fors: {}
+    namespaces: {}
+  lib/aura.extensions.js:
+    name: lib/aura.extensions.js
+    modules: {}
+    classes: {}
+    fors: {}
+    namespaces: {}
+  lib/aura.js:
+    name: lib/aura.js
+    modules: {}
+    classes:
+      Aura: 1
+    fors: {}
+    namespaces: {}
+modules: {}
+classes:
+  Component:
+    name: Component
+    shortname: Component
+    classitems: []
+    plugins: []
+    extensions: []
+    plugin_for: []
+    extension_for: []
+    file: lib/ext/components.js
+    line: 62
+    description: The base Component constructor...
+    is_constructor: 1
+    params:
+    - name: options
+      description: the options to init the component...
+      type: Object
+  Aura:
+    name: Aura
+    shortname: Aura
+    classitems: []
+    plugins: []
+    extensions: []
+    plugin_for: []
+    extension_for: []
+    file: lib/aura.js
+    line: 11
+    description: ! 'Aura constructor and main entry point
+
+      Loads mediator & components extensions by default.'
+    is_constructor: 1
+    params:
+    - name: config
+      description: Main App config.
+      type: Object
+      optional: true
+  Sandbox:
+    name: Sandbox
+    shortname: Sandbox
+    classitems: []
+    plugins: []
+    extensions: []
+    plugin_for: []
+    extension_for: []
+    file: lib/ext/mediator.js
+    line: 57
+classitems:
+- file: lib/ext/components.js
+  line: 15
+  description: Components registry
+  type: ! '{Object}'
+  class: Component
+- file: lib/ext/components.js
+  line: 21
+  description: Components Callbacks
+  class: Component
+- file: lib/ext/components.js
+  line: 77
+  description: initialize method called on Components' initialization
+  itemtype: method
+  name: initialize
+  params:
+  - name: options
+    description: options Object passed on Component initialization
+    type: Object
+  class: Component
+- file: lib/ext/components.js
+  line: 84
+  description: A helper function to render markup and recursilvely start nested components
+  itemtype: method
+  name: html
+  params:
+  - name: markup
+    description: the markup to render in the component's root el
+    type: String
+  return:
+    description: the Component instance to allow methods chaining...
+    type: Component
+  class: Component
+- file: lib/ext/components.js
+  line: 123
+  description: Component loader.
+  params:
+  - name: name
+    description: The name of the Component to load
+    type: String
+  - name: options
+    description: The options to pass to the new component instance.
+    type: Object
+  return:
+    description: A Promise that resolves to the loaded component instance.
+    type: Promise
+  class: Component
+- file: lib/ext/components.js
+  line: 217
+  description: Parses the component's options from its element's data attributes.
+  params:
+  - name: el
+    description: the element
+    type: String|DomNode
+  - name: namespace
+    description: current Component's detected namespace
+    type: String
+  - name: opts
+    description: an Object containing the base Component's options to extend.
+    type: String
+  return:
+    description: An object that contains the Component's options
+    type: Object
+  class: Component
+- file: lib/ext/components.js
+  line: 247
+  description: Parses the component's options from its element's data attributes.
+  params:
+  - name: name
+    description: the Component's name
+    type: String
+  - name: opts
+    description: an Object containing the base Component's options to extend.
+    type: Object
+  return:
+    description: An object that contains the component's options
+    type: Object
+  class: Component
+- file: lib/ext/components.js
+  line: 273
+  description: ! 'Returns a list of component.
+
+    If the first argument is a String, it is considered as a DomNode reference
+
+    We then parse its content to find aura-components inside of it.'
+  params:
+  - name: components
+    description: a list of components or a reference to a root dom node
+    type: Array|String
+  return:
+    description: a list of component with their options
+    type: Array
+  class: Component
+- file: lib/ext/components.js
+  line: 311
+  description: Actual start method for a list of components.
+  params:
+  - name: components
+    description: cf. `Component.parseList`
+    type: Array|String
+  return:
+    description: a promise that resolves to a list of started components.
+    type: Promise
+  class: Component
+- file: lib/ext/components.js
+  line: 342
+  description: Register a callback on the Components lifecycle. (experimental)
+  itemtype: method
+  name: registerComponentCallback
+  params:
+  - name: callbackName
+    description: ex 'before:initialize', 'after:remove'
+    type: String
+  - name: fn
+    description: actual callback function to run
+    type: Function
+  class: Aura
+- file: lib/ext/components.js
+  line: 355
+  description: Register a Component Type.
+  itemtype: method
+  name: registerComponentType
+  params:
+  - name: type
+    description: ''
+    type: String
+  - name: def
+    description: ''
+    type: Function
+  class: Aura
+- file: lib/ext/components.js
+  line: 373
+  description: ! 'Start method.
+
+    This method takes either an Array of Components to start or or DOM Selector to
+
+    target the element that will be parsed to look for Components to start.'
+  itemtype: method
+  name: start
+  params:
+  - name: list
+    description: Array of Components to start or parent node.
+    type: Array|DOM Selector
+  - name: options
+    description: ! "Available options: `reset` : if true, all current children\n                                     will
+      be stopped before start."
+    type: Object
+  class: Sandbox
+- file: lib/ext/components.js
+  line: 424
+  description: ! 'Stop method for a sandbox.
+
+    If no arguments provided, the sandbox itself and all its children are stopped.
+
+    If a DOM Selector is provided, all matching children will be stopped.'
+  params:
+  - name: DOM
+    description: Selector.
+    type: Undefined|String
+  class: Sandbox
+- file: lib/ext/mediator.js
+  line: 61
+  itemtype: method
+  name: 'on'
+  params:
+  - name: name
+    description: Pattern of event to subscrbibe to.
+    type: String
+  class: Sandbox
+- file: lib/ext/mediator.js
+  line: 67
+  itemtype: method
+  name: once
+  params:
+  - name: name
+    description: Pattern of event to subscrbibe to.
+    type: String
+  class: Sandbox
+- file: lib/ext/mediator.js
+  line: 73
+  itemtype: method
+  name: 'off'
+  params:
+  - name: name
+    description: Pattern of event to subscrbibe to.
+    type: String
+  - name: listener
+    description: Listener function to stop.
+    type: Function
+  class: Sandbox
+- file: lib/ext/mediator.js
+  line: 88
+  itemtype: method
+  name: emit
+  params:
+  - name: name
+    description: Event name to emit
+    type: String
+  - name: payload
+    description: Payload emitted
+    type: Object
+  class: Sandbox
+- file: lib/ext/mediator.js
+  line: 103
+  itemtype: method
+  name: stopListening
+  class: Sandbox
+- file: lib/aura.extensions.js
+  line: 9
+  description: ! 'Anatomy of an extension...
+
+    TODO...'
+  class: Aura
+- file: lib/aura.js
+  line: 54
+  description: Creates a brand new sandbox, using the App's sandbox object as a prototype.
+  itemtype: method
+  name: createSandbox
+  params:
+  - name: ref
+    description: the Sandbox unique ref.
+    type: String
+    optional: true
+  - name: options
+    description: an object to that directly extends the Sandbox
+    type: Object
+    optional: true
+  return:
+    description: a shiny new Sandbox instance.
+    type: Sandbox
+  class: Aura
+- file: lib/aura.js
+  line: 79
+  description: Get a sandbox by its reference
+  itemtype: method
+  name: getSandbox
+  params:
+  - name: ref
+    description: the Sandbox ref to retreive.
+    type: String
+  class: Aura
+- file: lib/aura.js
+  line: 89
+  description: ! 'Tells the app to init with the given extension.
+
+
+    This method can only be called before the app is actually started.'
+  itemtype: method
+  name: use
+  params:
+  - name: ref
+    description: the reference of the extension
+    type: String | Object | Function
+  return:
+    description: the Aura app object
+    type: Aura
+  chainable: 1
+  class: Aura
+- file: lib/aura.js
+  line: 104
+  description: Adds a new source for components
+  itemtype: method
+  name: registerComponentsSource
+  params:
+  - name: name
+    description: the name of the source.
+    type: String
+  - name: baseUrl
+    description: the base url for those components.
+    type: String
+  class: Aura
+- file: lib/aura.js
+  line: 119
+  description: ! 'Application start.
+
+    Bootstraps the extensions loading process'
+  itemtype: method
+  name: start
+  params:
+  - name: options
+    description: start options.
+    type: Object | String | Array
+  return:
+    description: a promise that resolves when the app is started.
+    type: Promise
+  class: Aura
+- file: lib/aura.js
+  line: 175
+  description: ! 'Stops the application and unregister its loaded dependencies.
+
+    TODO: We need to do a little more cleanup here...'
+  itemtype: method
+  name: stop
+  return:
+    description: ''
+    type: Void
+  class: Aura
+warnings:
+- message: ! 'Missing item type
+
+    Components registry'
+  line: ! ' lib/ext/components.js:15'
+- message: ! 'Missing item type
+
+    Components Callbacks'
+  line: ! ' lib/ext/components.js:21'
+- message: ! 'Missing item type
+
+    Component loader.'
+  line: ! ' lib/ext/components.js:123'
+- message: ! 'Missing item type
+
+    Parses the component''s options from its element''s data attributes.'
+  line: ! ' lib/ext/components.js:217'
+- message: ! 'Missing item type
+
+    Parses the component''s options from its element''s data attributes.'
+  line: ! ' lib/ext/components.js:247'
+- message: ! 'Missing item type
+
+    Returns a list of component.
+
+    If the first argument is a String, it is considered as a DomNode reference
+
+    We then parse its content to find aura-components inside of it.'
+  line: ! ' lib/ext/components.js:273'
+- message: ! 'Missing item type
+
+    Actual start method for a list of components.'
+  line: ! ' lib/ext/components.js:311'
+- message: ! 'Missing item type
+
+    Stop method for a sandbox.
+
+    If no arguments provided, the sandbox itself and all its children are stopped.
+
+    If a DOM Selector is provided, all matching children will be stopped.'
+  line: ! ' lib/ext/components.js:424'
+- message: ! 'Missing item type
+
+    Anatomy of an extension...
+
+    TODO...'
+  line: ! ' lib/aura.extensions.js:9'

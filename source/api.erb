@@ -1,0 +1,65 @@
+---
+title: Api Docs
+---
+
+<% content_for :tree_nav do %>
+  
+  <% api_classes.each do |name, klass| k = api_class(name) %>
+  <div class="tree-nav-section">
+    <h3><a href="#class-<%= name %>"><%= k.name %></a></h3>
+    <ul>
+      <% k.classitems['method'].keys.sort.each do |method_name| %>
+      <li>
+        <a href="#method-<%= name %>-<%= method_name %>"><%= method_name %></a>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<% end %>
+
+
+<% api_classes.each do |name, klass| k = api_class(name) %>
+<h1>
+  <a href="#class-<%= name %>" name="class-<%= name %>" class="documentation-anchor">
+  &infin;
+  </a>
+  <%= k.name %>
+</h1>
+<% k.classitems['method'].sort_by { |n,m| n }.map do |method_name, method| %>
+  <h2>
+    <small class="pull-right">
+      <a href="#class-<%= name %>"><%= name %></a>
+    </small>
+    <a href="#method-<%= name %>-<%= method_name %>" name="method-<%= name %>-<%= method_name %>" class="documentation-anchor">
+      &infin;
+    </a>
+    <%= method_name %>( <span class="params"><%= (method['params'] || []).map { |p| p['name'] }.join(", ") %></span> )    
+  </h2>
+  <% if method['description'] %>
+  <div><%= api_markdown method['description'] %></div>  
+  <% end %>
+
+  <% if method['params'] %>
+  <h5>Parameters:</h5>
+  <table class='table'>
+    <% method['params'].each do |param| %>
+    <tr>
+      <td widtd="20%">
+        <span class='label <%= "label-brand" unless param['optional'] %>'><%= param['name'] %></span>
+      </td>
+      <td width="25%">
+        <%= "(optional)" if param['optional'] %>
+        <%= param['type'] %>
+      </td>
+      <td width="55%">
+        <%= param['description'] %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
+<% end %>
+<% end %>
+

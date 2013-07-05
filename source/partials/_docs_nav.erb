@@ -1,0 +1,23 @@
+<% if current_page.data.markdown_navigation %>
+  <div class="tree-nav-section">
+    <ul>
+      <%= markdown_navigation(current_page) %>
+    </ul>
+  </div>
+
+
+<% else %>
+  <%= yield_content(:tree_nav) %>
+<% end %>
+
+<ul class="tree-help">
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+  </li>
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+  </li>
+  <li>
+    <a class="btn small block faded" href="https://github.com/aurajs/aura">View on Github</a>
+  </li>
+</ul>

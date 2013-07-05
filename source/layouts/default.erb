@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AuraJS</title>
+  <meta charset="utf-8" />
+  <meta name='viewport' content='width=1000' />
+  <meta name='description' content="<%= data.api.project.description %>" />
+  <meta property='og:title' content="<%= data.api.project.name %>" />
+  <meta property='og:type' content='company' />
+  <meta property='og:site_name' content="<%= data.api.project.name %>" />
+  <meta property='og:url' content="<%= data.api.project.url %>" />
+  <%= stylesheet_link_tag('style') %>
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+
+<body class="docs">
+
+  <div class="container">
+    <header id="sub-header">
+      <%= partial 'partials/nav' %>
+    </header>
+    <aside class="sidebar" role="navigation">
+      <a href="/" class="logo"></a>
+      <div class="tree"><%= partial "partials/docs_nav" %></div>
+    </aside>
+    <section class="documentation">
+      <article>
+        <div class="row">
+          <header class="documentation-header">
+            <h1><%= current_page.data.title %></h1>
+            <p><%= current_page.data.subtitle %></p>
+          </header>
+          <div class="documentation-body language-markup"><%= yield %></div>
+        </div>
+      </article>
+    </section>
+  </div>
+
+</body>
+</html>
