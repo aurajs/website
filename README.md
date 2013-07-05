@@ -1,24 +1,12 @@
----
-title: Aura
-subtitle: A framework-agnostic architecture for decoupled reusable components.
-markdown_navigation: true
----
-
 Aura is an **event-driven extensible architecture for wrapping your code into reusable components and extensions that can easily communicate with each other.**
  
 We work great with **existing** frameworks like [Backbone.js](http://backbonejs.org) or [Ember](http://emberjs.com), but are framework-agnostic, adapting many best-practice patterns for developing maintainable applications.
-
-<img src="images/docs/notmvc.jpg"/>
 
 Aura has first-class support for modern tools like [Bower](http://bower.io), [Grunt](http://gruntjs.com) and [Yeoman](http://yeoman.io) and uses libraries like [RequireJS](http://requirejs.org/) under the covers (for now). As solutions like ES6 modules and [Polymer](http://www.polymer-project.org) become stable and usable, the project will move towards using them.
 
 ## Everything is a component
 
 A component is something **[atomic](http://juristr.com/blog/2013/04/modularity-in-javascript-frameworks/)** with a clear responsibility. A mini-app basically that can be instantiated (possibly multiple times) on an arbitrary part of your application. You might not be accustomed to thinking like this, preferring to build a highly coupled app. That might work just fine initially, but once it gets more complex you can run into trouble. Therefore, next time when you start building something bigger, stop for a moment and try to identify possible components.
-
-Consider for example GitHub’s site:
-
-<img src="images/docs/github.jpg"/>
 
 Separating your application into smaller parts is essential for keeping your architecture clean, reusable and mainly maintainable. The principle is a known concept in computer science: “divide and conquer”. Divide everything up into smaller parts which have lower complexity, are easier to test and cause fewer headaches. Then compose them together to form your larger application.
 
@@ -27,8 +15,6 @@ Separating your application into smaller parts is essential for keeping your arc
 Aura Components within your application need to communicate with each other. Such communication creates dependencies as component A needs to have a reference to component B if it needs to invoke some operation on it, right? Well, not necessarily, as that would again couple those components together and you couldn’t exchange component B arbitrarily without having to also change component A.
 
 Therefore, a common practice for creating a modular architecture is to decouple communication among components through event broadcasting mechanisms. Aura comes with global and component-level messaging patterns, making this a breeze.
-
-<img src="images/docs/multi.jpg"/>
 
 ## A Quick Example
 
@@ -176,14 +162,6 @@ Need some more reasons to use Aura?:
 * Can be used with your MVC framework of choice - we're just there as a helper.
 * First-class support for the Hull.io platform. If you don't want to create a component yourself, you can easily use them as a component-source and create apps in less time.
 * Extensible via the extensions system, which make a good basis for a rich ecosystem around the project.
-
-
-
-
-
-
-
-
 
 # FAQs
 
