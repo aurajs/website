@@ -1,0 +1,44 @@
+/* 
+ * Retina helper mixins for Compass
+ * http://www.joelambert.co.uk
+ * 
+ * Copyright 2012, Joe Lambert.
+ * Free to use under the MIT license.
+ * http://joelambert.mit-license.org/
+ */
+/*
+It works on a similar principle to how XCode manages images for iOS development.
+If you have an image called icon.png, first add another image with twice the height and
+width to the same directory and call it icon@2x.png.
+
+Next use the helper mixin provided by this extension:
+
+@include background-image-retina('icon.png');
+ */
+@mixin background-image-retina($image) {
+    background-image: image-url($image);
+    
+    // If we have a retina image then add styles for it too
+    @if file_exists(retina_filename($image))
+    {
+        @media only screen and (-webkit-min-device-pixel-ratio: 2)
+        {
+            @include background-size(image-width($image) auto);
+            background-image: image_url(retina_filename($image));
+        }
+    }
+}
+
+@mixin inline-background-image-retina($image) {
+    background-image: inline-image($image);
+    
+    // If we have a retina image then add styles for it too
+    @if file_exists(retina_filename($image))
+    {
+        @media only screen and (-webkit-min-device-pixel-ratio: 2)
+        {
+            @include background-size(image-width($image) auto);
+            background-image: inline-image(retina_filename($image));
+        }
+    }
+}

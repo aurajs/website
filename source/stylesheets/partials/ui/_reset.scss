@@ -1,0 +1,29 @@
+%reset-native-appearance{
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    line-height: normal;
+    text-transform: none;
+    -webkit-appearance: none;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing:antialiased;
+}
+
+body,html{height:100%;}
+body{
+  background:#fff;
+  min-width:$grid-min-width;
+}
+  
+a{text-decoration:none;position:relative;color:$brand-color;}
+a:hover{color:$brand-dark-color;}
+
+strong{font-weight:bold;}
+em{font-style:italic;}
+
+hr{
+  border:0;
+  height:1px;
+  @include rhythm(1, 0, 0, 1);
+  background:whiteSmoke;
+}

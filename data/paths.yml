@@ -1,0 +1,7 @@
+js:     javascripts
+css:    stylesheets
+images:   images
+fonts:    stylesheets/fonts
+static:
+  - images
+  - fonts

@@ -1,0 +1,15 @@
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+.hidden { display: none; }
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+.clear{clear:both;}
+
+img.picture {background-color:#edebe5; display:block;}
+
+// Alignments
+.pull-right,.float-right{ float:right;}
+.pull-left,.float-left{ float:left;}

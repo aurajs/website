@@ -1,0 +1,92 @@
+.gallery-list,
+.gallery-featured{
+  .cover{
+    box-shadow:0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);
+    @include trailer(1);
+    display:block;
+    @include position;
+    &:after{
+        @include transition(opacity .25s);
+        @include position(absolute,0px 0px 0px 0px);
+        background:white;
+        z-index:1;
+        content:"";
+        opacity:0;
+    }
+    img{
+      max-width:100%;
+      display:block;
+    }
+    &:hover:after{
+      opacity:.2;
+    }
+  }
+}
+
+.gallery-featured{
+    &,.carousel-item{background-color:#fff;}
+    .cover img{width:100%;}
+    .carousel {
+      .title{
+        @include adjust-font-size-to(32px);
+        @include trailer(.2);
+      }
+      .meta{
+          @extend .gray;
+      }
+      .description{
+        @include adjust-font-size-to(16px,1.5);
+        @extend .gray-dark;
+      }
+    }
+}
+
+.gallery-list{
+  .gallery-item{
+      @include padding-leader(1.5);
+      .cover{
+        @include trailer(.5);
+      }
+      .title{
+          @include adjust-font-size-to(20px,1.5);
+          @include trailer(0);
+          .label{@include position(relative, -2px 0 0 0);@extend .upper;font-family:inherit;}
+          small{
+              @extend .gray;
+          }
+      }
+      .meta{
+        @include adjust-font-size-to(16px,1.25);
+        @extend .gray;
+      }
+      .description{
+          @include adjust-font-size-to(14px);
+      }
+      .urls{
+          @include adjust-font-size-to(14px,1,16px)
+      }
+      .urls:not(.last){
+          @include trailer(3);
+      }
+      .urls [href^="http://"] {
+        background: url(/images/link.png) center right no-repeat;
+        padding-right: 13px;
+      }
+  }
+  .gallery-item:nth-child(3n+4){
+    margin-left:0;
+    clear:left;
+  }
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(2),
+  .gallery-item:nth-child(3){
+    @include padding-leader(0);
+  }
+  .gallery-item:last-child{
+    float:left;
+  }
+}
+
+.gallery-list--community{
+    .cover:after{@include adjust-font-size-to(14px);}
+}

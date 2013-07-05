@@ -1,0 +1,163 @@
+#swagger{
+  input[type="text"]{
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+    position: relative;
+    top:1px;
+  }
+  .endpoint{
+    @extend .divider-section;
+  }
+
+  .container > section{
+    @include padding-trailer(1);
+    @include padding-leader(1);
+    @include position;
+    > :last-child {
+        margin-bottom:0;
+    }
+  }
+  .container > .section{
+    @include padding-trailer(1);
+    @include padding-leader(1);
+    @include position;
+    > :last-child {
+        margin-bottom:0;
+    }
+  }
+
+  .sandbox > .heading-alt{
+    margin-bottom: 0;
+  }
+
+
+
+  .features{
+    @include rhythm(1,0,0.5,0);
+    .title{
+      margin-top: 1em;
+    }
+  }
+
+  pre{
+    margin-bottom: 0;
+  }
+
+  .notice{
+    // @extend .btn;
+    // @extend .small;
+    @extend .float-right;
+    cursor: pointer;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+  }
+  .snippet{
+    position: relative;
+  }
+
+
+  td, th{
+    vertical-align: top;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    border-bottom: 1px solid #EEE;
+  }
+  table{
+    margin-bottom: 0.5em;
+    position: relative;
+  }
+  td code{
+    color: #718c00;
+  }
+  textarea{
+    height: 10em;
+  }
+  ul, ol{
+    margin-bottom: 0
+  }
+
+  .response_throbber{
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+  }
+
+  .toggle_signature{
+    position: absolute;
+    top:0.5em;
+    right:0;
+      
+  }
+
+  .model-signature .description span {
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }
+  .model-signature .description span:nth-child(even), td code.required{
+    color: #c82829;
+  }
+
+
+
+  ul.endpoints{
+    @include adjust-font-size-to(14px);
+  }
+
+  li.endpoint{
+    @include position;
+    border:1px solid #EEE;
+    padding: 0;
+    margin:.75em 0;
+    @include border-radius(4px);
+  }
+
+
+  ul.operations{
+    margin:0;
+    padding:0 20px 0 0;
+  }
+
+  li.operation{
+    .section{
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .operation_description{
+    @extend .align-right;
+    @extend .float-right;
+    margin:0;
+  }
+
+  .http_method{
+    @include border-radius(4px 0 0 4px);
+    display: inline-block;
+    text-align: center;
+    line-height: 3.5em;
+    width: 3em;
+    margin:0 1em 0 0;
+    padding: 0 2em;
+    &.get{
+      background-color:#008cdd;
+    }
+    &.post{
+      background-color:rgb(70, 146, 0);
+    }
+    &.put{
+      background-color:rgb(146, 94, 0);
+    }
+    &.delete{
+      background-color:rgb(146, 0, 76);
+    }
+    &:hover{
+      color:white;
+    };
+  }
+
+  .http_method, .operation_description{
+    line-height: 45px;
+  }
+}

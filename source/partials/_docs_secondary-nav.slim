@@ -1,0 +1,5 @@
+nav#secondary-nav.nav role='navigation'
+  ul
+    - data.nav.each do |title,page|
+      li class="#{current_page.url == page[:url] ? 'active': ''}"
+        a rel="#{title}" class="#{page[:classes]}" href=page[:url] = title

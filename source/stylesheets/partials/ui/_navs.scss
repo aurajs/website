@@ -1,0 +1,118 @@
+/*
+ * Nav
+ * ===
+ *
+ * The `nav` class is used to create a horizontal
+ * navigation. It removes list styling and directly
+ * descending list items are floated.
+ *
+ *     <ul class="nav">
+ *         <li>
+ *             <a href="#">Link</a>
+ *         </li>
+ *         ...
+ *     </ul>
+ */
+.nav{
+    list-style:none;
+    margin-left:0;
+    li{
+        display:inline;
+        &:first-child{margin-left:0;}
+    }
+    a{
+        @include inlineBlock;
+    }
+}
+
+
+.topbar{
+    [role="navigation"]{
+        ul{
+            @extend .secret-list;
+            @include adjust-font-size-to(12px);
+        }
+        text-align:right;
+        li{
+            @include position;
+            margin:0 0 0 2em;
+            &.active a{@extend .white;}
+        }
+        a{
+            display:inline;
+            @extend .gray;
+            @extend .brand-font;
+            @extend .bold;
+             &:hover{
+                @extend .white;
+            }
+        }
+        .plan a{
+            @extend .white;
+        }
+        .signin, .pill{
+            a{
+                // @include adjust-font-size-to(14px,1,13px);
+                @include border-radius(2em);
+                @extend .white;
+                margin:-.25em 0;
+                padding:.25em 1em;
+                // text-transform:none;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+    .home & [role="navigation"]{
+        a{
+            color:$gray-dark-color;
+        }
+        a:hover{
+            color:$gray-darken-color;
+        }
+         .signin, .pill{
+             a:hover{
+                 color:$white-color;
+             }
+         }
+    }
+}
+
+
+#secondary-nav{
+    // @include position(absolute, 0 0 0 0);
+    // @include rhythm(0,1,1,0);
+    // padding-left:2em;
+    // border-left:1px solid $border-color;
+    ul{
+        @extend .secret-list;
+        @include adjust-font-size-to(13px);
+    }
+    li{
+        @include position;
+        margin:0 1.25em 0 0;
+        &.active{
+            a{
+                // @include background-image(
+                //     linear-gradient(rgba(black,0.1), rgba(black,0.025))
+                // );
+                // box-shadow:inset 0 0 1px rgba(black,0.2),
+                //             inset 0 1px 0 rgba(black,0.2),
+                //             0 1px 0 rgba(white,0.7);
+                background: $brand-color;
+                border-radius:1em;
+                padding:0 1em;
+                color: #fff;
+            }
+        }
+    }
+    a{
+        display:inline-block;
+        @extend .brand-font;
+        // @extend .bold;
+        color:$font-color;
+        // text-shadow:0 1px 0 white;
+         &:hover{
+            @extend .gray-dark;
+        }
+    }
+}

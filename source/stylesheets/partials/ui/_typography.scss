@@ -1,0 +1,425 @@
+@include establish-baseline;
+
+/*------------------------------------*\
+    Text font imports
+\*------------------------------------*/
+@import "./icons";
+
+/*------------------------------------*\
+    Text font family
+\*------------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700|Maven+Pro:400,700);
+
+// .base-font{ font-family:'Titillium Web', 'Helvetica Neue', 'Helvetica,','Arial', sans-serif; }
+.base-font{ font-family: 'Helvetica Neue', 'Helvetica,','Arial', sans-serif; }
+.brand-font{ font-family: 'proxima-nova', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; }
+
+
+.aldo {
+  font-family: 'aldosemibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/*------------------------------------*\
+    Text Helpers
+\*------------------------------------*/
+.upper{text-transform:uppercase;}
+.small,small{@include adjust-font-size-to(11px)}
+.medium{@include adjust-font-size-to(13px);}
+.align-right{text-align:right;}
+.align-left{text-align:left;}
+.align-center{text-align:center;}
+.bold,strong{font-weight:700;}
+.light{font-weight:300;}
+.italic{font-style:italic;}
+.no-trailer{margin-bottom:0!important;}
+.no-padding-trailer{padding-bottom:0!important;}
+.no-leader{margin-top:0!important;}
+.no-padding-leader{padding-top:0!important;}
+
+/*------------------------------------*\
+    Text Colors
+\*------------------------------------*/
+.black{color:$black-color;}
+.font{color:$font-color;}
+.gray{color:$gray-color;}
+.gray-light{color:$gray-light-color;}
+.gray-dark{color:$gray-dark-color;}
+.gray-darken{color:$gray-darken-color;}
+.white{color:$white-color;}
+.brand{color:$brand-color;}
+.brand-dark{color:$brand-dark-color;}
+.brand-light{color:$brand-light-color;}
+
+
+/*------------------------------------*\
+    Text Styles
+\*------------------------------------*/
+body {
+  font:#{$base-font-size}/#{$base-line-height} "Maven Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight:400;
+  color:$font-color;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing:antialiased;
+  /*
+  -moz-font-feature-settings:"liga=1, dlig=1";
+  -ms-font-feature-settings:"liga", "dlig";
+  -o-font-feature-settings:"liga", "dlig";
+  -webkit-font-feature-settings:"liga", "dlig";
+  font-feature-settings:"liga", "dlig";
+   */
+  //@include debug-vertical-alignment(false);
+}
+
+
+p,
+.list{
+  // @include adjust-font-size-to(15px);
+  // line-height: 1.5;
+}
+
+ul, ol, p{
+  @include trailer;
+}
+
+input{
+  @extend .base-font;
+}
+
+ul.disc-list{
+  list-style-type:square;
+  list-style-position:outside;
+  padding-left:18px
+}
+
+blockquote{
+  font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+   @extend .brand-font;
+}
+
+h1{
+    @include adjust-font-size-to(26px);
+    @include trailer(1);
+    // @extend .bold;
+}
+
+h2{
+    @include adjust-font-size-to(20px,1.4);
+    @include trailer(1);
+}
+
+h3{
+    @include adjust-font-size-to(18px, 1.5);
+    @include trailer(1);
+}
+
+h4{
+    @include adjust-font-size-to(16px, 1.5);
+    @include trailer(1);
+}
+
+h5{
+    @include adjust-font-size-to(14px);
+    @include trailer(1);
+}
+
+h6{
+    @include adjust-font-size-to(13px);
+    @include trailer(1);
+}
+
+hgroup{
+    > * {@include trailer(0);}
+    @include trailer(1);
+}
+
+.small-title{
+  @extend .gray-darken;
+  @include adjust-font-size-to(13px,1);
+  @extend .bold;
+  @include trailer(1.25);
+  @extend .upper;
+  display:inline-block;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.quote{
+    @include trailer(2);
+    @extend .brand-font;
+    p{@extend .brand-light;}
+    .quote-content{
+        @include adjust-font-size-to(18px,1.25,13px);
+        @include trailer(.5);
+        &:before {content: "\201c"; }
+        &:after {content: "\201d"; }
+    }
+    .quote-author{
+        @include adjust-font-size-to(14px,1,13px);
+        @extend .align-right;
+        opacity:.6;
+        &:before{
+            margin-right:.25em;
+            content:"\2014";
+        }
+    }
+}
+
+
+/*------------------------------------*\
+    Text Decorations
+\*------------------------------------*/
+
+.heading{
+    @include trailer(3);
+    // -webkit-font-smoothing:subpixel-antialiased;
+    h1{
+        @include adjust-font-size-to(40px);
+        @include trailer(0);
+        @extend .bold;
+    }
+    h2{
+        @include adjust-font-size-to(26px,1.75);
+        @include trailer(0);
+        @extend .font;
+    }
+    .image-section &{
+        h1{
+            @extend .white;
+        }
+        h2{
+            @extend .gray-light;
+        }
+    }
+    .primary-section &{
+        h2{
+            @extend .white;
+        }
+    }
+}
+.heading-large{
+    @include trailer(3);
+    h1{
+        @include adjust-font-size-to(52px);
+        @include trailer(0);
+        @extend .bold;
+    }
+}
+.heading-alt{
+    @include trailer(2);
+    h1{
+        @include trailer(.25);
+        @extend .bold;
+    }
+    h2{
+        @include trailer(0);
+        @extend .gray-dark;
+        @extend .light;
+    }
+}
+.heading-border{
+    @extend .align-center;
+    @include trailer(3);
+    @include position;
+    z-index:1;
+    h5 {
+        @extend .gray-darken;
+        @include adjust-font-size-to(13px,1);
+        @extend .bold;
+        @extend .upper;
+        @include trailer(0);
+        padding:0 1em;
+        display:inline-block;
+        background:$white-color;
+    }
+    &:after{
+        border-top: 1px solid rgba(black,.1);
+        content: " ";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left:0;right:0;
+    }
+}
+
+.heading-bottom-border{
+    @include trailer(2);
+    @include position;
+    .title {
+        @extend .upper;
+        @extend .bold;
+        @include trailer(0);
+        @include trailing-border(1px,.5);
+        border-color:rgba(black,.1);
+    }
+
+}
+.profile{
+    @include trailer(3);
+    h1,
+    h2,
+    h3:not(.gray){
+        @include trailer(0);
+    }
+    h2{
+        @extend .bold;
+        @include leader(.25);
+    }
+    h3{
+        @include trailer(.5);
+    }
+    h4{
+        @include trailer(.5);
+    }
+    p{
+        @include adjust-font-size-to(14px,1,16px);
+    }
+    .profile-picture{
+        @include trailer(1);
+        display:block;
+        max-width:100%;
+        margin-left:auto;
+        margin-right:auto;
+        border-radius:4px;
+        width:70px;
+    }
+}
+[class*="heading"]{
+    p{
+        @extend .gray-dark
+    }
+    h5.upper{
+        @include trailer(0);
+    }
+}
+.home-features{
+    @include trailer(1);
+    .title{
+        @include trailer(.5);
+        @extend .bold;
+    }
+    .description{
+        @include adjust-leading-to(1.5);
+        @extend .brand-font;
+    }
+    .small-title{
+        @include trailer(.5);
+    }
+    .iconfont{
+        font-size:1.25em;
+        //@extend .gray-darken;
+        //text-shadow: 0 -1px 0 rgba(black,.1);
+        //-webkit-text-stroke: 1px $gray-dark-color;
+        //-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.5)));
+    }
+}
+.home-features--small{
+    .description{
+        @include adjust-font-size-to(15px);
+    }
+}
+.features{
+    @include trailer(1);
+    .title{
+        @include trailer(.5);
+        @extend .bold;
+    }
+    h3.title{
+        @include trailer(0);
+    }
+    .title-img{
+        img{
+            @include inlineBlock;
+            @include position(relative, -2px 0 0 0);
+            margin-right:10px;
+            height:27px;
+            vertical-align:middle;
+        }
+        line-height:30px;
+    }
+    .title-img-center{
+        @extend .align-center;
+        @include rhythm(0,.5,0,.5);
+        @include adjust-font-size-to(22px);
+        img,svg{
+            @include trailer(.5);
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        & ~ p {
+            @extend .align-center;
+            font-size:inherit;
+        }
+    }
+    .check-list, .list, p {
+        @extend .gray-dark;
+        @extend .brand-font;
+    }
+    .btn{
+      @extend .base-font;
+    }
+    p strong, .list strong, .check-list strong{
+        @extend .font;
+    }
+    .list{
+        @include adjust-font-size-to(15px);
+    }
+    .primary-section &{
+        p{
+            @extend .white;
+        }
+    }
+}
+
+.footer_cta{
+    h1{
+        @include adjust-font-size-to(32px);
+        @include trailer(0);
+    }
+    h2{
+        @include adjust-font-size-to(24px);
+        @include trailer(.2);
+    }
+    h4{
+        @include adjust-font-size-to(18px);
+        @extend .gray-dark;
+        @include trailer(1);
+    }
+}
+
+.more{
+  @include adjust-font-size-to(13px);
+  .svg-arrow{
+    @include position(relative,1px 0 0 0);
+    height:10px;
+    width:10px;
+    g{
+        fill:$brand-color;
+    }
+  }
+  &:hover{
+    .svg-arrow{
+        g{ fill:$brand-dark-color; }
+    }
+  }
+}
+
+.documentation{
+  &, & h1, & h2, & h3, & h4, & h5, & h6{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+}
+
+.footer-section{
+    .title{
+        display:inline-block;
+        margin-right:1em;
+    }
+    p{
+        @include padding-leader(1);
+    }
+}
+#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }

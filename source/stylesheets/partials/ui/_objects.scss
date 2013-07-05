@@ -1,0 +1,66 @@
+/*
+ * Media Object
+ * ============
+ *
+ * The media object describes a content block containing
+ * a fixed-size media element (e.g. image or video)
+ * along with other variable-size content (e.g. text).
+ *
+ *      <div class="md">
+ *          <a href="#" class="img">
+ *              <img src="path/to/my/picture.jpg" alt="me" />
+ *          </a>
+ *          <div class="bd">
+ *              This is a media object.
+ *          </div>
+ *      </div>
+ */
+.md{
+    @include media-object(20px, left, 'table', '.img', '.bd');
+    &.md-10 .img{margin-right:10px;}
+    &.md-reverse > .img,
+    &.md-reverse > a > .img{margin-left:20px;margin-right:0;float:right;}
+    display:block;
+}
+
+
+/*
+ * Splitter Object
+ * ===============
+ * 
+ * The `splitter object` is used to create a
+ * a side by side content (e.g. a restaurant menu).
+ *
+ * Cheese Burger              13€
+ * Avocado Burger          17.50€
+ * Milk Shake               4.80€
+ * 
+ * It removes list styling as well as the default
+ * padding assigned by the user-agent.
+ *
+ *     <ul class="secret-list">
+ *         <li class="split">
+ *              <span class="split-title">Cheese Burger</span>
+ *              13€
+ *          </li>
+ *          <li class="split">
+ *              <span class="split-title">Avocado Burger</span>
+ *              17.50€
+ *          </li>
+ *          <li class="split">
+ *              <span class="split-title">Milk Shake/span>
+ *              4.80€
+ *          </li>
+ *     </ul>
+ */
+.split{
+    text-align:right;
+    list-style:none;
+    margin-left:0;
+    display: block;
+}
+    .split-title{
+        text-align:left;
+        float:left;
+        clear:left;
+    }

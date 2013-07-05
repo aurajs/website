@@ -1,0 +1,343 @@
+// Documentation
+body.docs{
+  min-width: 0;  
+  .container{
+    #sub-header{
+      position: fixed;
+      top:0;
+      left:220px;
+      right:0;
+      min-width: 800px;
+      // border-left:1px solid $border-color;
+    }
+  }
+  .sidebar{
+    @include position(fixed, 0px 0 0 0);
+    @include box-sizing(border-box);
+    // box-shadow:$border-color 1px 0 0, rgba(0, 0, 0, 0.025) -1px 0 2px inset;
+    overflow:auto;
+    width:220px;
+    // background:$secondary-color;
+    -webkit-font-smoothing:subpixel-antialiased;
+    z-index: 100;
+    height: 100%;
+    .tree-help{
+        li {
+          margin-bottom: 10px;
+        }
+        padding:1.25em 2em;
+        h3{
+          @include adjust-font-size-to(14px);    
+          @extend .bold;
+          @include trailer(.5);
+          color:$tertiary-color;
+        }
+        p{
+            @include adjust-font-size-to(13px);
+            @extend .gray-dark;
+        }
+    }
+    .logo {
+      display:block;
+      height: 200px;
+      width: 220px;
+      @include hide-text;
+      // @include background-image-retina('//raw.github.com/hull/aura-identity/master/logo/export/1_color_halo.png');
+      @include background-image-retina('//raw.github.com/hull/aura-identity/master/logo/export/halo.png');
+      background-size: 150px;
+      background-repeat: no-repeat;
+      background-position: 50% 25px;
+    }
+    .tree-nav-section{
+      padding:1.25em 2em;
+      // border-bottom:1px solid lighten($brand-color, 25);
+      // text-shadow:0 1px 0 rgba(white,.5);
+      h3{
+        @include adjust-font-size-to(14px);
+        @include trailer(.5);
+        // @extend .bold;
+        @extend .upper;
+        // color:$tertiary-color;
+        color: $brand-color;
+      }
+      a{
+        @include adjust-font-size-to(13px);
+        @extend .gray-dark;
+        display:inline-block;
+        &:hover{
+            text-decoration:underline;
+        }
+      }
+      ul ul{
+        a { margin-left:1em;@include adjust-font-size-to(12px); }
+        .active a{color:$font-color;}
+      }
+      li{
+        @include position;
+        padding:.1em 0;
+      }
+      .active ul{
+          display:block;
+      }
+      .active {
+        &:after{
+            content:"";
+            @include position(absolute, 0px -2em 0px 0);
+            width:2px;
+            background:$brand-blue;
+            height:24px;
+        }
+        > a{
+          @extend .bold;
+          color:$brand-blue;
+          cursor:default;
+          &:hover{
+              text-decoration:none;
+          }
+        }
+      }
+      ul{
+          @include trailer(0);
+      }
+    }
+    .tree-nav-section:last-child{
+      @include rhythm(0,0,0,0);
+    }
+  }
+
+}
+
+section.documentation{
+  /* Positions */
+  -webkit-font-smoothing:subpixel-antialiased;
+  background:#FFF;
+
+  .container &{
+    // margin-top:60px;
+    padding: 60px 0 0;
+    position: fixed;
+    overflow: scroll;
+    // top: 60px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+
+  > article{
+    @include box-sizing(border-box);
+    background-color:$white-color;
+    box-shadow:inset 0 1px 0 white, 0 1px 1px rgba(black,.05);
+
+    > .row{
+      padding: 0; 
+      margin: 0 0 0 220px;
+      min-width: 0;
+      width: auto;
+      border-left: 1px solid lighten($border-color, 10);
+      @include box-shadow(inset 1px 0 3px 0 rgba($border-color, .15));
+      // box-shadow: rgba($border-color, 1) 1px 0 2px 0;
+    }
+
+    .documentation-header{
+        max-width:720px;
+        padding:1.25em 2em 60px;
+        margin-bottom: -20px;
+        h1{
+          @include adjust-font-size-to(28px);
+          line-height:40px;
+          @extend .brand-font;
+          margin:0;
+          padding:0;
+          // color: $pink;
+          @extend .bold;
+        }
+        p{
+          @include adjust-font-size-to(18px,1.5625);
+          letter-spacing: .0525em;
+          word-spacing: .125em;
+          @extend .brand-font;
+          @include trailer(0);
+          @include padding-leader(.25);
+        }
+    }
+
+    .documentation-body{
+      @include position;
+      @include background-image(
+          linear-gradient(right,rgba($border-color,0),lighten($border-color, 10)),
+          linear-gradient(right,#FFF,rgba(255,255,255,0)),
+          linear-gradient(rgba(darken($brand-color, 20),.02),rgba(darken($brand-color, 20),0))
+      );
+      background-repeat: no-repeat;
+      background-position:top center;
+      background-size: 100% 1px, 100% 150px, 100% 150px;
+      min-height:150px;
+      padding:2em 2em 2em;
+      max-width:720px;
+      >*:first-child{margin-top:0;padding-top:0;}
+      >*:last-child{margin-bottom:0;}
+      a:not(.btn){
+        border-bottom: 1px solid $brand-blue;
+        // text-decoration: underline;
+        &[href^="http://"],
+        &[href^="mailto:"] {
+          background: url(/images/link.png) center right no-repeat;
+          padding-right: 13px;
+        }
+        &, &:visited{
+          color: $brand-blue;
+        }
+        &:hover, &:active{
+          color: darken($brand-blue, 20%);
+          border-bottom-color:darken($brand-blue, 20%);
+        }
+      }
+      a:not(.btn).documentation-anchor{
+        @include transition(opacity 100ms);
+        color:$gray-color;
+        border:0!important;
+        text-decoration:none;
+        margin-left:.25em;
+        opacity:0;
+        &:hover{
+          opacity:1!important;
+        }
+      }
+      hr{
+          @include leader(3);
+          margin-bottom: -40px;
+      }
+      .api-sections {
+        padding-top: 60px;
+        // &:first-child {
+        //   padding-top: 0;
+        // }
+      }
+      h1, h2, h3, h4, h5, h6, dl{
+        @include rhythm(0,.5,0,.5);
+        @extend .brand-font;
+        @extend .bold;
+        &:hover a:not(.btn).documentation-anchor{
+          opacity:.75;
+        }
+        a {
+          border:none;
+        }
+        code{
+          font-weight:normal;
+        }
+      }
+
+      // h1 {
+      //   color: $pink;
+      // }
+
+      h2 {
+        border-bottom: solid 1px $border-color;
+      }
+
+      h2 small {
+        @extend .small-title;
+        font-size: 14px;
+        
+      }
+
+      ol,
+      ul,
+      blockquote,
+      p{
+          // font-size:14px;
+          line-height:1.5;
+          letter-spacing: .0625em;
+          word-spacing: .125em;
+      }
+      ol,
+      ul{
+        @extend .list;
+      }
+
+      dl{
+        dt{
+          float: left;
+        }
+      }
+
+      :not(pre) code{
+        //border-radius:6px;
+        //color:black;
+        //background-color:mix($brand-color, #fff, 10%);
+      }
+
+      blockquote{
+          font-family:inherit;
+          @include trailer(1);
+          @include apply-side-rhythm-border('left', 3px, 1);
+          border-color:$border-color;
+      }
+
+      ol{
+        li{
+          list-style-type: decimal;
+        }
+      }
+
+      // table
+      table{
+        @include adjust-font-size-to(13px,1,16px);
+        @include trailer(3);
+        width:100%;
+        border: 1px solid $border-color;
+        border-collapse: collapse;
+        thead th{
+          font-weight:bold;
+        }
+        tbody{
+            @extend .gray-dark;
+        }
+        th,
+        td{
+            padding: 6px 8px;
+            border: 1px solid $border-color;
+            vertical-align: top;
+        }
+        tbody tr:nth-child(odd) td,
+        tr:hover td,
+        tbody tr:hover th{
+          background-color: lighten($gray-light-color, 4);
+        }
+        code{
+            @include adjust-font-size-to(12px,1,13px);
+            border-color:transparent;
+            background-color:transparent;
+        }
+      }
+    }
+
+
+  }
+}
+
+.doc-loading,
+.try-loading{
+  @include position;
+  background:image-url('doc-loading.gif') 50% 50% no-repeat;
+  height:150px;
+  display:block;
+  &:after{
+    @include position(absolute, 50% 0px 0 0px);
+    @extend .gray;
+    opacity:.75;
+    margin-top:20px;
+    font-size:13px;
+    content:"Please wait.";
+    text-align:center;
+    display:block;
+  }
+  &.try-loading{
+      height:252px;
+      background-color:$white-color;
+  }
+}
+

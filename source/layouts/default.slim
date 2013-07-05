@@ -1,0 +1,39 @@
+doctype html
+html
+  head
+    title= "AuraJS Documentation"
+    meta charset='utf-8'
+    meta name='viewport' content='width=1000'
+    meta name='description' content=description
+    meta property='og:title' content='aura'
+    meta property='og:type' content='company'
+    meta property='og:site_name' content='aurajs.com'
+    meta property='og:url' content='http://aurajs.com'
+    meta property='og:description' content=description
+    == stylesheet_link_tag('style')
+    /[if IE]
+      == stylesheet_link_tag('ie')
+    == yield_content :css
+    link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'
+    == javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'
+
+  body.docs
+    .container
+      header#sub-header
+        == partial 'partials/docs_secondary-nav'
+  
+      aside.sidebar role='navigation'
+        a.logo href='/' aura
+        .tree
+          == partial 'partials/docs_nav'
+
+      section.documentation
+        article
+          .row
+            header.documentation-header
+              h1 = docs_title current_page
+              - if current_page.data.subtitle
+                p=current_page.data.subtitle
+            .documentation-body.language-markup
+              == yield
+           

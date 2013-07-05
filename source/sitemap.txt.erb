@@ -1,0 +1,4 @@
+<% root_url = data.strings.url %>
+<% sitemap.resources.each do |page| %>
+<%= "#{root_url}#{page.url}\n" if page.url !~ /\.(css|js|ico|xml|eot|svg|woff|ttf|png|jpg)$/ %>
+<% end %>

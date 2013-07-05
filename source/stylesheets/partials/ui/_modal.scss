@@ -1,0 +1,108 @@
+/* CSS for jQuery Reveal Plugin
+ * Maintained for Foundation. foundation.zurb.com
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+/* Reveal Modals ---------------------- */
+
+  .reveal-modal-bg { 
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    background: rgba(#000, .45);
+    z-index: 40;
+    display: none;
+    top: 0;
+    left: 0;
+  }
+
+  .reveal-modal {
+    @include box-shadow(0 1px 3px rgba(#000,.4));
+    @include box-sizing(border-box);
+    background: $white-color;
+    visibility: hidden;
+    display: none;
+    top: 100px;
+    left: 50%;
+    margin-left: -260px;
+    width: 520px;
+    position: absolute;
+    z-index: 41;
+    padding:0;
+    border-radius:4px;
+    header{
+      @include background-clip(padding-box);
+      background-color:$secondary-color;
+      border-bottom:1px solid $border-color;
+      margin:0;
+      padding:1em 1.5em;
+      border-radius:4px 4px 0 0;
+      .title{
+          @include adjust-font-size-to(16px);
+          @include trailer(0);
+          @extend .bold;
+      }
+    }
+    .modal-content{
+        padding:1.5em;
+        *:first-child { margin-top: 0; }
+        *:last-child { margin-bottom: 0; }
+    }
+    footer{
+      @extend .align-right;
+      @include background-clip(padding-box);
+      background-color:$secondary-color;
+      border-top:1px solid $border-color;
+      padding:1em 1.5em;
+      border-radius:0 0 4px 4px;
+      [class*="btn"] + [class*="btn"] {margin-left:1em;}
+    }
+    .close{
+        @include adjust-font-size-to(18px);
+        @include button-flat(#fff);
+        border-radius:50%;
+        line-height: 16px;
+        width:20px;
+        height:20px;
+        position: absolute;
+        display:block;
+        text-align:center;
+        top: 16px;
+        right: 11px;
+        font-weight: bold;
+        cursor: pointer;
+        color:#aaa;
+        &:hover,&:active{
+            color:#888;
+        }
+    }
+    &.modal--small   { width: 30%; margin-left: -10%; }
+    &.modal--medium{   width: 40%; margin-left: -20%; }
+    &.modal--large   { width: 60%; margin-left: -30%; }
+    &.modal--xlarge  { width: 70%; margin-left: -35%; }
+    &.modal--expand  { width: 90%; margin-left: -45%; }
+    .row { min-width: 0; }
+  }
+
+  /* Mobile */
+  @media only screen and (max-width: 700px) {  
+    //.reveal-modal-bg { position: absolute; }
+    .reveal-modal,
+    .reveal-modal.modal--small,
+    .reveal-modal.modal--medium,
+    .reveal-modal.modal--large,
+    .reveal-modal.modal--xlarge { width: 90%; top: 15px; left: 50%; margin-left: -45%; height: auto; }
+  }
+
+  /* NOTES
+  Close button entity is &#215;
+
+  Example markup
+  <div id="myModal" class="reveal-modal">
+   <h2>Awesome. I have it.</h2>
+   <p class="lead">Your couch.  I it's mine.</p>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
+   <a class="close-reveal-modal">&#215;</a>
+  </div> */

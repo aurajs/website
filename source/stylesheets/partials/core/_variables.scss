@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    Project variables
+\*------------------------------------*/
+// Grid
+$grid-max-width:1000px;
+$grid-min-width:1000px;
+$grid-mobile: false;
+$grid-mobile-breakpoint: $grid-min-width + 40px;
+
+$base-font-size: 14px;
+$base-line-height: 20px;
+
+// Colors
+// $brand-color: #204a92;
+$brand-color: rgb(38,193,197);
+$brand-light-color: #476CB0;
+$brand-dark-color: darken($brand-color, 15);
+
+$brand-blue:#008CDD;
+$brand-blue-plain:#3491D3;
+$brand-blue-gradient:#7DC5EE;
+
+$font-color: #333;
+
+$black-color: #000;
+$silver-color: #CCC;
+$gray-dark-color: #666;
+$gray-darken-color: #9099A3;
+$gray-color: #a1a1a1;
+$gray-light-color: lighten(#eceef1, 0);
+$white-color: #FFF;
+
+$border-color: #d4d4d4;
+// $border-color: tint($brand-color, 50);
+
+// Flat era
+$primary-color:#4587ce;
+$secondary-color:#f1f3f5;
+// $secondary-color: lighten($brand-color, 50);
+$tertiary-color:#373f4a;
+$quaternary-color:#1a1e23;
+//$quinary-color:#f6f7fc;
+
+.ui-primary-color{    height:70px;line-height:70px;text-align:center;background-color:$primary-color;}
+.ui-secondary-color{  height:70px;line-height:70px;text-align:center;background-color:$secondary-color;}
+.ui-tertiary-color{   height:70px;line-height:70px;text-align:center;background-color:$tertiary-color;}
+//.ui-quaternary-color{   height:70px;line-height:70px;text-align:center;background-color:$quaternary-color;}
+
+
+$pink: rgb(255, 0, 168);

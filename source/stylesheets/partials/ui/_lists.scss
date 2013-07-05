@@ -1,0 +1,54 @@
+/*
+ * Secret List
+ * ===========
+ *
+ * The `secret-list` class is used to hide the default
+ * presentation of a `ul` or `ol`. It removes list
+ * styling as well as the default margin/padding
+ * assigned by the user-agent.
+ *
+ *     <ul class="secret-list">
+ *         <li>
+ *             Nobody knows that I'm a list ;)
+ *         </li>
+ *     </ul>
+ */
+.secret-list {
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+
+.list{
+    list-style-type:square;
+    padding-left:20px;
+    li{
+        @include rhythm(0,.15,.15,0);
+    }
+}
+
+.check-list{
+    @include adjust-font-size-to(14px);
+    border-top:1px solid $border-color;
+    li{
+        @include position;
+        border-bottom:1px solid $border-color;
+        padding:.75em 30px .75em 0;
+    }
+    li:after{
+        @extend .iconfont;
+        @include inlineBlock;
+        @include position(absolute, 50% 10px 0 0);
+        margin-top:-0.4em;
+        content:"";
+        height:16px;
+        width:16px;
+        opacity:.9;
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position:50% 50%;
+        // background-image:image-url('check.svg');
+        content: "\f10a";
+        @include adjust-font-size-to(16px);
+    }
+}

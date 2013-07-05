@@ -1,0 +1,105 @@
+%bottom-border{
+    @include position;
+    &:before{
+        $width: $grid-max-width - 40px;
+        @include position(absolute, 0 0 0px 50%);
+        content:"";
+        display:block;
+        width: $width;
+        margin-left:-($width/2);
+        border-bottom:1px solid rgba(black,.1);
+    }
+}
+
+.container {
+    background:#fff;
+    // Helper class
+    .last{
+        @include trailer(0);
+    }
+}
+
+.container > section{
+    @include padding-trailer(3);
+    @include padding-leader(3);
+    @include position;
+    > :last-child {
+        margin-bottom:0;
+    }
+}
+
+.container > .light-section{
+    @include position;
+    @include rhythm(0,3,3,0);
+    @include background-image(linear-gradient(bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0) 100%));
+    background-size:100% 80px;
+    background-repeat:repeat-x;
+    background-position:0 100%;
+}
+
+.container > .dark-section{
+    @include position;
+    @include rhythm(0,3,3,0);
+    background:$tertiary-color;
+    @include box-sizing(border-box);
+    @include translateZ(0);
+    overflow:hidden;
+}
+
+.container > .divider-shadow-section {
+    @include background-image(
+        linear-gradient( right, #fff, rgba(255,255,255,0) 50%, #fff),
+        linear-gradient(rgba(0,0,0,.025),rgba($secondary-color,0))
+    );
+    background-repeat: no-repeat;
+    background-position:top center;
+    background-size: $grid-max-width 75px;
+}
+
+.divider-section {
+  .container > & {
+    @extend %bottom-border;
+  }
+}
+
+.container > .primary-section{
+  @extend .white;
+  background-color:$primary-color;
+}
+
+.container > .secondary-section{
+  background-color:$secondary-color;
+}
+
+.container > .secondary-gradient-section{
+    @include background-image(
+        linear-gradient($secondary-color, rgba(white,0))
+    );
+}
+
+.container > .sub-section{
+    @include rhythm(0,3,3,0);
+    border-top:1px solid rgba(black,.1);
+}
+
+.container > .image-section{
+    background-size:cover;
+}
+
+// Specific
+.container > .section-ready{
+    hgroup{
+        @include trailer(0);
+    }
+    h2{
+        @extend .bold;
+    }
+    h4{
+        @extend .gray-darken;
+    }
+    .register{
+      @include leader(.5);
+    }
+}
+
+

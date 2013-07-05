@@ -1,0 +1,20 @@
+@mixin media-object($margin:10px, $position: left, $formating-context: 'overflow', $media: '.media', $block: '.block') {
+    @include pie-clearfix; // or extend a .clearfix class
+    #{unquote($block)} {
+        @if $formating-context == 'overflow' {
+            overflow:hidden;
+        } @else {
+            display:table-cell;
+            width:10000px;
+            *width:auto;
+            *zoom:1;
+        }
+    }
+    #{unquote($media)} {
+        float:$position;
+        img{display:block;}
+        @if $margin > 0 {
+            margin-#{opposite-position($position)}:$margin;
+        }
+    }
+}

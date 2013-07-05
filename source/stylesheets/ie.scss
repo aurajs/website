@@ -1,0 +1,45 @@
+@import "partials/core/core";
+@import "compass/utilities/general/hacks";
+
+input[type="text"]{
+  padding-top:0.7em;
+  line-height: 1;
+  .dark-section &{
+    border:1px solid;
+    border-top-color:#272C34;
+    border-bottom-color:#4F5763;
+    border-left-color:#2A3037;
+    border-right-color:#2A3037;
+  }
+}
+
+
+.register{
+  .lrdiscoverwidget{
+    .inviteform{
+      .field{
+        @extend input[type="text"];
+        width:266px;
+      }
+      .submit{
+        // @extend .btn;
+        // @extend .primary;
+        border-width: 1px;
+        width: 71px;
+        height: 36px;
+        padding-top:8px;
+      }
+    }
+  }
+}
+
+#comparison {
+  .type {
+    .iconfont{
+      top:0;
+    }
+  }
+  .hull.logos{
+    top:25px;
+  }
+}

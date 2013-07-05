@@ -1,0 +1,3 @@
+@function pxToPercent($target, $context) {
+    @return percentage($target / $context);
+}

@@ -1,0 +1,6 @@
+'Google Analytics': 
+  trackingId: UA-XXX-XXX
+  enhancedLinkAttribution: true
+'Mixpanel': 
+  token: ca941859b3eb9c5d79e4821641db3a63
+  people: true

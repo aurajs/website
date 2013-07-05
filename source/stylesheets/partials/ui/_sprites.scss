@@ -1,0 +1,50 @@
+.icon{  
+    @include hide-text;
+    @include position;
+    width:16px;
+    height:16px;
+    display:block;
+    float:left;
+    background-color:transparent;
+    background-position:0 0;
+    background-repeat:no-repeat;
+    font-size:1px;
+    line-height:1px;
+    vertical-align:middle;
+}
+
+i.icon,
+img.icon {
+    display:inline-block;
+    float:none;
+    text-indent:0;
+    max-width:none;
+}
+
+$icon-layout:smart;
+$icon-sprite-dimensions: true;
+@import "icon/*.png";
+@include all-icon-sprites;
+
+@mixin retinaSprite($img){
+    @include hide-text;
+    @include background-image-retina($img);
+    display:block;
+    width:image-width($img);
+    height:image-height($img);
+}
+
+.logos{
+    &.wordpress{
+        @include retinaSprite('logos/wordpress.png');
+    }
+    &.magento{
+        @include retinaSprite('logos/magento.png');
+    }
+    &.hull{
+        top:39px;
+        left:-5px;
+        position:relative;
+        @include retinaSprite('logos/hull.png');
+    }
+}

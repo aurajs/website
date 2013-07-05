@@ -1,0 +1,116 @@
+.btn{
+    @extend %reset-native-appearance;
+    @include position;
+    @include trailer(0);
+    @include adjust-font-size-to(13px);
+    @include rhythm-borders(0px, .75);
+    @include background-clip;
+    @include inlineBlock;
+    // @extend .bold;
+    @extend .align-center;
+    //@extend .upper;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    box-shadow:none;
+    text-decoration: none;
+    text-shadow:none!important;
+    // @include button-flat($tertiary-color);
+    background: $brand-color;
+    color: white;
+    @include transition(ease all .3s);
+    &:hover{
+        text-decoration: none;
+        color: darken(white, 5);
+        background: lighten($brand-color, 2);
+    }
+    &:active{
+
+    }
+    &.small{
+        @include adjust-font-size-to(12px);
+        @include rhythm-borders(0px, .5);
+        padding-left:1em;
+        padding-right:1em;
+    }
+    &.tiny{
+        @include adjust-font-size-to(11px);
+        @include rhythm-borders(0px, .25);
+        padding-left:1em;
+        padding-right:1em;
+    }
+    &.large{
+        @include adjust-font-size-to(16px);
+        @include rhythm-borders(0px, .75);
+        padding-left:1.5em;
+        padding-right:1.5em;
+    }
+    &.big{
+        @include adjust-font-size-to(20px);
+        @include rhythm-borders(0px, .5);
+        padding-left:2.5em;
+        padding-right:2.5em;
+    }
+    &.block{
+        @include box-sizing(border-box);
+        display:block;
+        width:100%;
+    }
+    &.round{
+        border-radius:2em;
+    }
+    &.emboss{
+        @include button-emboss($tertiary-color);
+    }
+}
+
+[class*="btn"] + [class*="btn"] {margin-left:.5em;}
+
+.btn.primary,
+.btn-primary{
+    // @include button-flat($primary-color);
+    &.emboss{
+        @include button-emboss($primary-color);
+    }
+}
+.btn.secondary{
+    // @include button-flat($secondary-color);
+    &.emboss{
+        @include button-emboss($secondary-color);
+    }
+}
+.btn.transparent{
+    @include button-flat($white-color);
+    box-shadow:none!important;
+    border-width:1px;
+    background:transparent;
+    border-color:$border-color;
+    &:hover{
+        background:transparent;
+    }
+}
+.btn.transparent-black{
+    @include button-flat(rgba(black,.25));
+    &.emboss{
+        @include button-emboss(rgba(black,.25));
+    }
+}
+.btn-twitter{
+    @include button-flat(#5DB5DE);
+}
+.btn-github{
+    @include button-flat(#eaeaea);
+}
+.btn-facebook{
+    @include button-flat(#335795);
+}
+.btn-instagram{
+    @include button-flat(#306088);
+}
+
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}

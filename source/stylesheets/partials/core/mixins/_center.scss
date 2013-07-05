@@ -1,0 +1,18 @@
+@mixin center(  $width: 0,
+                $height: 0,
+                $position: absolute){
+
+    @if unitless($width) {
+        @debug 'Please specify a correct width';
+    } @else if unitless($height) {
+        @debug 'Please specify a correct height';
+    } @else {
+        width:$width;
+        height:$height;
+        top:50%;
+        left:50%;
+        position:$position;
+        margin-top:-($height/2);
+        margin-left:-($width/2);
+    }
+};
