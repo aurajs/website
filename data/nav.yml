@@ -1,6 +1,12 @@
 'About':
   url: /
+'Getting Started':
+  url: /getting-started/
 'API':
   url: /api/
+'Resources':
+  url: /resources/
+'Examples':
+  url: /examples/
 'Guides':
   url: /guides/
