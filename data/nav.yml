@@ -1,5 +1,7 @@
 'About':
   url: /
+'Requirements':
+  url: /requirements/
 'API':
   url: /api/
 'Guides':

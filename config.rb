@@ -25,6 +25,7 @@ activate :array_navigation
 
 page "/",     layout: 'layouts/default'
 page "/api*", layout: 'layouts/default'
+page "/requirements*", layout: 'layouts/default'
 
 page "/sitemap.xml", :layout => false
 
