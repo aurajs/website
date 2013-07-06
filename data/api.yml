@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.0
   url: http://aurajs.com
-  sha: 28ccb64
+  sha: 09795f1
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
@@ -77,7 +77,7 @@ classes:
       - `config` is the object passed as the first param of the apps constructor
       - `core`   is a container where the extensions add new features
       - `sandbox` is an object that will be used as a prototype, to create fresh sandboxes to the components
-      - `extensions` An instance of the ExtensionManager. It contains all the extensions that will be loaded in the app
+      - `extensions` An instance of the ExtensionManager. It contains all the extensions that will be loaded in the app.
           Extensions are here to provide features that will be used by the components...
           They are meant to extend the apps' core & sandbox.
           They also have access to the apps's config.
@@ -558,7 +558,7 @@ classitems:
     type: Promise
   class: Aura
 - file: lib/aura.js
-  line: 347
+  line: 346
   description: Stops the application and unregister its loaded dependencies.
   todo:
   - ': We need to do a little more cleanup here...'
