@@ -36,7 +36,7 @@ code{
     margin:-.2em .25em;
     outline:1px solid $gray-light-color;
     background:rgba($secondary-color, .5);
-    color:darken($brand-blue, 10);
+    color: $brand-dark-color;
     font-family: Menlo, monospace;
 }
 
@@ -122,7 +122,7 @@ code{
   code {
     display: block;
     color:#333;
-    line-height: 1.5;
+    line-height: 1.625;
   }
 }
 

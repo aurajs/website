@@ -11,16 +11,18 @@
     // border-color:adjust-color($secondary-color, $lightness: -20%);
     // border-style:solid;
     // border-width:0px 0px 1px 0px;
-    border-width: 0 0 1px 1px;
-    border-style: solid;
-    border-color: lighten($border-color, 10);
+    // border-width: 0 0 1px 1px;
+    // border-style: solid;
+    // border-color: lighten($border-color, 10);
+    // border-left: 1px solid lighten($border-color, 10);
+    border-bottom: 1px solid lighten($border-color, 10);
     z-index:4;  
     padding-left:2em;
     padding-right:2em;
     z-index:4;
-    >.btn{
-        margin-top: -3px;
-    }
+    // >.btn{
+    //     margin-top: -3px;
+    // }
     // .logo {
     //     @include hide-text;
     //     @include background-image-retina('logo-doc.png');

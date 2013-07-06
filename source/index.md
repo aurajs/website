@@ -22,7 +22,7 @@ Consider for example GitHub’s site:
 
 Separating your application into smaller parts is essential for keeping your architecture clean, reusable and mainly maintainable. The principle is a known concept in computer science: “divide and conquer”. Divide everything up into smaller parts which have lower complexity, are easier to test and cause fewer headaches. Then compose them together to form your larger application.
 
-## But Wait: My Components Have to Communicate!
+### But Wait: My Components Have to Communicate!
 
 Aura Components within your application need to communicate with each other. Such communication creates dependencies as component A needs to have a reference to component B if it needs to invoke some operation on it, right? Well, not necessarily, as that would again couple those components together and you couldn’t exchange component B arbitrarily without having to also change component A.
 
@@ -177,15 +177,7 @@ Need some more reasons to use Aura?:
 * First-class support for the Hull.io platform. If you don't want to create a component yourself, you can easily use them as a component-source and create apps in less time.
 * Extensible via the extensions system, which make a good basis for a rich ecosystem around the project.
 
-
-
-
-
-
-
-
-
-# FAQs
+## FAQs
 
 * [Where does Aura fit in the MVC workflow?](https://github.com/aurajs/aura/issues/223)
 * [How do you initialize a component with with data objects?](https://github.com/aurajs/aura/issues/222)
@@ -193,7 +185,7 @@ Need some more reasons to use Aura?:
 * [Sharing collections of data](https://github.com/karlwestin/aura-example)
 
 
-# Why do developers use us?
+### Why do developers use us?
 
 * "The architecture and the fact that Aura Components are completely decoupled, will allow us to build an ecosystem of components that people can reuse internally or share with others."
 * "With ComponentSources and Require, we can load only the components that are needed by the app... at runtime."
@@ -203,4 +195,24 @@ Need some more reasons to use Aura?:
 
 # Contribute
 
-See the [contributing docs](https://github.com/aurajs/aura/blob/master/contributing.md)
+We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) At this time we are primarily focusing on improving the stability of AuraJS. Please keep this in mind if submitting feature requests, which we're happy to consider for future versions.
+
+### Issue submission
+
+In order for us to help you please check that you've completed the following steps:
+
+* Made sure you're on the latest version in master
+* Used the search feature to ensure that the bug hasn't been reported before
+* Included as much information about the bug as possible, including any output you've received, what OS and version you're on, etc.
+* If making a bug report, please post a test case reproducing your issue on jsFiddle.net or jsBin. We will do our best to assist if this is not possible, but please understand this would greatly help improve or ability to help.
+
+[Submit your issue](https://github.com/aurajs/aura/issues/new)
+
+### Pull Request Guidelines
+
+* Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
+* Non-trivial changes should be discussed in an issue first
+* Develop in a topic branch, not master
+* Add relevant tests to cover the change
+* Squash your commits
+* Write a convincing description of your PR and why we should land it

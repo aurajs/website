@@ -1,12 +1,8 @@
 ---
-title: Aura
-subtitle: A framework-agnostic architecture for decoupled reusable components.
+title: Examples
+subtitle: Check out some sample apps built with Aura
 markdown_navigation: true
 ---
-
-# Examples
-
-Want to look at some sample apps built with Aura? Check out:
 
 ##GitHub client
 
@@ -50,12 +46,3 @@ Also implemented in an [alternative](https://github.com/alexanderbeletsky/todomv
 [Tutorial](http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page)
 
 <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/opensource-page.png" width="600px"/>
-
-
-##Writing simple GitHub components
-
-[Repo](https://gist.github.com/sbellity/b44364f29fd89679ca39)
-
-### Aura Development docs
-
-* [Notes](https://github.com/aurajs/aura/tree/master/notes)

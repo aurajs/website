@@ -4,18 +4,18 @@ title: Api Docs
 
 <% content_for :tree_nav do %>
   
-  <% api_classes.each do |name, klass| k = api_class(name) %>
   <div class="tree-nav-section">
-    <h3><a href="#class-<%= name %>"><%= k.name %></a></h3>
-    <ul>
-      <% k.classitems['method'].keys.sort.each do |method_name| %>
-      <li>
-        <a href="#method-<%= name %>-<%= method_name %>"><%= method_name %></a>
-      </li>
-      <% end %>
-    </ul>
+    <% api_classes.each do |name, klass| k = api_class(name) %>
+      <h3><a href="#class-<%= name %>"><%= k.name %></a></h3>
+      <ul>
+        <% k.classitems['method'].keys.sort.each do |method_name| %>
+        <li>
+          <a href="#method-<%= name %>-<%= method_name %>"><%= method_name %></a>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
-  <% end %>
 
 <% end %>
 

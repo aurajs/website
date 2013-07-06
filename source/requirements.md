@@ -1,10 +1,10 @@
 ---
 title: Requirements
-subtitle: What is needed to run an Aura app ?
+subtitle: What is needed to run an Aura app?
 markdown_navigation: true
 ---
 
-## What does Aura rely on ?
+## What does Aura rely on?
 
 - A Promise/A implementation
 - and AMD loader
@@ -35,4 +35,4 @@ We should have a way to CI on several browsers...
 - [https://npmjs.org/package/bunyip](https://npmjs.org/package/bunyip)
 - [https://npmjs.org/package/browserstack](https://npmjs.org/package/browserstack)
 
----
+

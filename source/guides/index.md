@@ -1,9 +1,12 @@
 ---
-title: Aura
-subtitle: A framework-agnostic architecture for decoupled reusable components.
+title: Guides
 markdown_navigation: true
 ---
 
-# Guides
+##Writing simple GitHub components
 
-Coming Soon
+[Repo](https://gist.github.com/sbellity/b44364f29fd89679ca39)
+
+## Aura Development docs
+
+[Notes](https://github.com/aurajs/aura/tree/master/notes)

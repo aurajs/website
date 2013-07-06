@@ -85,11 +85,12 @@
     // border-left:1px solid $border-color;
     ul{
         @extend .secret-list;
-        @include adjust-font-size-to(13px);
+        @include adjust-font-size-to(14px);
     }
     li{
         @include position;
         margin:0 1.25em 0 0;
+        // font-weight: 700;
         &.active{
             a{
                 // @include background-image(
@@ -99,20 +100,25 @@
                 //             inset 0 1px 0 rgba(black,0.2),
                 //             0 1px 0 rgba(white,0.7);
                 background: $brand-color;
-                border-radius:1em;
-                padding:0 1em;
-                color: #fff;
+                @include border-radius(1em);
+                padding:.25em 1em;
+                color: $white-color;
             }
         }
     }
     a{
         display:inline-block;
-        @extend .brand-font;
+        // @extend .brand-font;
         // @extend .bold;
-        color:$font-color;
+        color: $font-color;
         // text-shadow:0 1px 0 white;
-         &:hover{
-            @extend .gray-dark;
+         &:hover,
+         &:focus {
+            @include transition(all ease .3s);
+            color: $brand-dark-color;
+        }
+        &:active {
+            color: $brand-color;
         }
     }
 }

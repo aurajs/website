@@ -1,32 +1,31 @@
 ---
-title: Aura
-subtitle: A framework-agnostic architecture for decoupled reusable components.
+title: Getting Started
 markdown_navigation: true
 ---
 
 ## Concepts
 
-#### The `Aura` object
+### The `Aura` object
 
 Your application will be an instance of the `Aura` object.
 
 Its responsibilities are to load extensions when the app starts and clean them up when the app stops.
 
-#### Extension
+### Extension
 
 Extensions are loaded in your application when it starts. They allow you to add features to the application, and are available to the components through their `sandbox`.
 
-#### Core
+### Core
 
 The `core` implements aliases for DOM manipulation, templating and other lower-level utilities that pipe back to a library of choice. Aliases allow switching libraries with minimum impact on your application.
 
-#### Sandbox
+### Sandbox
 
 A `sandbox` is just a way to implement the [facade](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#facadepatternjavascript) pattern on top of features provided by `core`. It lets you expose the parts of a JavaScript library that are safe to use instead of exposing the entire API. This is particularly useful when working in teams.
 
 When your app starts, it will create an instance of `sandbox` in each of your components.
 
-#### Component
+### Component
 
 A component represents a unit of a page. Each component is independent.
 This means that they know nothing about each other. To make them communicate, a [Publish/Subscribe (Mediator)](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript) pattern is used.
@@ -36,12 +35,12 @@ This means that they know nothing about each other. To make them communicate, a 
 
 The simplest usable Aura app using a component and extension can be found in our [boilerplate](https://github.com/aurajs/boilerplate) repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.
 
-#### Requirements
+### Requirements
 
 1. [bower](http://twitter.github.com/bower/): run `npm install -g bower` if needed
 2. [grunt-cli](https://github.com/gruntjs/grunt-cli): run `npm install -g grunt-cli` if needed
 
-#### Building Aura.js
+### Building Aura.js
 
 1. Run `npm install` to install build dependencies.
 2. Run `bower install` to install lib dependencies.

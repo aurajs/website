@@ -102,18 +102,18 @@ h1{
 }
 
 h2{
-    @include adjust-font-size-to(20px,1.4);
+    @include adjust-font-size-to(24px, 1.625);
     @include trailer(1);
 }
 
 h3{
-    @include adjust-font-size-to(18px, 1.5);
+    @include adjust-font-size-to(17.333px, 1.5);
     @include trailer(1);
     @extend .bold;
 }
 
 h4{
-    @include adjust-font-size-to(18px, 1.5);
+    @include adjust-font-size-to(17.333px, 1.5);
     @include trailer(1);
 }
 
@@ -405,11 +405,11 @@ hgroup{
   }
 }
 
-.documentation{
-  &, & h1, & h2, & h3, & h4, & h5, & h6{
-    font-family: 'Maven Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-}
+// .documentation{
+//   &, & h1, & h2, & h3, & h4, & h5, & h6{
+//     font-family: 'Maven Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+//   }
+// }
 
 .footer-section{
     .title{

@@ -1,10 +1,7 @@
 ---
-title: Aura
-subtitle: A framework-agnostic architecture for decoupled reusable components.
+title: Resources
 markdown_navigation: true
 ---
-
-# Resources
 
 ## Yeoman generator
 

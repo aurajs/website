@@ -17,15 +17,16 @@
     text-shadow:none!important;
     // @include button-flat($tertiary-color);
     background: $brand-color;
-    color: white;
+    color: $white-color;
     @include transition(ease all .3s);
+    font-weight: 700;
     &:hover{
         text-decoration: none;
-        color: darken(white, 5);
+        color: darken($white-color, 5);
         background: lighten($brand-color, 2);
     }
     &:active{
-
+        background: lighten($brand-color, 4);   
     }
     &.small{
         @include adjust-font-size-to(12px);

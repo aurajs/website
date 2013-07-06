@@ -1,5 +1,6 @@
 <% if current_page.data.markdown_navigation %>
   <div class="tree-nav-section">
+    <h3><a href="#<%= title %>"><%= title %></a></h3>
     <ul>
       <%= markdown_navigation(current_page) %>
     </ul>
@@ -10,9 +11,7 @@
   <%= yield_content(:tree_nav) %>
 <% end %>
 
-<hr/>
-
-<ul class="tree-help">
+<ul class="tree-nav-section">
   <li>
     <a class="btn small block" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
   </li>
