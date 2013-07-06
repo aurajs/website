@@ -18,8 +18,7 @@ markdown_navigation: true
 
 [Repo](https://github.com/hull/Github-Mobile/tree/with-hull)
 
-
-##Hullagram
+## Hullagram
 
 [Repo](https://github.com/hull/hullagram) 
 
@@ -32,7 +31,7 @@ An Instagram clone built with Aura and [Hull.io](http://hull.io).
 <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-4.png"/>
 
 
-##Aura TodoMVC
+## Aura TodoMVC
 
 [Repo](https://github.com/sbellity/aura-todos/)
 
@@ -41,7 +40,7 @@ An Instagram clone built with Aura and [Hull.io](http://hull.io).
 Also implemented in an [alternative](https://github.com/alexanderbeletsky/todomvc-aura) way.
 
 
-##A Twitter-like "Open Source" page using Aura. 
+## A Twitter-like "Open Source" page using Aura. 
 
 [Tutorial](http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page)
 

@@ -91,9 +91,9 @@ body.docs{
       //   }
       // }
       
-      li{
-        @include position;
+      li {
         padding:.1em 0;
+        margin-bottom: 0.5em;
       }
       .active ul{
           display:block;
@@ -271,7 +271,7 @@ section.documentation{
 
       h2 {
         border-bottom: solid 1px lighten($border-color, 10);
-        font-weight: 700;
+        font-weight: 300;
         // font-size: 18px;
         + h3 {
           padding-top: 0;
@@ -279,7 +279,7 @@ section.documentation{
         .small {
           font-size: 12px;
           line-height: 3.5em;
-          font-weight: 400;
+          font-weight: 300;
         }
       }
 
@@ -299,9 +299,9 @@ section.documentation{
       blockquote,
       p{
           // font-size:14px;
-          line-height:1.5;
-          letter-spacing: .0625em;
-          word-spacing: .125em;
+          // line-height:1.5;
+          // letter-spacing: .0625em;
+          // word-spacing: .125em;
       }
 
       p + pre {

@@ -23,7 +23,6 @@ activate :directory_indexes
 activate :markdown_navigation
 activate :array_navigation
 
-page "/requirements*",      layout: 'layouts/default'
 page "/extensions*",        layout: 'layouts/default'
 page "/",                   layout: 'layouts/default'
 page "/getting-started",    layout: 'layouts/default'
