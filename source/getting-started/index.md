@@ -35,26 +35,6 @@ This means that they know nothing about each other. To make them communicate, a 
 
 The simplest usable Aura app using a component and extension can be found in our [boilerplate](https://github.com/aurajs/boilerplate) repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.
 
-### Requirements
-
-1. [bower](http://twitter.github.com/bower/): run `npm install -g bower` if needed
-2. [grunt-cli](https://github.com/gruntjs/grunt-cli): run `npm install -g grunt-cli` if needed
-
-### Building Aura.js
-
-1. Run `npm install` to install build dependencies.
-2. Run `bower install` to install lib dependencies.
-3. Run `grunt build` and `aura.js` will be placed in `dist/`.
-
-### Running Tests
-
-#### Browser
-
-Run `grunt`. Then visit `http://localhost:8899/spec/`.
-
-#### CLI
-
-Run `npm test`.
 
 ## Creating an Application
 
@@ -76,9 +56,9 @@ This starts the app by saying that it should search for components anywhere in t
 
 ## Creating a Component
 
-By default components are retrieved from a directory called `components/` that must be at the same level as your HTML document.
+By default components are retrieved from a directory called `/aura_components` that must be at the root level of your app.
 
-Let's say we want to create an "hello" component. To do that we need to create a `components/hello/` directory
+Let's say we want to create an "hello" component. To do that we need to create a `aura_components/hello` directory
 
 This directory must contain:
 
@@ -99,29 +79,41 @@ For our "hello" component the `main.js` will be:
 
 Add the following code to your HTML document.
 
+
 ```html
-    &lt;div data-aura-component="hello"&gt;&lt;/div&gt;
+    <div data-aura-component="hello"></div>
 ```
 
-Aura will call the `initialize` method that we have defined in `components/hello/main.js`.
+Aura will call the `initialize` method that we have defined in `aura_components/hello/main.js`.
 
 ## Creating an extension
 
-Imagine that we need an helper to reverse a string. In order to accomplish that we'll need to create an extension.
+Imagine that we need an helper to reverse a string. In order to accomplish that and make it available to your Components, we'll need to create an extension.
 
 ```js
 define('extensions/reverse', {
   initialize: function (app) {
-    app.core.util.reverse = function (string) {
+    app.sandbox.util.reverse = function (string) {
       return string.split('').reverse().join('');
     };
   }
 });
 ```
 
+Then to use it within a Component : 
+
+```js
+define({
+  initialize: function() {
+    var reversed = this.sandbox.util.reverse("reverse me");
+    this.$el.html(reversed);
+  }
+});
+
+
 ## Event notifications
 
-The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js) allows components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:
+The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js) allows Components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:
 
 * `sandbox.on(name, listener, context)`
 * `sandbox.off(name, listener)`
@@ -155,19 +147,21 @@ define(['hbs!./stats'], function(template) {
 To make our `reverse` helper available in our app, run the following code:
 
 ```js
+var app = new Aura();
 app.use('extensions/reverse');
 ```
 
 This will call the `initialize` function of our `reverse` extension.
 
-Calling `use` when your `app` is already started will throw an error.
+Note: Calling `use` when your `app` is already started will throw an error.
+
 
 ## Debugging
 
 To make `app.logger` available, pass `{debug: true}` into Aura constructor:
 
 ```js
-var app = new Aura({debug: true});
+var app = new Aura({ debug: true });
 ```
 
 Logger usage:
@@ -187,7 +181,9 @@ If you want to enable event logging, do this:
   var app = new Aura({debug: true, logEvents: true});
 ```
 
+
 Also, when parameter `debug` is true, you can declare following function for any debug purposes:
+
 
 ```js
 // Function will be called for all Aura apps in your project
@@ -199,3 +195,26 @@ window.attachDebugger = function (app) {
   window.aura = app;
 };
 ```
+
+## Building Aura and running the tests
+
+#### Requirements
+
+1. [bower](http://twitter.github.com/bower/): run `npm install -g bower` if needed
+2. [grunt-cli](https://github.com/gruntjs/grunt-cli): run `npm install -g grunt-cli` if needed
+
+#### Building Aura.js
+
+1. Run `npm install` to install build dependencies.
+2. Run `bower install` to install lib dependencies.
+3. Run `grunt build` and `aura.js` will be placed in `dist/`.
+
+### Running Tests
+
+#### Browser
+
+Run `grunt`. Then visit `http://localhost:8899/spec/`.
+
+#### CLI
+
+Run `npm test`.

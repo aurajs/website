@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.0
   url: http://aurajs.com
-  sha: 09795f1
+  sha: d6a9483
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
@@ -18,12 +18,6 @@ files:
     modules: {}
     classes:
       Sandbox: 1
-    fors: {}
-    namespaces: {}
-  lib/aura.extensions.js:
-    name: lib/aura.extensions.js
-    modules: {}
-    classes: {}
     fors: {}
     namespaces: {}
   lib/aura.js:
@@ -61,33 +55,21 @@ classes:
     extension_for: []
     file: lib/aura.js
     line: 11
-    description: |-
-      Aura constructor and main entry point
-
-      Every instance of Aura is an Aura application.
-      An Aura application is in charge of loading the various
-      extensions that will apply to it (defined either
-      programmatically or by iway of confifuration).
-
-      An Aura application is the glue between all the extensions
-      and components inside its instance.
-
-      Internally an Aura application wraps 4 important objects:
-
-      - `config` is the object passed as the first param of the apps constructor
-      - `core`   is a container where the extensions add new features
-      - `sandbox` is an object that will be used as a prototype, to create fresh sandboxes to the components
-      - `extensions` An instance of the ExtensionManager. It contains all the extensions that will be loaded in the app.
-          Extensions are here to provide features that will be used by the components...
-          They are meant to extend the apps' core & sandbox.
-          They also have access to the apps's config.
-
-      Example of a creation of an Aura Application:
-
-          var app = aura(config);
-          app.use('ext1').use('ext2');
-          app.registerComponentsSource('http://my.external/components/store', 'supercomponents');
-          app.start();
+    description: ! "Aura constructor and main entry point\n\nEvery instance of Aura
+      is an Aura application.\nAn Aura application is in charge of loading the various\nextensions
+      that will apply to it (defined either\nprogrammatically or by iway of confifuration).\n\nAn
+      Aura application is the glue between all the extensions\nand components inside
+      its instance.\n\nInternally an Aura application wraps 4 important objects:\n\n-
+      `config` is the object passed as the first param of the apps constructor\n-
+      `core`   is a container where the extensions add new features\n- `sandbox` is
+      an object that will be used as a prototype, to create fresh sandboxes to the
+      components\n- `extensions` An instance of the ExtensionManager. It contains
+      all the extensions that will be loaded in the app.\n    Extensions are here
+      to provide features that will be used by the components...\n    They are meant
+      to extend the apps' core & sandbox.\n    They also have access to the apps's
+      config.\n\nExample of a creation of an Aura Application:\n\n    var app = aura(config);\n
+      \   app.use('ext1').use('ext2');\n    app.registerComponentsSource('http://my.external/components/store',
+      'supercomponents');\n    app.start();"
     params:
     - name: config
       description: Main App config.
@@ -108,7 +90,7 @@ classitems:
 - file: lib/ext/components.js
   line: 15
   description: Components registry
-  type: '{Object}'
+  type: ! '{Object}'
   class: Component
 - file: lib/ext/components.js
   line: 21
@@ -184,10 +166,11 @@ classitems:
   class: Component
 - file: lib/ext/components.js
   line: 273
-  description: |-
-    Returns a list of component.
+  description: ! 'Returns a list of component.
+
     If the first argument is a String, it is considered as a DomNode reference
-    We then parse its content to find aura-components inside of it.
+
+    We then parse its content to find aura-components inside of it.'
   params:
   - name: components
     description: a list of components or a reference to a root dom node
@@ -209,17 +192,25 @@ classitems:
   class: Component
 - file: lib/ext/components.js
   line: 342
-  description: |-
-    Registers a function that will be executed before/after the associated
+  description: ! 'Registers a function that will be executed before/after the associated
+
     component method.
+
     Once registered, every time a component method will be executed,
+
     the registered callbacks will execute accordingly.
+
     The callback functions can return a promise if required in order to
+
     postpone the execution of the called function up to when the callbacks
+
     are resolved.
+
     The arguments passed to the callbacks are the same than those which
+
     with the component will be executed. The scope of the callback is
-    the component instance itself, as per the component method.
+
+    the component instance itself, as per the component method.'
   itemtype: method
   name: registerComponentCallback
   params:
@@ -232,16 +223,10 @@ classitems:
   class: Aura
 - file: lib/ext/components.js
   line: 365
-  description: |-
-    Register a Component Type.
-    Components type ca be used to encapsulate many custom
-    components behaviours.
-    They will be then used while declaring your components as follows:
-
-       define({
-         type: 'myComponentType',
-         // component declaration...
-       });
+  description: ! "Register a Component Type.\nComponents type ca be used to encapsulate
+    many custom\ncomponents behaviours.\nThey will be then used while declaring your
+    components as follows:\n\n   define({\n     type: 'myComponentType',\n     //
+    component declaration...\n   });"
   itemtype: method
   name: registerComponentType
   params:
@@ -254,10 +239,11 @@ classitems:
   class: Aura
 - file: lib/ext/components.js
   line: 392
-  description: |-
-    Start method.
+  description: ! 'Start method.
+
     This method takes either an Array of Components to start or or DOM Selector to
-    target the element that will be parsed to look for Components to start.
+
+    target the element that will be parsed to look for Components to start.'
   itemtype: method
   name: start
   params:
@@ -265,17 +251,17 @@ classitems:
     description: Array of Components to start or parent node.
     type: Array|DOM Selector
   - name: options
-    description: |-
-      Available options: `reset` : if true, all current children
-                                           will be stopped before start.
+    description: ! "Available options: `reset` : if true, all current children\n                                     will
+      be stopped before start."
     type: Object
   class: Sandbox
 - file: lib/ext/components.js
   line: 443
-  description: |-
-    Stop method for a sandbox.
+  description: ! 'Stop method for a sandbox.
+
     If no arguments provided, the sandbox itself and all its children are stopped.
-    If a DOM Selector is provided, all matching children will be stopped.
+
+    If a DOM Selector is provided, all matching children will be stopped.'
   params:
   - name: DOM
     description: Selector.
@@ -328,21 +314,22 @@ classitems:
   itemtype: method
   name: stopListening
   class: Sandbox
-- file: lib/aura.extensions.js
-  line: 9
-  description: |-
-    Anatomy of an extension...
-    TODO...
-  class: Aura
 - file: lib/aura.js
   line: 78
-  description: |-
-    Creates a brand new sandbox, using the App's sandbox object as a prototype.
+  description: ! 'Creates a brand new sandbox, using the App''s sandbox object as
+    a prototype.
 
-    A sandbox is a way to implement the facade pattern on top of the features provided by `core`
-    The `sandbox` property of an Aura application is just a blueprint (/ or factory) that will be used
+
+    A sandbox is a way to implement the facade pattern on top of the features provided
+    by `core`.
+
+
+    The `sandbox` property of an Aura application is just a blueprint that will be
+    used
+
     as a prototype, once the app is started, to create new instances
-    of sandboxed environments for the components.
+
+    of sandboxed environments for the components.'
   itemtype: method
   name: createSandbox
   params:
@@ -359,7 +346,7 @@ classitems:
     type: Sandbox
   class: Aura
 - file: lib/aura.js
-  line: 108
+  line: 109
   description: Get a sandbox by its reference
   itemtype: method
   name: getSandbox
@@ -369,144 +356,53 @@ classitems:
     type: String
   class: Aura
 - file: lib/aura.js
-  line: 118
-  description: |-
-    Tells the app to load the given extension.
-
-     aura extensions are loaded in the app during init.
-     they are responsible for :
-
-     - resolving & loading external dependencies via requirejs
-     - they have a direct access to the app's internals
-     - they are here to add new features to the app... that are made available through the sandboxes to the components.
-
-
-
-     Extensions can have multiple forms :
-
-    * *Module name*
-
-    ````
-    aura().use('my/ext')
-    ````
-
-    * *Function*
-
-    ````
-    var ext = function(app) {
-     app.core.hello = function() {  alert("Hello World") };
-    }
-    aura().use(ext);
-    ````
-    * *Object litteral*
-
-    ````
-    var ext = {
-     require: {},
-     initialize: function(app) {
-       app.core.hello = function() {  alert("Hello World") };
-     }
-    }
-    aura().use(ext);
-    ````
-
-     The Object litteral form allows :
-
-     - to add dependencies
-     - to add lifecycle callbacks (ex. `afterAppStart`)
-
-     here is an example of a very simple backbone extension:
-
-    ````
-    define(function() {
-     var historyStarted = false;
-     var ext = {
-       require: {
-         paths: {
-           backbone:     'components/backbone/backbone'
-           underscore:   'components/underscore/underscore'
-         },
-         shim: {
-           backbone: { exports: 'Backbone', deps: ['underscore'] }
-         }
-       },
-       initialize: function(app) {
-         app.core.mvc = require('backbone');
-         app.sandbox.View = function(view) { return app.core.mvc.View.extend(view); }
-       },
-       afterAppStart: function(app) {
-         if (historyStarted) return;
-         Backbone.history.start();
-         historyStarted = true;
-       }
-     }
-     return ext;
-    });
-    ````
-
-     The extension provides the path mapping of its dependencies (backbone).
-     When the extension is used in an app, the ExtManager configures
-     requirejs with the right paths and requires all of them.
-
-     Actually what it will do corresponds to (pseudo-code):
-
-         function requireExtension(ext) {
-           require.config({ paths: { ... }, shim: { ... } })
-           require(['backbone', 'underscore'], function(Backbone, _) {
-             $.when(ext.initialize(app)).then( ... load next extension ... );
-           })
-         }
-
-
-     When all the extension's dependencies are required, the `init` method is called.
-     `ext.init` may return a promise, ExtManager wait for `ext.init` resolution to load the next extension.
-
-     When all the app's extensions are finally loaded, the extensions `ext.afterAppStart` methods are then called.
-
-     ... then the app is considered ready !
-
-     After `app.start` has been called, it is not possible to register new extensions.
-
-     *Example of an extension with an initialize method that returns a promise*
-
-     Let's wrap FB sdk as an aura extension :
-
-         var facebookExtension = {
-
-           require: {
-             paths: {
-               facebook: 'http://connect.facebook.net/en_US/all.js'
-             }
-           },
-
-           initialize: function(app) {
-             var status = app.core.data.deferred();
-             app.sandbox.auth = {
-               login: FB.login,
-               logout: FB.logout
-             };
-
-             FB.init({ appId: 'xxx' });
-
-             FB.getLoginStatus(function(res) {
-               app.sandbox.auth.loginStatus = res;
-               status.resolve(res);
-             }, true);
-
-             return status;
-           },
-
-           afterAppStart: function(app) {
-             console.warn("The app is started and I am : ", app.sandbox.auth.loginStatus);
-           }
-
-         }
-
-         aura().use(facebookExtension).start().then(function() {
-           console.warn("My app is now started... and I am sure that getLoginStatus has been called and has returned somthing...");
-         });
-    This method can only be called before the app is actually started.
-    Note that the app is started when its `start` method is called.
+  line: 119
+  description: ! "Tells the app to load the given extension.\n\n aura extensions are
+    loaded in the app during init.\n they are responsible for :\n\n - resolving &
+    loading external dependencies via requirejs\n - they have a direct access to the
+    app's internals\n - they are here to add new features to the app... that are made
+    available through the sandboxes to the components.\n\n\n\n Extensions can have
+    multiple forms :\n\n* *Module name*\n\n````\naura().use('my/ext')\n````\n\n* *Function*\n\n````\nvar
+    ext = function(app) {\n app.core.hello = function() {  alert(\"Hello World\")
+    };\n}\naura().use(ext);\n````\n* *Object litteral*\n\n````\nvar ext = {\n require:
+    {},\n initialize: function(app) {\n   app.core.hello = function() {  alert(\"Hello
+    World\") };\n }\n}\naura().use(ext);\n````\n\n The Object litteral form allows
+    :\n\n - to add dependencies\n - to add lifecycle callbacks (ex. `afterAppStart`)\n\n
+    here is an example of a very simple backbone extension:\n\n````\ndefine(function()
+    {\n var historyStarted = false;\n var ext = {\n   require: {\n     paths: {\n
+    \      backbone:     'components/backbone/backbone'\n       underscore:   'components/underscore/underscore'\n
+    \    },\n     shim: {\n       backbone: { exports: 'Backbone', deps: ['underscore']
+    }\n     }\n   },\n   initialize: function(app) {\n     app.core.mvc = require('backbone');\n
+    \    app.sandbox.View = function(view) { return app.core.mvc.View.extend(view);
+    }\n   },\n   afterAppStart: function(app) {\n     if (historyStarted) return;\n
+    \    Backbone.history.start();\n     historyStarted = true;\n   }\n }\n return
+    ext;\n});\n````\n\n The extension provides the path mapping of its dependencies
+    (backbone).\n When the extension is used in an app, the ExtManager configures\n
+    requirejs with the right paths and requires all of them.\n\n Actually what it
+    will do corresponds to (pseudo-code):\n\n     function requireExtension(ext) {\n
+    \      require.config({ paths: { ... }, shim: { ... } })\n       require(['backbone',
+    'underscore'], function(Backbone, _) {\n         $.when(ext.initialize(app)).then(
+    ... load next extension ... );\n       })\n     }\n\n\n When all the extension's
+    dependencies are required, the `init` method is called.\n `ext.init` may return
+    a promise, ExtManager wait for `ext.init` resolution to load the next extension.\n\n
+    When all the app's extensions are finally loaded, the extensions `ext.afterAppStart`
+    methods are then called.\n\n ... then the app is considered ready !\n\n After
+    `app.start` has been called, it is not possible to register new extensions.\n\n
+    *Example of an extension with an initialize method that returns a promise*\n\n
+    Let's wrap FB sdk as an aura extension :\n\n     var facebookExtension = {\n\n
+    \      require: {\n         paths: {\n           facebook: 'http://connect.facebook.net/en_US/all.js'\n
+    \        }\n       },\n\n       initialize: function(app) {\n         var status
+    = app.core.data.deferred();\n         app.sandbox.auth = {\n           login:
+    FB.login,\n           logout: FB.logout\n         };\n\n         FB.init({ appId:
+    'xxx' });\n\n         FB.getLoginStatus(function(res) {\n           app.sandbox.auth.loginStatus
+    = res;\n           status.resolve(res);\n         }, true);\n\n         return
+    status;\n       },\n\n       afterAppStart: function(app) {\n         console.warn(\"The
+    app is started and I am : \", app.sandbox.auth.loginStatus);\n       }\n\n     }\n\n
+    \    aura().use(facebookExtension).start().then(function() {\n       console.warn(\"My
+    app is now started... and I am sure that getLoginStatus has been called and has
+    returned somthing...\");\n     });\nThis method can only be called before the
+    app is actually started.\nNote that the app is started when its `start` method
+    is called."
   itemtype: method
   name: use
   params:
@@ -519,11 +415,12 @@ classitems:
   chainable: 1
   class: Aura
 - file: lib/aura.js
-  line: 266
-  description: |-
-    Adds a new source for components.
+  line: 267
+  description: ! 'Adds a new source for components.
+
     A Component source is an endpoint (basically a URL)
-    that is the root of a component repository.
+
+    that is the root of a component repository.'
   itemtype: method
   name: registerComponentsSource
   params:
@@ -535,18 +432,24 @@ classitems:
     type: String
   class: Aura
 - file: lib/aura.js
-  line: 283
-  description: |-
-    Application start.
+  line: 284
+  description: ! 'Application start.
+
 
     Bootstraps the extensions loading process.
+
     All the extensions are resolved and loaded when `start` id called.
+
     Start returns a promis e that shall fail if any of the
+
     extensions fails to load.
 
-    The app's responsibility is to load its extensions,
+
+    The app''s responsibility is to load its extensions,
+
     make sure they are properly loaded when the app starts
-    and eventually make sure they are properly cleaned up when the app stops
+
+    and eventually make sure they are properly cleaned up when the app stops'
   itemtype: method
   name: start
   params:
@@ -558,7 +461,7 @@ classitems:
     type: Promise
   class: Aura
 - file: lib/aura.js
-  line: 346
+  line: 347
   description: Stops the application and unregister its loaded dependencies.
   todo:
   - ': We need to do a little more cleanup here...'
@@ -569,44 +472,43 @@ classitems:
     type: Void
   class: Aura
 warnings:
-- message: |-
-    Missing item type
-    Components registry
-  line: ' lib/ext/components.js:15'
-- message: |-
-    Missing item type
-    Components Callbacks
-  line: ' lib/ext/components.js:21'
-- message: |-
-    Missing item type
-    Component loader.
-  line: ' lib/ext/components.js:123'
-- message: |-
-    Missing item type
-    Parses the component's options from its element's data attributes.
-  line: ' lib/ext/components.js:217'
-- message: |-
-    Missing item type
-    Parses the component's options from its element's data attributes.
-  line: ' lib/ext/components.js:247'
-- message: |-
-    Missing item type
+- message: ! 'Missing item type
+
+    Components registry'
+  line: ! ' lib/ext/components.js:15'
+- message: ! 'Missing item type
+
+    Components Callbacks'
+  line: ! ' lib/ext/components.js:21'
+- message: ! 'Missing item type
+
+    Component loader.'
+  line: ! ' lib/ext/components.js:123'
+- message: ! 'Missing item type
+
+    Parses the component''s options from its element''s data attributes.'
+  line: ! ' lib/ext/components.js:217'
+- message: ! 'Missing item type
+
+    Parses the component''s options from its element''s data attributes.'
+  line: ! ' lib/ext/components.js:247'
+- message: ! 'Missing item type
+
     Returns a list of component.
+
     If the first argument is a String, it is considered as a DomNode reference
-    We then parse its content to find aura-components inside of it.
-  line: ' lib/ext/components.js:273'
-- message: |-
-    Missing item type
-    Actual start method for a list of components.
-  line: ' lib/ext/components.js:311'
-- message: |-
-    Missing item type
+
+    We then parse its content to find aura-components inside of it.'
+  line: ! ' lib/ext/components.js:273'
+- message: ! 'Missing item type
+
+    Actual start method for a list of components.'
+  line: ! ' lib/ext/components.js:311'
+- message: ! 'Missing item type
+
     Stop method for a sandbox.
+
     If no arguments provided, the sandbox itself and all its children are stopped.
-    If a DOM Selector is provided, all matching children will be stopped.
-  line: ' lib/ext/components.js:443'
-- message: |-
-    Missing item type
-    Anatomy of an extension...
-    TODO...
-  line: ' lib/aura.extensions.js:9'
+
+    If a DOM Selector is provided, all matching children will be stopped.'
+  line: ! ' lib/ext/components.js:443'

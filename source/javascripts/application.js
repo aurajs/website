@@ -21,7 +21,6 @@ $(function() {
 
   var currentHash = document.location.hash;
   if (currentHash) {
-    console.warn("Scolling to : ", currentHash);
     var anchor = $('a.documentation-anchor[name="' + currentHash.substring(1) + '"]');
     
   }

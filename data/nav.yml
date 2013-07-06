@@ -1,9 +1,9 @@
 'About':
   url: /
-'Requirements':
-  url: /requirements/
 'Getting Started':
   url: /getting-started/
+'Guides':
+  url: /guides/
 'API':
   url: /api/
 'Extensions':
@@ -12,5 +12,3 @@
   url: /resources/
 'Examples':
   url: /examples/
-'Guides':
-  url: /guides/
