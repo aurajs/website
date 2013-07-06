@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AuraJS</title>
+  <meta charset="utf-8" />
+  <meta name='viewport' content='width=1000' />
+  <meta name='description' content="<%= data.api.project.description %>" />
+  <meta property='og:title' content="<%= data.api.project.name %>" />
+  <meta property='og:type' content='company' />
+  <meta property='og:site_name' content="<%= data.api.project.name %>" />
+  <meta property='og:url' content="<%= data.api.project.url %>" />
+  <%= stylesheet_link_tag('style') %>
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <link rel="alternate" type="application/atom+xml" title="Aura Guides" href="/guides/feed.xml" />
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+
+<body class="docs">
+
+  <div class="container">
+    
+    <header id="sub-header">
+      <nav class="nav" id="secondary-nav" role="navigation">
+        <ul>
+          <% data.nav.each do |title, nav| %>
+          <li class="<%= "active" if title == 'Guides' %>">
+            <a href="<%= nav[:url] %>" rel="<%= title %>">
+              <%= title %>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    
+    <aside class="sidebar" role="navigation">
+      <a href="/" class="logo"></a>
+      <div class="tree">
+        <div class="tree-nav-section">
+          <ul>
+            <% blog.articles.each_with_index do |article, i| %>
+            <li>
+              <%= link_to article.title, article %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <ul class="tree-nav-section">
+          <li>
+            <a class="btn small block" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+          </li>
+          <li>
+            <a class="btn small block" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+          </li>
+          <li>
+            <a class="btn small block faded" href="https://github.com/aurajs/aura">View on Github</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    
+    <section class="documentation">
+      <article>
+        <div class="row">
+          <header class="documentation-header" id="<%= title %>">
+            <h1><%= current_page.data.title %></h1>
+            <p><%= current_page.data.subtitle %></p>
+          </header>
+          <div class="documentation-body language-markup"><%= yield %></div>
+        </div>
+      </article>
+    </section>
+
+  </div>
+
+</body>
+</html>

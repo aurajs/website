@@ -1,0 +1,25 @@
+---
+title: Guides
+<!-- markdown_navigation: true -->
+---
+
+<% blog.articles.each_with_index do |article, i| %>
+  <article class="guides">
+    <h2><%= link_to article.title, article %>
+      <span class="small pull-right">
+        <time><%= article.date.strftime('%b %d, %Y') %></time>
+        <% if article.data.author %>
+          &ndash;
+          <strong>
+            by: <%= article.data.author %>
+          </strong>
+        <% end%>
+      </span>
+    </h2>
+    
+    <div class="summary">
+      <%= article.summary %>
+      <%= link_to "Read more...", article %>
+    </div>
+  </article>
+<% end %>

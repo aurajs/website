@@ -10,6 +10,8 @@ gem 'middleman-sprockets'
 gem 'middleman-gh-pages'
 gem 'middleman-smusher'
 gem 'middleman-livereload'
+gem 'middleman-blog'
+gem 'nokogiri' # required to generate blog post summaries
 gem 'slim'
 gem 'oj'        # faster JSON
 

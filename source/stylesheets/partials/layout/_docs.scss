@@ -199,7 +199,7 @@ section.documentation{
         }
     }
 
-    .documentation-body{
+    .documentation-body {
       @include position;
       @include background-image(
           linear-gradient(right,rgba($border-color,0),lighten($border-color, 10)),
@@ -275,6 +275,11 @@ section.documentation{
         // font-size: 18px;
         + h3 {
           padding-top: 0;
+        }
+        .small {
+          font-size: 12px;
+          line-height: 3.5em;
+          font-weight: 400;
         }
       }
 
@@ -357,6 +362,21 @@ section.documentation{
             @include adjust-font-size-to(12px,1,13px);
             border-color:transparent;
             background-color:transparent;
+        }
+      }
+      .guides {
+        @include rhythm(0,0,0,1);
+        h2 + .summary {
+          margin-top: -0.625em;
+        }
+        .summary {
+          font-size: 75%;
+          h1, h2, h3, h4, h5, h6 {
+            border-bottom: none;
+            margin-bottom: .25em;
+            padding-top: .25em;
+            line-height: 1.2;
+          }
         }
       }
     }

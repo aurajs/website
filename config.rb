@@ -29,8 +29,8 @@ page "/",                   layout: 'layouts/default'
 page "/getting-started",    layout: 'layouts/default'
 page "/api*",               layout: 'layouts/default'
 page "/resources",          layout: 'layouts/default'
-page "/guides",             layout: 'layouts/default'
 page "/examples",           layout: 'layouts/default'
+page "/guides*",            layout: 'layouts/blog'
 
 page "/sitemap.xml", :layout => false
 
@@ -39,6 +39,17 @@ activate :highlighter
 activate :api_docs,
   default_class: 'Aura',
   repo_url: 'https://github.com/aurajs/aura'
+
+######
+# Blog
+######
+
+activate :blog do |blog|
+  blog.prefix = 'guides'
+  blog.layout = 'layouts/blog'
+end
+
+page '/guides/feed.xml', layout: false
 
 
 ################################################################################
