@@ -8,12 +8,8 @@
 /*------------------------------------*\
     Text font family
 \*------------------------------------*/
-@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700|Maven+Pro:400,700);
-
-// .base-font{ font-family:'Titillium Web', 'Helvetica Neue', 'Helvetica,','Arial', sans-serif; }
-.base-font{ font-family: 'Helvetica Neue', 'Helvetica,','Arial', sans-serif; }
-.brand-font{ font-family: 'proxima-nova', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; }
-
+.base-font{ font-family: 'Maven Pro', 'Helvetica Neue', 'Helvetica,','Arial', sans-serif; }
+.brand-font{ font-family: 'Maven Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; }
 
 .aldo {
   font-family: 'aldosemibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -73,8 +69,8 @@ body {
 
 p,
 .list{
-  // @include adjust-font-size-to(15px);
-  // line-height: 1.5;
+  // @include adjust-font-size-to(16px);
+  line-height: 1.5;
 }
 
 ul, ol, p{
@@ -102,7 +98,7 @@ h1,h2,h3,h4,h5,h6{
 h1{
     @include adjust-font-size-to(26px);
     @include trailer(1);
-    // @extend .bold;
+    @extend .bold;
 }
 
 h2{
@@ -113,20 +109,22 @@ h2{
 h3{
     @include adjust-font-size-to(18px, 1.5);
     @include trailer(1);
+    @extend .bold;
 }
 
 h4{
-    @include adjust-font-size-to(16px, 1.5);
+    @include adjust-font-size-to(18px, 1.5);
     @include trailer(1);
 }
 
 h5{
-    @include adjust-font-size-to(14px);
+    // @include adjust-font-size-to(16px);
     @include trailer(1);
+    @extend .bold;
 }
 
 h6{
-    @include adjust-font-size-to(13px);
+    // @include adjust-font-size-to(13px);
     @include trailer(1);
 }
 
@@ -409,7 +407,7 @@ hgroup{
 
 .documentation{
   &, & h1, & h2, & h3, & h4, & h5, & h6{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Maven Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 }
 

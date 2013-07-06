@@ -6,5 +6,11 @@
   url: /api/
 'Extensions':
   url: /extensions/
+'Getting Started':
+  url: /getting-started/
+'Resources':
+  url: /resources/
+'Examples':
+  url: /examples/
 'Guides':
   url: /guides/
