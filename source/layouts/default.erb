@@ -15,16 +15,18 @@
   <%= javascript_include_tag 'application' %>
 </head>
 
-<body class="docs">
+<body class="container">
 
-  <div class="container">
+  <!-- <div class="container"> -->
     <header id="sub-header">
       <%= partial 'partials/nav' %>
     </header>
+    
     <aside class="sidebar" role="navigation">
       <a href="/" class="logo"></a>
       <div class="tree"><%= partial "partials/docs_nav" %></div>
     </aside>
+    
     <section class="documentation">
       <article>
         <div class="row">
@@ -32,11 +34,14 @@
             <h1><%= current_page.data.title %></h1>
             <p><%= current_page.data.subtitle %></p>
           </header>
-          <div class="documentation-body language-markup"><%= yield %></div>
+          
+          <div class="documentation-body language-markup">
+            <%= yield %>
+          </div>
         </div>
       </article>
     </section>
-  </div>
+  <!-- </div> -->
 
 </body>
 </html>
