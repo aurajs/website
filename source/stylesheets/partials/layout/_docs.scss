@@ -138,7 +138,7 @@ body.docs{
 section.documentation{
   /* Positions */
   -webkit-font-smoothing:subpixel-antialiased;
-  background:#FFF;
+  background:#FFF url('/images/light_toast.png') 0 0;
 
   .container &{
     // margin-top:60px;
@@ -161,7 +161,7 @@ section.documentation{
 
   > article{
     @include box-sizing(border-box);
-    background-color:$white-color;
+    // background-color:$white-color;
     // box-shadow:inset 0 1px 0 white, 0 1px 1px rgba(black,.05);
     // border-left: 1px solid lighten($border-color, 10);
     // @include box-shadow(inset 1px 0 3px 0 rgba($border-color, .15));

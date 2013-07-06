@@ -8,8 +8,13 @@
 /*------------------------------------*\
     Text font family
 \*------------------------------------*/
-.base-font{ font-family: 'Maven Pro', 'Helvetica Neue', 'Helvetica,','Arial', sans-serif; }
-.brand-font{ font-family: 'Maven Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; }
+.base-font,
+.brand-font {
+  font-family: 'Helvetica Neue', 'Helvetica,','Arial', sans-serif;
+}
+// .brand-font{
+//   font-family: 'aldosemibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// }
 
 .aldo {
   font-family: 'aldosemibold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -51,7 +56,7 @@
     Text Styles
 \*------------------------------------*/
 body {
-  font:#{$base-font-size}/#{$base-line-height} "Maven Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:#{$base-font-size}/#{$base-line-height} 'Helvetica Neue', 'Helvetica,','Arial', sans-serif;;
   font-weight:400;
   color:$font-color;
   text-rendering: optimizelegibility;
