@@ -27,6 +27,9 @@ title: Api Docs
   </a>
   <%= k.name %>
 </h1>
+  <% if k.description %>
+  <div><%= api_markdown k.description %></div>  
+  <% end %>
 <% k.classitems['method'].sort_by { |n,m| n }.map do |method_name, method| %>
   <h2>
     <small class="pull-right">

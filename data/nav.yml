@@ -4,5 +4,7 @@
   url: /requirements/
 'API':
   url: /api/
+'Extensions':
+  url: /extensions/
 'Guides':
   url: /guides/
