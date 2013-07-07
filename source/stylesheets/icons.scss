@@ -18,6 +18,7 @@
 }
 
 .iconfont{
+
   @include adjust-font-size-to(24px);
   position:relative;
   margin-right: 0.3em;
@@ -31,56 +32,10 @@
       left:0;
   }
 
-  #threesteps &{
-    display: block;
-    width:100%;
-    @include adjust-font-size-to(72px);
-  }
-
-  #comparison &{
-    @include adjust-font-size-to(96px);
-    position:relative;
-    line-height:1;
-  }
-  #comparison .arrow &{
-    position:relative;
-    top: 1.6em;
-    left: 0.5em;
-  }
 
   .md &.img{
     @include adjust-font-size-to(80px);
   }
 
-  #intro &{
-    // Icon Specific adjustments
-    &.icon-cog, &.icon-bolt, &.icon-code{
-      top:0.1em;
-    }
-
-    &.icon-metrics{
-      top:-0.1em;
-    }
-  }
-  #objects &{
-    &.icon-user,&.icon-metrics, &.icon-list, &.icon-like{
-      top:-0.1em;
-    }
-    &.icon-layers, &.icon-checkin{
-      top:0.1em;
-    }
-  }
-
-  #customize &{
-    // &.icon-brush{
-    //   top: 0.2em;
-    // }
-    &.icon-bolt, &.icon-cog{
-      top:0.1em;
-    }
-    &.icon-code{
-      top:0.15em;
-    }
-  }
 
 }
