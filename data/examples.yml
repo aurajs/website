@@ -1,51 +1,60 @@
-
 'GitHub':
   title: 'GitHub client'
-  meta: |
-    <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png" height="auto" width="100%" />
   description: |
     A GitHub client.
+  link: |
+    //github.com/sbellity/aura-github
+  thumb: |
+    /images/examples/github_client.png
   code: |
-    [Repo](https://github.com/sbellity/aura-github)
+    <a href="//github.com/sbellity/aura-github">GitHub Repo</a>
 
 'GitHub mobile client':
   title: 'GitHub Mobile client'
-  meta: |
-    <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png" height="auto" width="100%" />
-  desciption: |
-    A GitHub Mobile client.
+  description: |
+    A mobile GitHub client.
+  link: |
+    //github.com/hull/Github-Mobile/tree/with-hull
+  thumb: |
+    //raw.github.com/jakiestfu/Github-Mobile/master/screens/real/repos/repo_v1.png
   code: |
-    <div class="well">this is a well</div>
-    [Repo](https://github.com/hull/Github-Mobile/tree/with-hull)
+    <a href="//github.com/hull/Github-Mobile/tree/with-hull">GitHub Repo</a>
 
 'Hullagram':
   title: 'Hullagram'
-  meta: |
-    <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png" height="auto" width="100%" />
   description: |
-    An Instagram clone built with Aura and [Hull.io](http://hull.io).
+    An Instagram clone built with Aura and <a href="//hull.io">Hull.io</a>.
+  link: |
+    //github.com/hull/hullagram
+  thumb: |
+    //raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-2.png
   code: |
-    <div class="bold">bold</div>
-    [Repo](https://github.com/hull/hullagram) 
+    <a href="//github.com/hull/hullagram">Hullagram</a>
 
 'Aura TodoMVC':
   title: 'Aura TodoMVC'
-  meta: |
-    <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png" height="auto" width="100%" />
   description: |
     TodoMVC Todo list built with Aura
+  link: |
+    //github.com/sbellity/aura-todos
+  thumb: |
+    //raw.github.com/aurajs/aura-identity/master/screenshots/medium/todomvc.png
   code: |
-    [Repo](https://github.com/sbellity/aura-todos/)
-    Also implemented in an [alternative](https://github.com/alexanderbeletsky/todomvc-aura) way.
+    <ul>
+      <li><a href="//github.com/sbellity/aura-todos/">GitHub Repo</a></li>
+      <li><a href="//github.com/alexanderbeletsky/todomvc-aura">Alternative Implementation</a></li>
+    </ul>
 
 'Aura Twitter-like "Open Source" page':
-  title: 'Aura Twitter-like "Open Source" page'
-  meta: |
-    <img src="https://raw.github.com/aurajs/aura-identity/master/screenshots/medium/github-app.png" height="auto" width="100%" />
+  title: 'Open-Source project viewer'
   description: |
     A Twitter-like "Open Source" page using Aura.
+  link: |
+    /blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page
+  thumb: |
+    /images/examples/openSource.png
   code: |
-    <a href="http://blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page">Tutorial</a>
+    <a href="/blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page">Tutorial</a>
 
 
 
