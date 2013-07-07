@@ -1,0 +1,11 @@
+<nav class="nav" id="secondary-nav" role="navigation">
+  <ul>
+    <% data.nav.each do |title, nav| url = nav[:url] == "/" ? current_page.url : current_page.url.gsub(/\/$/, '') %>
+    <li class="<%= "active" if nav[:url] == url %>">
+      <a href="<%= nav[:url] %>" rel="<%= title %>">
+        <%= title %>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</nav>
