@@ -1,6 +1,6 @@
 ---
 title: Aura
-subtitle: A framework-agnostic architecture for decoupled reusable components.
+subtitle: A framework-agnostic, extensible architecture for decoupled and reusable components.
 markdown_navigation: true
 ---
 
@@ -12,7 +12,7 @@ We work great with **existing** frameworks like [Backbone.js](http://backbonejs.
 
 Aura has first-class support for modern tools like [Bower](http://bower.io), [Grunt](http://gruntjs.com) and [Yeoman](http://yeoman.io) and uses libraries like [RequireJS](http://requirejs.org/) under the covers (for now). As solutions like ES6 modules and [Polymer](http://www.polymer-project.org) become stable and usable, the project will move towards using them.
 
-## Everything is a component
+## Components
 
 A component is something **[atomic](http://juristr.com/blog/2013/04/modularity-in-javascript-frameworks/)** with a clear responsibility. A mini-app basically that can be instantiated (possibly multiple times) on an arbitrary part of your application. You might not be accustomed to thinking like this, preferring to build a highly coupled app. That might work just fine initially, but once it gets more complex you can run into trouble. Therefore, next time when you start building something bigger, stop for a moment and try to identify possible components.
 
@@ -28,21 +28,16 @@ Aura Components within your application need to communicate with each other. Suc
 
 Therefore, a common practice for creating a modular architecture is to decouple communication among components through event broadcasting mechanisms. Aura comes with global and component-level messaging patterns, making this a breeze.
 
-<img src="images/docs/multi.jpg"/>
-
 ## A Quick Example
 
 ### How does it work ?
 
-Components are completely decoupled, they only can talk to each other via events. You can't have a handle on them from the outside, and themselves are just aware of what you explicitely make available throught their `sandboxes`.
-
-To build your app, you can assemble components via AuraJS's HTML API, by using the `data-aura-component` attribute.
+To build your app, you can assemble components via AuraJS's HTML API, by using the `data-aura-*` attributes.
 
 Let's take an example. Let's say that we want to build a Github Issues app. We need to be able to :
 
 * Display lists of issues from specific repos
 * Filter those issues
-
 
 Now let's make some components, but first we need a way to talk to [Github's API](http://developer.github.com/v3/issues/).
 
@@ -82,31 +77,24 @@ To use it in your aura app :
 
 **app.js**
 
-
 ```js
-var app = new Aura({
-  github: { token: 'current-user-token-here' }
-});
-app.use('extensions/aura-github');
-app.start({ components: 'body' });
+require(['aura'], function(Aura) {
+  var app = new Aura({
+    github: { token: 'current-user-token-here' }
+  });
+  app.use('extensions/aura-github');
+  app.start('body');
+})
 ```
 
 And now, let's write the issues` component :
 
-**components/issues/main.js**
-
+**aura_components/issues/main.js**
 
 ```js
 define(['underscore', 'text!./issues.html'], function(_, tpl) {
 
-  // Allow template to be overriden locally 
-  // via a text/template script tag
-  var template, customTemplate = $('script[data-aura-template="github/issues"]');
-  if (customTemplate.length > 0) {
-    template = _.template(customTemplate.html());
-  } else {
-    template = _.template(tpl);
-  }
+  template = _.template(customTemplate.html());
 
   return {
     initialize: function() {
@@ -133,7 +121,7 @@ define(['underscore', 'text!./issues.html'], function(_, tpl) {
 ```
 
 Now we can place this component everywhere in our app by using Aura's HTML API based on data-attributes.
-
+`this.options.filter` and `this.options.repo` can be passed to our component via the `data-aura-repo` and `data-aura-filter` attributes.
 
 ```html
 <div data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
@@ -143,11 +131,9 @@ You can even have multiple instances of this component in you page :
 
 
 ```html
-<div class='row'>
-  <div class='span4' data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
-  <div class='span4' data-aura-component="issues" data-aura-repo="emberjs/ember.js"></div>
-  <div class='span4' data-aura-component="issues" data-aura-repo="documentcloud/backbone"></div>
-</div>
+<div data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
+<div data-aura-component="issues" data-aura-repo="emberjs/ember.js"></div>
+<div data-aura-component="issues" data-aura-repo="documentcloud/backbone"></div>
 ```
 
 Any other component can now emit `issues.filter`  events that these components will respond to.

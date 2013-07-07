@@ -36,7 +36,7 @@ This means that they know nothing about each other. To make them communicate, a 
 The simplest usable Aura app using a component and extension can be found in our [boilerplate](https://github.com/aurajs/boilerplate) repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.
 
 
-## Creating an Application
+### Creating an Application
 
 The first step in creating an Aura application is to make an instance of `Aura`.
 
@@ -54,7 +54,7 @@ app.start({
 
 This starts the app by saying that it should search for components anywhere in the `body` of your HTML document.
 
-## Creating a Component
+### Creating a Component
 
 By default components are retrieved from a directory called `/aura_components` that must be at the root level of your app.
 
@@ -75,7 +75,7 @@ For our "hello" component the `main.js` will be:
     });
 ```
 
-## Declaring a Component
+### Declaring a Component
 
 Add the following code to your HTML document.
 
@@ -86,7 +86,9 @@ Add the following code to your HTML document.
 
 Aura will call the `initialize` method that we have defined in `aura_components/hello/main.js`.
 
-## Creating an extension
+## Extending Aura
+
+### Creating extensions
 
 Imagine that we need an helper to reverse a string. In order to accomplish that and make it available to your Components, we'll need to create an extension.
 
@@ -110,6 +112,20 @@ define({
   }
 });
 ```
+
+### Using extensions
+
+To make our `reverse` helper available in our app, run the following code:
+
+```js
+var app = new Aura();
+app.use('extensions/reverse');
+```
+
+This will call the `initialize` function of our `reverse` extension.
+
+Note: Calling `use` when your `app` is already started will throw an error.
+
 
 ## Event notifications
 
@@ -142,18 +158,6 @@ define(['hbs!./stats'], function(template) {
 });
 ```
 
-## Using extensions
-
-To make our `reverse` helper available in our app, run the following code:
-
-```js
-var app = new Aura();
-app.use('extensions/reverse');
-```
-
-This will call the `initialize` function of our `reverse` extension.
-
-Note: Calling `use` when your `app` is already started will throw an error.
 
 
 ## Debugging
@@ -196,7 +200,7 @@ window.attachDebugger = function (app) {
 };
 ```
 
-## Building Aura and running the tests
+## Building Aura
 
 #### Requirements
 

@@ -6,7 +6,12 @@ $border-radius: 5px;
 $gray:   #555555;
 $green:  #007700;
 
-#content .highlight {
+code {
+  color: darken($brand-blue, 10%);
+  background-color: $secondary-color;
+}
+
+.highlight {
   background-image: url('/images/code_background.gif');
   border: 1px solid #d1d1d1;
   @include border-radius($border-radius);
@@ -64,7 +69,7 @@ $green:  #007700;
   /* HTML */
 
   .tag {
-    color: $brand-color;
+    color: $gray;
   }
 
   .comment {
@@ -72,7 +77,7 @@ $green:  #007700;
   }
 
   .attribute-name {
-    color: $brand-color;
+    color: #ce791f;
   }
 
   .content {
