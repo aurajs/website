@@ -15,11 +15,20 @@ subtitle: Some examples of what can be done with Aura.
       <p class="description">
         <%= item.description %>
       </p>
-      <p>
-        <a href="<% item.link %>">
-          <%= item.code %>
-        </a>
-      </p>
+      <%= item.code %>
     </div>
   <% end %>
+
+<!-- add a new example -->
+  <div class="cell-4 gallery-item">
+    <a class="cover" href="#">
+      <div><span>+</span></div>
+    </a>
+    <h2 class="title">
+      Add your project
+    </h2>
+    <p class="description">
+      Share something you've built with Aura.
+    </p>
+  </div>
 </div>
