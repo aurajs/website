@@ -66,9 +66,15 @@ module APIDocs
                   []
     end
 
+    def items
+      classitems unless @items
+      @items
+    end
+
     def classitems
       unless @classitems
         @classitems = {}
+        @items = {}
 
         # Go from root up
         parents = ([extends] + uses.reverse).compact
@@ -84,6 +90,7 @@ module APIDocs
               else
                 item['extended_from'] = parent
               end
+              @items[item['name']] = item
               @classitems[item['itemtype']][item['name']] = item
             end
           end
@@ -97,6 +104,7 @@ module APIDocs
           if existing = @classitems[item['itemtype']][item['name']]
             item['overwritten_from'] = existing
           end
+          @items[item['name']] = item
           @classitems[item['itemtype']][item['name']] = item
         end
       end

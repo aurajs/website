@@ -8,10 +8,14 @@ title: Api Docs
     <% api_classes.each do |name, klass| k = api_class(name) %>
       <h3><a href="#class-<%= name %>"><%= k.name %></a></h3>
       <ul>
-        <% k.classitems['method'].keys.sort.each do |method_name| %>
+        <% k.items.keys.compact.sort.each do |item_name| item = k.items[item_name] %>
+        <% if item_name %>
         <li>
-          <a href="#method-<%= name %>-<%= method_name %>"><%= method_name %></a>
+          <a href="#<%= item['itemtype'] %>-<%= name %>-<%= item['name'] %>">
+            <%= item_name %>
+          </a>
         </li>
+        <% end %>
         <% end %>
       </ul>
     <% end %>
@@ -21,24 +25,25 @@ title: Api Docs
 
 
 <% api_classes.each do |name, klass| k = api_class(name) %>
-<h1>
-  <a href="#class-<%= name %>" name="class-<%= name %>" class="documentation-anchor">
-  &infin;
-  </a>
-  <%= k.name %>
-</h1>
+  <h1>
+    <a href="#class-<%= name %>" name="class-<%= name %>" class="documentation-anchor">
+    &infin;
+    </a>
+    <%= k.name %>
+  </h1>
+
   <% if k.description %>
   <div><%= api_markdown k.description %></div>  
   <% end %>
-<% k.classitems['method'].sort_by { |n,m| n }.map do |method_name, method| %>
+<% k.classitems['method'].sort_by { |n,m| n }.map do |item_name, method| %>
   <h2>
     <small class="pull-right">
       <a href="#class-<%= name %>"><%= name %></a>
     </small>
-    <a href="#method-<%= name %>-<%= method_name %>" name="method-<%= name %>-<%= method_name %>" class="documentation-anchor">
+    <a href="#method-<%= name %>-<%= item_name %>" name="method-<%= name %>-<%= item_name %>" class="documentation-anchor">
       &infin;
     </a>
-    <%= method_name %>( <span class="params"><%= (method['params'] || []).map { |p| p['name'] }.join(", ") %></span> )    
+    <%= item_name %>( <span class="params"><%= (method['params'] || []).map { |p| p['name'] }.join(", ") %></span> )    
   </h2>
   <% if method['description'] %>
   <div><%= api_markdown method['description'] %></div>  
