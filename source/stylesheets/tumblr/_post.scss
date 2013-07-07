@@ -46,7 +46,7 @@
   text-align:center;
 }
 .post-title{
-    @include adjust-font-size-to($kilo-size);
+    // @include adjust-font-size-to($kilo-size);
     @extend .title-font;
     @include leader(0);
     @include trailer(.1);
@@ -57,7 +57,7 @@
       opacity:.5;
     }
     .author{
-      @include adjust-font-size-to($h6-size,1,$kilo-size);
+      // @include adjust-font-size-to($h6-size,1,$kilo-size);
       font-weight:300;
       display:block;
     }
@@ -73,11 +73,11 @@
     @include leader(1);
     blockquote{
         @include trailer(.5);
-        @include adjust-font-size-to($h3-size);
+        // @include adjust-font-size-to($h3-size);
         font-style: italic;
     }
     .source{
-        @include adjust-font-size-to($milli-size);
+        // @include adjust-font-size-to($milli-size);
     }
 }
 
@@ -144,7 +144,7 @@
 }
 
 .post .tags{
-    @include adjust-font-size-to($milli-size);
+    // @include adjust-font-size-to($milli-size);
     text-align:center;
     opacity:.75;
     a{
@@ -156,7 +156,7 @@
 }
 
 .post .note-count{
-  @include adjust-font-size-to($h6-size);
+  // @include adjust-font-size-to($h6-size);
   @include rhythm(0,0,0,0);
   font-weight:bold;
   text-align:center;
@@ -166,7 +166,7 @@
 }
 
 .post .read-more{
-  @include adjust-font-size-to($h6-size);
+  // @include adjust-font-size-to($h6-size);
   @include rhythm(1,0,0,0);
   a{font-weight:bold;}
   a:after{
@@ -177,7 +177,7 @@
 
 .enjoyed-follow-us{
     @include rhythm(0,0,2,0);
-    @include adjust-font-size-to($h6-size);
+    // @include adjust-font-size-to($h6-size);
     @extend .wrapper-width;
     text-align:center;
     white-space:nowrap;
@@ -212,7 +212,7 @@
   }
   .jump-page,
   .current-page{
-      @include adjust-font-size-to($milli-size);
+      // @include adjust-font-size-to($milli-size);
       display:inline-block;
       @include rhythm(0,.6,.6,0);
   }
@@ -221,7 +221,7 @@
       position:relative;
       z-index:2;
       a{
-          @include adjust-font-size-to($milli-size);
+          // @include adjust-font-size-to($milli-size);
           @include rhythm-borders(2px, .6);
           @extend .border-color;
           padding-left:1.375em;
@@ -230,7 +230,7 @@
           display:block;
           white-space:nowrap;
           &:hover{
-              border-color:$link-color;
+              // border-color:$link-color;
           }
       }
   }
@@ -257,7 +257,7 @@
 }
 
 .temp-share{
-    @include adjust-font-size-to($milli-size);
+    // @include adjust-font-size-to($milli-size);
     @extend .wrapper-width;
     @include rhythm(0,0,0,2);
     text-align:center;
@@ -267,7 +267,7 @@
 .post-notes{
     @include rhythm(0,0,0,2);
     @extend .title-font;
-    @include adjust-font-size-to($milli-size);
+    // @include adjust-font-size-to($milli-size);
     @extend .wrapper-width;
     position:relative;
     margin-left:auto;
@@ -278,7 +278,7 @@
 }
 
 .result{
-  p{@include adjust-font-size-to($h5-size);}
+  // p{@include adjust-font-size-to($h5-size);}
   @include trailing-border(2px);
   @extend .border-color;
   @extend .title-font;
@@ -327,14 +327,14 @@
       width:48px;
   }
   small.muted{
-      @include adjust-font-size-to($milli-size - 1px);
+      // @include adjust-font-size-to($milli-size - 1px);
       @extend .title-font;
       float:right;
       opacity:.5;
       white-space:nowrap;
   }
   .media-heading{
-      @include adjust-font-size-to($h5-size);
+      // @include adjust-font-size-to($h5-size);
       @include leader(0);
       @include trailer(0);
   }
@@ -357,7 +357,7 @@
       @extend .border-color;
   }
   .hull-comments__description{
-      @include adjust-font-size-to($milli-size);
+      // @include adjust-font-size-to($milli-size);
   }
 
   .btn{

@@ -109,7 +109,7 @@ define({
     this.$el.html(reversed);
   }
 });
-
+```
 
 ## Event notifications
 

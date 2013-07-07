@@ -1,0 +1,33 @@
+---
+title: Examples
+<!-- markdown_navigation: true -->
+---
+<div class="row">
+  <% data.examples.each do |title, item| %>
+    <div class="cell-4 gallery-item">
+      <a class="cover" href="<% item.link %>">
+        <img src="<% image_path("gallery/#{item.thumb}") %>" />
+      </a>
+      <h1 class="title">
+        <%= title %>
+      </h1>
+      <div class="meta">
+        <%= item.meta %>
+      </div>
+      <p class="description">
+        <%= item.description %>
+      </p>
+      <p class="last urls">
+        <strong> Demo: </strong>
+        <a href="<% item.link %>">
+          <%= item.link %>
+        </a>
+        <br />
+        <strong>Source:</strong>
+        <a href="<% item.source %>">
+          <%= item.code %>
+        </a>
+      </p>
+    </div>
+  <% end %>
+</div>

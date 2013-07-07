@@ -16,25 +16,23 @@
   <%= javascript_include_tag 'application' %>
 </head>
 
-<body class="docs">
+<body>
 
-  <div class="container">
-    
-    <header id="sub-header">
-      <nav class="nav" id="secondary-nav" role="navigation">
-        <ul>
-          <% data.nav.each do |title, nav| %>
-          <li class="<%= "active" if title == 'Guides' %>">
-            <a href="<%= nav[:url] %>" rel="<%= title %>">
-              <%= title %>
-            </a>
-          </li>
-          <% end %>
-        </ul>
-      </nav>
-    </header>
-    
-    <aside class="sidebar" role="navigation">
+  <header>
+    <nav class="nav" id="secondary-nav" role="navigation">
+      <ul>
+        <% data.nav.each do |title, nav| %>
+        <li class="<%= "active" if title == 'Guides' %>">
+          <a href="<%= nav[:url] %>" rel="<%= title %>">
+            <%= title %>
+          </a>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  
+  <aside class="sidebar" role="navigation">
       <a href="/" class="logo"></a>
       <div class="tree">
         <div class="tree-nav-section">
@@ -59,20 +57,21 @@
         </ul>
       </div>
     </aside>
-    
-    <section class="documentation">
-      <article>
-        <div class="row">
-          <header class="documentation-header" id="<%= title %>">
-            <h1><%= current_page.data.title %></h1>
-            <p><%= current_page.data.subtitle %></p>
-          </header>
-          <div class="documentation-body language-markup"><%= yield %></div>
+  
+  <section class="documentation">
+    <article>
+      <div class="row">
+        <header class="documentation-header" id="<%= title %>">
+          <h1><%= current_page.data.title %></h1>
+          <p><%= current_page.data.subtitle %></p>
+        </header>
+        
+        <div class="documentation-body language-markup">
+          <%= yield %>
         </div>
-      </article>
-    </section>
-
-  </div>
+      </div>
+    </article>
+  </section>
 
 </body>
 </html>

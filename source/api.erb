@@ -48,15 +48,15 @@ title: Api Docs
   <h5>Parameters:</h5>
   <table class='table'>
     <% method['params'].each do |param| %>
-    <tr>
-      <td width="20%">
+    <tr width="100%">
+      <td width="25%">
         <span class='label <%= "label-brand" unless param['optional'] %>'><%= param['name'] %></span>
       </td>
       <td width="25%">
         <%= "(optional)" if param['optional'] %>
         <%= param['type'] %>
       </td>
-      <td width="55%">
+      <td width="50%">
         <%= param['description'] %>
       </td>
     </tr>
