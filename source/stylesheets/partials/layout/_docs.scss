@@ -60,6 +60,10 @@
     li{
       @include position;
       padding:.1em 0;
+      a {
+        padding-left: 5px;
+        font-size: 0.9em;
+      }
     }
     .active ul{
         display:block;
@@ -270,6 +274,12 @@ section.documentation {
         code{
           font-weight:normal;
         }
+      }
+
+      h1 {
+        margin-top: 50px;
+        border-bottom: solid 2px lighten($border-color, 10);
+        padding-left: 5px;
       }
 
       h2 {
