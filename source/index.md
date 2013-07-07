@@ -51,29 +51,29 @@ Here is a simple [AuraJS extension](https://github.com/aurajs/aura/blob/master/n
 **extensions/aura-github.js**
 
 ```js
-    define({
-      initialize: function (app) {
-        app.sandbox.github = function (path, verb, data) {
-          var dfd = $.Deferred();
-          var token = app.config.github.token;
-          verb = verb || 'get';
-          if (data &amp;&amp; verb != 'get') {
-            data = JSON.stringify(data);
-          }
-          $.ajax({
-            type: verb,
-            url: 'https://api.github.com/' + path,
-            data: data,
-            headers: {
-              "Authorization": "token " + token
-            },
-            success: dfd.resolve,
-            error: dfd.reject
-          });
-          return dfd;
-        };
+define({
+  initialize: function (app) {
+    app.sandbox.github = function (path, verb, data) {
+      var dfd = $.Deferred();
+      var token = app.config.github.token;
+      verb = verb || 'get';
+      if (data && verb != 'get') {
+        data = JSON.stringify(data);
       }
-    });
+      $.ajax({
+        type: verb,
+        url: 'https://api.github.com/' + path,
+        data: data,
+        headers: {
+          "Authorization": "token " + token
+        },
+        success: dfd.resolve,
+        error: dfd.reject
+      });
+      return dfd;
+    };
+  }
+});
 ```
 
 This extension exposes in all our components a way to talk to Github's API via the `this.sandbox.github` method.
@@ -84,11 +84,11 @@ To use it in your aura app :
 
 
 ```js
-    var app = new Aura({
-      github: { token: 'current-user-token-here' }
-    });
-    app.use('extensions/aura-github');
-    app.start({ components: 'body' });
+var app = new Aura({
+  github: { token: 'current-user-token-here' }
+});
+app.use('extensions/aura-github');
+app.start({ components: 'body' });
 ```
 
 And now, let's write the issues` component :
@@ -97,64 +97,64 @@ And now, let's write the issues` component :
 
 
 ```js
-    define(['underscore', 'text!./issues.html'], function(_, tpl) {
+define(['underscore', 'text!./issues.html'], function(_, tpl) {
 
-      // Allow template to be overriden locally 
-      // via a text/template script tag
-      var template, customTemplate = $('script[data-aura-template="github/issues"]');
-      if (customTemplate.length &gt; 0) {
-        template = _.template(customTemplate.html());
-      } else {
-        template = _.template(tpl);
-      }
+  // Allow template to be overriden locally 
+  // via a text/template script tag
+  var template, customTemplate = $('script[data-aura-template="github/issues"]');
+  if (customTemplate.length > 0) {
+    template = _.template(customTemplate.html());
+  } else {
+    template = _.template(tpl);
+  }
 
-      return {
-        initialize: function() {
-          _.bindAll(this);
-          this.repo   = this.options.repo;
-          this.filter = this.options.filter || {};
-          this.sandbox.on('issues.filter', this.fetch, this);
-          this.fetch();
-        },
-        fetch: function(filter) {
-          this.filter = _.extend(this.filter, filter || {});
-          var path = 'repos/' + this.repo + '/issues';
-          return this.sandbox.github(path, 'get', this.filter).then(this.render);
-        },
-        render: function(issues) {
-          this.html(template({
-            issues: issues,
-            filter: this.filter,
-            repo: this.repo
-          }));
-        }
-      };
-    });
+  return {
+    initialize: function() {
+      _.bindAll(this);
+      this.repo   = this.options.repo;
+      this.filter = this.options.filter || {};
+      this.sandbox.on('issues.filter', this.fetch, this);
+      this.fetch();
+    },
+    fetch: function(filter) {
+      this.filter = _.extend(this.filter, filter || {});
+      var path = 'repos/' + this.repo + '/issues';
+      return this.sandbox.github(path, 'get', this.filter).then(this.render);
+    },
+    render: function(issues) {
+      this.html(template({
+        issues: issues,
+        filter: this.filter,
+        repo: this.repo
+      }));
+    }
+  };
+});
 ```
 
 Now we can place this component everywhere in our app by using Aura's HTML API based on data-attributes.
 
 
 ```html
-    &lt;div data-aura-component="issues" data-aura-repo="aurajs/aura"&gt;&lt;/div&gt;
+<div data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
 ```
 
 You can even have multiple instances of this component in you page :
 
 
 ```html
-    &lt;div class='row'&gt;
-      &lt;div class='span4' data-aura-component="issues" data-aura-repo="aurajs/aura"&gt;&lt;/div&gt;
-      &lt;div class='span4' data-aura-component="issues" data-aura-repo="emberjs/ember.js"&gt;&lt;/div&gt;
-      &lt;div class='span4' data-aura-component="issues" data-aura-repo="documentcloud/backbone"&gt;&lt;/div&gt;
-    &lt;/div&gt;
+<div class='row'>
+  <div class='span4' data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
+  <div class='span4' data-aura-component="issues" data-aura-repo="emberjs/ember.js"></div>
+  <div class='span4' data-aura-component="issues" data-aura-repo="documentcloud/backbone"></div>
+</div>
 ```
 
 Any other component can now emit `issues.filter`  events that these components will respond to.
 For example in another component that will allow the user to filter the issues lists, we can have :
 
 ```js
-    this.sandbox.emit('issues.filter', { state: 'closed' });
+this.sandbox.emit('issues.filter', { state: 'closed' });
 ```
 
 You can find a [Github client demo app based on AuraJS + a bunch of Github components here](http://github.com/sbellity/aura-github)

@@ -81,7 +81,7 @@ Add the following code to your HTML document.
 
 
 ```html
-    <div data-aura-component="hello"></div>
+<div data-aura-component="hello"></div>
 ```
 
 Aura will call the `initialize` method that we have defined in `aura_components/hello/main.js`.

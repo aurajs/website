@@ -285,11 +285,6 @@ section.documentation {
         }
       }
 
-      :not(pre) code{
-        //border-radius:6px;
-        //color:black;
-        //background-color:mix($brand-color, #fff, 10%);
-      }
 
       blockquote{
           font-family:inherit;
@@ -371,7 +366,7 @@ section.documentation {
           background: $secondary-color;
           color: $border-color;
           text-align: center;
-          width: 40px;
+          width: 35px;
           pre {
             // text-align: center;
             // border: 1px solid $border-color;
