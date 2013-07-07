@@ -2,7 +2,7 @@
 
 $border-radius: 5px;
 
-$brand-color:   #1f58ce;
+// $brand-color:   #1f58ce;
 $gray:   #555555;
 $green:  #007700;
 
@@ -76,7 +76,7 @@ $green:  #007700;
   }
 
   .content {
-    color: darken($brand-color, 15%);
+    color: $brand-color;
   }
 
   .string {
@@ -88,7 +88,7 @@ $green:  #007700;
   }
 
   .key, .function {
-    color: #2b1fce;
+    color: $brand-blue;
   }
 
   .local-variable {
