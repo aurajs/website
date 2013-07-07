@@ -15,33 +15,31 @@
   <%= javascript_include_tag 'application' %>
 </head>
 
-<body class="container">
+<body>
 
-  <!-- <div class="container"> -->
-    <header id="sub-header">
-      <%= partial 'partials/nav' %>
-    </header>
-    
-    <aside class="sidebar" role="navigation">
-      <a href="/" class="logo"></a>
-      <div class="tree"><%= partial "partials/docs_nav" %></div>
-    </aside>
-    
-    <section class="documentation">
-      <article>
-        <div class="row">
-          <header class="documentation-header" id="<%= title %>">
-            <h1><%= current_page.data.title %></h1>
-            <p><%= current_page.data.subtitle %></p>
-          </header>
-          
-          <div class="documentation-body language-markup">
-            <%= yield %>
-          </div>
+  <header>
+    <%= partial 'partials/top_nav' %>
+  </header>
+  
+  <aside class="sidebar" role="navigation">
+    <a href="/" class="logo"></a>
+    <div class="tree"><%= partial "partials/docs_nav" %></div>
+  </aside>
+  
+  <section class="documentation">
+    <article>
+      <div class="row">
+        <header class="documentation-header" id="<%= title %>">
+          <h1><%= current_page.data.title %></h1>
+          <p><%= current_page.data.subtitle %></p>
+        </header>
+        
+        <div class="documentation-body language-markup">
+          <%= yield %>
         </div>
-      </article>
-    </section>
-  <!-- </div> -->
+      </div>
+    </article>
+  </section>
 
 </body>
 </html>
