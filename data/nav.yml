@@ -1,14 +1,14 @@
 'About':
   url: /
 'Getting Started':
-  url: /getting-started/
+  url: /getting-started
 'Guides':
-  url: /guides/
+  url: /guides
 'API':
-  url: /api/
+  url: /api
 'Extensions':
-  url: /extensions/
+  url: /extensions
 'Resources':
-  url: /resources/
+  url: /resources
 'Examples':
-  url: /examples/
+  url: /examples
