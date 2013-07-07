@@ -1,0 +1,32 @@
+<h2>
+  <small class="pull-right">
+    <a href='#class-<%= class_name %>'><%= class_name %> method</a>
+  </small>
+  <a href="#method-<%= class_name %>-<%= item_name %>" name="method-<%= class_name %>-<%= item_name %>" class="documentation-anchor">
+    &infin;
+  </a>
+  <%= item_name %>( <span class="params"><%= (item['params'] || []).map { |p| p['name'] }.join(", ") %></span> )    
+</h2>
+<% if item['description'] %>
+<div><%= api_markdown item['description'] %></div>  
+<% end %>
+
+<% if item['params'] %>
+<h5>Parameters:</h5>
+<table class='table'>
+  <% item['params'].each do |param| %>
+  <tr width="100%">
+    <td width="25%">
+      <span class='label <%= "label-brand" unless param['optional'] %>'><%= param['name'] %></span>
+    </td>
+    <td width="25%">
+      <%= "(optional)" if param['optional'] %>
+      <%= param['type'] %>
+    </td>
+    <td width="50%">
+      <%= param['description'] %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<% end %>

@@ -1,0 +1,44 @@
+---
+title: Api Docs
+---
+
+<% content_for :tree_nav do %>
+  
+  <div class="tree-nav-section">
+    <% api_classes.each do |name, klass| k = api_class(name) %>
+      <h3><a href="#class-<%= name %>"><%= k.name %></a></h3>
+      <ul>
+        <% k.items.keys.compact.sort.each do |item_name| item = k.items[item_name] %>
+        <% if item_name %>
+        <li>
+          <a href="#<%= item['itemtype'] %>-<%= name %>-<%= item['name'] %>">
+            <%= item_name %>
+          </a>
+        </li>
+        <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+<% end %>
+
+
+<% api_classes.each do |class_name, klass| k = api_class(class_name) %>
+  <h1>
+    <a href="#class-<%= class_name %>" name="class-<%= class_name %>" class="documentation-anchor">
+    &infin;
+    </a>
+    <%= class_name %>
+  </h1>
+
+  <% if k.description %>
+  <div><%= api_markdown k.description %></div>  
+  <% end %>
+  <% k.items.keys.compact.sort.each do |item_name| item = k.items[item_name] %>
+  <% if ['method', 'property'].include?(item['itemtype']) %>
+    <%= partial item['itemtype'], locals: { item_name: item_name, item: item, class_name: class_name } %>
+  <% end %>
+  <% end %>
+<% end %>
+

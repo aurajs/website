@@ -1,0 +1,12 @@
+<h2>
+  <small class="pull-right">
+  <a href='#class-<%= class_name %>'><%= class_name %> property</a>
+  </small>
+  <a href="#property-<%= class_name %>-<%= item_name %>" name="property-<%= class_name %>-<%= item_name %>" class="documentation-anchor">
+    &infin;
+  </a>
+  <%= item_name %>
+</h2>
+<% if item['description'] %>
+<div><%= api_markdown item['description'] %></div>  
+<% end %>

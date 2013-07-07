@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.0
   url: http://aurajs.com
-  sha: c552a4c
+  sha: 1022aee
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
@@ -57,7 +57,7 @@ classes:
     line: 11
     description: ! "Aura constructor and main entry point\n\nEvery instance of Aura
       is an Aura application.\nAn Aura application is in charge of loading the various\nextensions
-      that will apply to it (defined either\nprogrammatically or by iway of confifuration).\n\nAn
+      that will apply to it (defined either\nprogrammatically or by way of configuration).\n\nAn
       Aura application is the glue between all the extensions\nand components inside
       its instance.\n\nInternally an Aura application wraps 4 important objects:\n\n-
       `config` is the object passed as the first param of the apps constructor\n-
@@ -97,32 +97,7 @@ classitems:
   description: Components Callbacks
   class: Component
 - file: lib/ext/components.js
-  line: 79
-  description: ! 'The Components'' options Object, passed to its constructor.
-
-    TODO: Add explain, how options are set from HTML API + which default options are
-
-    set during the Component initialization.'
-  itemtype: property
-  name: options
-  type: Object
-  class: Component
-- file: lib/ext/components.js
-  line: 88
-  description: Internal, unique reference for a Component instance
-  itemtype: property
-  name: _ref
-  type: String
-  class: Component
-- file: lib/ext/components.js
-  line: 95
-  description: A cached jQuery object for the Components's element.
-  itemtype: property
-  name: $el
-  type: Object
-  class: Component
-- file: lib/ext/components.js
-  line: 106
+  line: 85
   description: Method called on Components' initialization.
   itemtype: method
   name: initialize
@@ -132,7 +107,7 @@ classitems:
     type: Object
   class: Component
 - file: lib/ext/components.js
-  line: 114
+  line: 93
   description: A helper function to render markup and recursilvely start nested components.
   itemtype: method
   name: html
@@ -145,7 +120,7 @@ classitems:
     type: Component
   class: Component
 - file: lib/ext/components.js
-  line: 131
+  line: 110
   itemtype: method
   name: invokeWithCallbacks
   params:
@@ -158,7 +133,7 @@ classitems:
     type: Promise
   class: Component
 - file: lib/ext/components.js
-  line: 164
+  line: 143
   description: Component loader.
   params:
   - name: name
@@ -172,10 +147,8 @@ classitems:
     type: Promise
   class: Component
 - file: lib/ext/components.js
-  line: 258
+  line: 237
   description: Parses the component's options from its element's data attributes.
-  access: private
-  tagname: ''
   params:
   - name: el
     description: the element
@@ -191,10 +164,8 @@ classitems:
     type: Object
   class: Component
 - file: lib/ext/components.js
-  line: 289
+  line: 267
   description: Parses the component's options from its element's data attributes.
-  access: private
-  tagname: ''
   params:
   - name: name
     description: the Component's name
@@ -207,13 +178,12 @@ classitems:
     type: Object
   class: Component
 - file: lib/ext/components.js
-  line: 316
+  line: 293
   description: ! 'Returns a list of component.
 
     If the first argument is a String, it is considered as a DomNode reference
 
     We then parse its content to find aura-components inside of it.'
-  static: 1
   params:
   - name: components
     description: a list of components or a reference to a root dom node
@@ -223,9 +193,8 @@ classitems:
     type: Array
   class: Component
 - file: lib/ext/components.js
-  line: 355
+  line: 331
   description: Actual start method for a list of components.
-  static: 1
   params:
   - name: components
     description: cf. `Component.parseList`
@@ -235,7 +204,7 @@ classitems:
     type: Promise
   class: Component
 - file: lib/ext/components.js
-  line: 388
+  line: 363
   description: ! 'Registers a function that will be executed before the associated
 
     Component method is called.
@@ -269,7 +238,7 @@ classitems:
     type: Function
   class: Aura
 - file: lib/ext/components.js
-  line: 412
+  line: 387
   description: Same as components.before, but executed after the method invocation.
   itemtype: method
   name: components.after
@@ -282,7 +251,7 @@ classitems:
     type: Function
   class: Aura
 - file: lib/ext/components.js
-  line: 429
+  line: 404
   description: ! "Register a Component Type.\nComponents type ca be used to encapsulate
     many custom\ncomponents behaviours.\nThey will be then used while declaring your
     components as follows:\n\n```js\ndefine({\n  type: 'myComponentType',\n  // component
@@ -298,7 +267,7 @@ classitems:
     type: Function
   class: Aura
 - file: lib/ext/components.js
-  line: 458
+  line: 433
   description: ! 'Start method.
 
     This method takes either an Array of Components to start or or DOM Selector to
@@ -579,15 +548,15 @@ warnings:
 - message: ! 'Missing item type
 
     Component loader.'
-  line: ! ' lib/ext/components.js:164'
+  line: ! ' lib/ext/components.js:143'
 - message: ! 'Missing item type
 
     Parses the component''s options from its element''s data attributes.'
-  line: ! ' lib/ext/components.js:258'
+  line: ! ' lib/ext/components.js:237'
 - message: ! 'Missing item type
 
     Parses the component''s options from its element''s data attributes.'
-  line: ! ' lib/ext/components.js:289'
+  line: ! ' lib/ext/components.js:267'
 - message: ! 'Missing item type
 
     Returns a list of component.
@@ -595,11 +564,11 @@ warnings:
     If the first argument is a String, it is considered as a DomNode reference
 
     We then parse its content to find aura-components inside of it.'
-  line: ! ' lib/ext/components.js:316'
+  line: ! ' lib/ext/components.js:293'
 - message: ! 'Missing item type
 
     Actual start method for a list of components.'
-  line: ! ' lib/ext/components.js:355'
+  line: ! ' lib/ext/components.js:331'
 - message: ! 'Missing item type
 
     Namespace for sanboxes related methods.'
