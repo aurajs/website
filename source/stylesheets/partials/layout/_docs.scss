@@ -180,6 +180,25 @@ section.documentation {
         border: 1px solid lighten($border-color, 10);
         @include border-radius(4px);
       }
+      a.cover {
+        height: 140px;
+        overflow: hidden;
+        display: block;
+        padding: 0 .5em;
+        border-bottom: 1px solid rgba($border-color, .5);
+        @include border-radius(4px 4px 0 0);
+        @include transition(all ease .3s);
+        &:hover,
+        &:focus {
+          border-bottom-color: darken($border-color, 10);
+          height: 160px;
+          margin-top: -20px;
+        }
+        > img {
+          border: 1px solid rgba($border-color, .25);
+          @include border-radius(4px 4px 0 0);
+        }
+      }
       a:not(.btn){
         // border-bottom: 1px solid $brand-blue;
         // text-decoration: underline;
@@ -193,7 +212,7 @@ section.documentation {
         }
         &:hover, &:active{
           color: $brand-dark-color;
-          border-bottom-color:$brand-dark-color;
+          // border-bottom-color:$brand-dark-color;
         }
       }
       a:not(.btn).documentation-anchor {
@@ -417,6 +436,20 @@ section.documentation {
     }
 
 
+  }
+
+  .cell-4.gallery-item {
+    min-height: 360px;
+    padding-top: 40px;
+    margin-left: 0;
+    margin-right: 2.5%;
+    h2 {
+      border-bottom: none;
+    }
+    &:last-child {
+      float: left;
+      // clear: left;
+    }
   }
 }
 
