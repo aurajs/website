@@ -16,7 +16,8 @@ set :markdown, :fenced_code_blocks => true,
                :autolink           => true,
                :smartypants        => true,
                :no_intra_emphasis  => true,
-               :pattern            => '```'
+               :pattern            => '```',
+               :renderer           => CodeRenderer
 
 activate :livereload
 activate :directory_indexes

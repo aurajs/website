@@ -1,4 +1,4 @@
-require_relative "./highlighter"
+require_relative "./code_renderer"
 
 module APIDocs
   class << self
@@ -20,14 +20,6 @@ module APIDocs
       end
     end
     alias :included :registered
-  end
-
-  class CodeRenderer < Redcarpet::Render::HTML
-    include Highlighter::Helpers
-
-    def block_code(code, language)
-      _highlight(code, language || 'javascript')
-    end
   end
 
   class ApiClass
@@ -75,7 +67,6 @@ module APIDocs
     end
 
     def classitems
-      puts "Do we have classitems ?"
       unless @classitems
         @classitems = {}
 
