@@ -194,9 +194,27 @@ section.documentation {
           height: 160px;
           margin-top: -20px;
         }
-        > img {
-          border: 1px solid rgba($border-color, .25);
+        > img,
+        > div {
+          border: 1px solid rgba($border-color, .5);
           @include border-radius(4px 4px 0 0);
+        }
+        > div {
+          height: 200px;
+          width: 100%;
+          background: rgba($border-color, .25);
+          > span {
+            text-align: center;
+            display: block;
+            @include adjust-font-size-to(26px,1.2);
+            background: rgba($border-color, .5);
+            height: 30px;
+            width: 30px;
+            @include border-radius(100%);
+            margin: 60px auto;
+            font-weight: 900;
+            color: $white-color;
+          }
         }
       }
       a:not(.btn){
@@ -440,6 +458,7 @@ section.documentation {
     margin-right: 2.5%;
     h2 {
       border-bottom: none;
+      margin-bottom: 0;
     }
     &:last-child {
       float: left;

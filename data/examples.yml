@@ -7,7 +7,7 @@
   thumb: |
     /images/examples/github_client.png
   code: |
-    <a href="//github.com/sbellity/aura-github">GitHub Repo</a>
+    <a href="//github.com/sbellity/aura-github" title="GitHub client">GitHub Repo</a>
 
 'GitHub mobile client':
   title: 'GitHub Mobile client'
@@ -18,7 +18,7 @@
   thumb: |
     //raw.github.com/jakiestfu/Github-Mobile/master/screens/real/repos/repo_v1.png
   code: |
-    <a href="//github.com/hull/Github-Mobile/tree/with-hull">GitHub Repo</a>
+    <a href="//github.com/hull/Github-Mobile/tree/with-hull" title="GitHub mobile client">GitHub Repo</a>
 
 'Hullagram':
   title: 'Hullagram'
@@ -29,7 +29,7 @@
   thumb: |
     //raw.github.com/aurajs/aura-identity/master/screenshots/medium/hullagram-2.png
   code: |
-    <a href="//github.com/hull/hullagram">Hullagram</a>
+    <a href="//github.com/hull/hullagram" title="Hullagram">Hullagram</a>
 
 'Aura TodoMVC':
   title: 'Aura TodoMVC'
@@ -41,8 +41,8 @@
     //raw.github.com/aurajs/aura-identity/master/screenshots/medium/todomvc.png
   code: |
     <ul>
-      <li><a href="//github.com/sbellity/aura-todos/">GitHub Repo</a></li>
-      <li><a href="//github.com/alexanderbeletsky/todomvc-aura">Alternative Implementation</a></li>
+      <li><a href="//github.com/sbellity/aura-todos/" title="TodoMVC">GitHub Repo</a></li>
+      <li><a href="//github.com/alexanderbeletsky/todomvc-aura" title="TodoMVC alt">Alternative Implementation</a></li>
     </ul>
 
 'Aura Twitter-like "Open Source" page':
@@ -50,11 +50,11 @@
   description: |
     A Twitter-like "Open Source" page using Aura.
   link: |
-    /blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page
+    //blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page
   thumb: |
     /images/examples/openSource.png
   code: |
-    <a href="/blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page">Tutorial</a>
+    <a href="//blog.hull.io/post/46504817377/how-to-build-your-own-twitter-like-open-source-page" title="tutorial">Tutorial</a>
 
 
 
