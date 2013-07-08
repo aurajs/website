@@ -23,6 +23,9 @@ activate :directory_indexes
 activate :markdown_navigation
 activate :array_navigation
 
+activate :relative_assets
+set :relative_links, true
+
 # page "/extensions*",        layout: 'layouts/default'
 page "/",                   layout: 'layouts/default'
 page "/getting-started*",   layout: 'layouts/default'
