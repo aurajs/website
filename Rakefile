@@ -44,23 +44,23 @@ def generate_docs
   puts "Built #{sha}"
 end
 
-def build
-  system "middleman build"
-end
+# def build
+#   system "middleman build"
+# end
 
 task :aura_path do 
   puts aura_path
 end
 
-desc "Generate API Docs"
-task :generate_docs do
-  generate_docs
-end
+# desc "Generate API Docs"
+# task :generate_docs do
+#   generate_docs
+# end
 
-desc "Build the website"
-task :build => :generate_docs do
-  build
-end
+# desc "Build the website"
+# task :build => :generate_docs do
+#   build
+# end
 
 desc "Preview"
 task :preview do
@@ -76,30 +76,3 @@ task :preview do
   system "middleman server"
 end
 
-desc "Deploy the website to github pages"
-task :deploy do |t, args|
-  require "highline/import"
-  message = ask("Provide a deployment message:  ") do |q|
-    q.validate = /\w/
-    q.responses[:not_valid] = "Can't be empty."
-  end
-
-  mkdir_p "build"
-  Dir.chdir "build" do
-    git_initialize("emberjs.github.com")
-    git_update
-
-    build
-
-    # This screws up the build and isn't necessary
-    # rm_r "source/examples"
-
-    File.open("CNAME", 'w') do |f|
-      f.write "emberjs.com"
-    end
-
-    system "git add -A"
-    system "git commit -m '#{message.gsub("'", "\\'")}'"
-    system "git push origin master" unless ENV['NODEPLOY']
-  end
-end
