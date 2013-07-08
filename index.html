@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AuraJS</title>
+  <meta charset="utf-8" />
+  <meta name='viewport' content='width=1000' />
+  <meta name='description' content="" />
+  <meta property='og:title' content="aura" />
+  <meta property='og:type' content='company' />
+  <meta property='og:site_name' content="aura" />
+  <meta property='og:url' content="http://aurajs.com" />
+  <link href="/stylesheets/style.css?1373301170" media="screen" rel="stylesheet" type="text/css" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/javascripts/application.js?1373301169" type="text/javascript"></script>
+  <script src="//d3f5pyioow99x0.cloudfront.net/develop/hull.js"></script>
+<script>Hull.init({"appId":"51da11e01234b56ba0000202","orgUrl":"https://aura.hullapp.io","debug":true});</script>
+
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav" id="secondary-nav" role="navigation">
+  <ul>
+    
+    <li class="active">
+      <a href="/" rel="About">
+        About
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/getting-started" rel="Getting Started">
+        Getting Started
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/api" rel="API">
+        API
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/guides" rel="Guides">
+        Guides
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/examples" rel="Examples">
+        Examples
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/faq" rel="FAQs">
+        FAQs
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+
+  </header>
+  
+  <aside class="sidebar" role="navigation">
+    <a href="/" class="logo"></a>
+    <div class="tree">  <div class="tree-nav-section">
+    <p><a href="#components">Components</a></p><p><a href="#a-quick-example">A Quick Example</a></p><p><a href="#contribute">Contribute</a></p>
+  </div>
+
+
+
+<ul class="tree-nav-section">
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+  </li>
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+  </li>
+  <li>
+    <a class="btn small block faded" href="https://github.com/aurajs/aura">View on Github</a>
+  </li>
+</ul>
+</div>
+  </aside>
+  
+  <section class="documentation" id="content">
+    <article>
+      <div class="row">
+        <header class="documentation-header" id="Aura">
+          <h1>Aura</h1>
+          <p>A framework-agnostic, extensible architecture for decoupled and reusable components.</p>
+        </header>
+        
+        <div class="documentation-body language-markup">
+          <p>Aura is an <strong>event-driven extensible architecture for wrapping your code into reusable components and extensions that can easily communicate with each other.</strong></p>
+
+<p>Aura works great with <strong>existing</strong> frameworks like <a href="http://backbonejs.org">Backbone.js</a> or <a href="http://emberjs.com">Ember</a>, but is framework-agnostic, adapting many best-practice patterns for developing maintainable applications.</p>
+
+<p>Aura has first-class support for modern tools like <a href="http://bower.io">Bower</a>, <a href="http://gruntjs.com">Grunt</a> and <a href="http://yeoman.io">Yeoman</a> and uses libraries like <a href="http://requirejs.org/">RequireJS</a> under the covers (for now). As solutions like ES6 modules and <a href="http://www.polymer-project.org">Polymer</a> become stable and usable, the project will move towards using them.</p>
+
+<h2>Components</h2>
+
+<p>A component is something <strong><a href="http://juristr.com/blog/2013/04/modularity-in-javascript-frameworks/">atomic</a></strong> with a clear responsibility. A mini-app basically that can be instantiated (possibly multiple times) on an arbitrary part of your application. You might not be accustomed to thinking like this, preferring to build a highly coupled app. That might work just fine initially, but once it gets more complex you can run into trouble. Therefore, next time when you start building something bigger, stop for a moment and try to identify possible components.</p>
+
+<p>Consider for example GitHub’s site:</p>
+
+<p><img src="images/docs/github.jpg"/></p>
+
+<p>Separating your application into smaller parts is essential for keeping your architecture clean, reusable and mainly maintainable. The principle is a known concept in computer science: “divide and conquer”. Divide everything up into smaller parts which have lower complexity, are easier to test and cause fewer headaches. Then compose them together to form your larger application.</p>
+
+<h3>But Wait: My Components Have to Communicate!</h3>
+
+<p>Aura Components within your application need to communicate with each other. Such communication creates dependencies as component A needs to have a reference to component B if it needs to invoke some operation on it, right? Well, not necessarily, as that would again couple those components together and you couldn’t exchange component B arbitrarily without having to also change component A.</p>
+
+<p>Therefore, a common practice for creating a modular architecture is to decouple communication among components through event broadcasting mechanisms. Aura comes with global and component-level messaging patterns, making this a breeze.</p>
+
+<h2>A Quick Example</h2>
+
+<h3>How does it work ?</h3>
+
+<p>To build your app, you can assemble components via AuraJS&#39;s HTML API, by using the <code>data-aura-*</code> attributes.</p>
+
+<p>Let&#39;s take an example. Let&#39;s say that we want to build a Github Issues app. We need to be able to :</p>
+
+<ul>
+<li>Display lists of issues from specific repos</li>
+<li>Filter those issues</li>
+</ul>
+
+<p>Now let&#39;s make some components, but first we need a way to talk to <a href="http://developer.github.com/v3/issues/">Github&#39;s API</a>.</p>
+
+<p>Here is a simple <a href="/getting-started#extending-aura">AuraJS extension</a> that does just that :</p>
+
+<p><strong>extensions/aura-github.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span> (app) {
+    app.sandbox.<span class="function">github</span> = <span class="keyword">function</span> (path, verb, data) {
+      <span class="keyword">var</span> dfd = <span class="predefined">$</span>.Deferred();
+      <span class="keyword">var</span> token = app.config.github.token;
+      verb = verb || <span class="string"><span class="delimiter">'</span><span class="content">get</span><span class="delimiter">'</span></span>;
+      <span class="keyword">if</span> (data &amp;&amp; verb != <span class="string"><span class="delimiter">'</span><span class="content">get</span><span class="delimiter">'</span></span>) {
+        data = JSON.stringify(data);
+      }
+      <span class="predefined">$</span>.ajax({
+        <span class="key">type</span>: verb,
+        <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">https://api.github.com/</span><span class="delimiter">'</span></span> + path,
+        <span class="key">data</span>: data,
+        <span class="key">headers</span>: {
+          <span class="key"><span class="delimiter">&quot;</span><span class="content">Authorization</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">token </span><span class="delimiter">&quot;</span></span> + token
+        },
+        <span class="key">success</span>: dfd.resolve,
+        <span class="key">error</span>: dfd.reject
+      });
+      <span class="keyword">return</span> dfd;
+    };
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>This extension exposes in all our components a way to talk to Github&#39;s API via the <code>this.sandbox.github</code> method.</p>
+
+<p>To use it in your aura app :</p>
+
+<p><strong>app.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>require([<span class="string"><span class="delimiter">'</span><span class="content">aura</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>(Aura) {
+  <span class="keyword">var</span> app = <span class="keyword">new</span> Aura({
+    <span class="key">github</span>: { <span class="key">token</span>: <span class="string"><span class="delimiter">'</span><span class="content">current-user-token-here</span><span class="delimiter">'</span></span> }
+  });
+  app.use(<span class="string"><span class="delimiter">'</span><span class="content">extensions/aura-github</span><span class="delimiter">'</span></span>);
+  app.start(<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span>);
+})
+</pre></td>
+</tr></table>
+</div></div>
+<p>And now, let&#39;s write the issues` component :</p>
+
+<p><strong>aura_components/issues/main.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+</pre></td>
+  <td class="code"><pre>define([<span class="string"><span class="delimiter">'</span><span class="content">underscore</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">text!./issues.html</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>(_, tpl) {
+
+  template = _.template(customTemplate.html());
+
+  <span class="keyword">return</span> {
+    <span class="function">initialize</span>: <span class="keyword">function</span>() {
+      _.bindAll(<span class="local-variable">this</span>);
+      <span class="local-variable">this</span>.repo   = <span class="local-variable">this</span>.options.repo;
+      <span class="local-variable">this</span>.filter = <span class="local-variable">this</span>.options.filter || {};
+      <span class="local-variable">this</span>.sandbox.on(<span class="string"><span class="delimiter">'</span><span class="content">issues.filter</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>.fetch, <span class="local-variable">this</span>);
+      <span class="local-variable">this</span>.fetch();
+    },
+    <span class="function">fetch</span>: <span class="keyword">function</span>(filter) {
+      <span class="local-variable">this</span>.filter = _.extend(<span class="local-variable">this</span>.filter, filter || {});
+      <span class="keyword">var</span> path = <span class="string"><span class="delimiter">'</span><span class="content">repos/</span><span class="delimiter">'</span></span> + <span class="local-variable">this</span>.repo + <span class="string"><span class="delimiter">'</span><span class="content">/issues</span><span class="delimiter">'</span></span>;
+      <span class="keyword">return</span> <span class="local-variable">this</span>.sandbox.github(path, <span class="string"><span class="delimiter">'</span><span class="content">get</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>.filter).then(<span class="local-variable">this</span>.render);
+    },
+    <span class="function">render</span>: <span class="keyword">function</span>(issues) {
+      <span class="local-variable">this</span>.html(template({
+        <span class="key">issues</span>: issues,
+        <span class="key">filter</span>: <span class="local-variable">this</span>.filter,
+        <span class="key">repo</span>: <span class="local-variable">this</span>.repo
+      }));
+    }
+  };
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Now we can place this component everywhere in our app by using Aura&#39;s HTML API based on data-attributes.
+<code>this.options.filter</code> and <code>this.options.repo</code> can be passed to our component via the <code>data-aura-repo</code> and <code>data-aura-filter</code> attributes.</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">issues</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-aura-repo</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">aurajs/aura</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>You can even have multiple instances of this component in you page :</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">issues</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-aura-repo</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">aurajs/aura</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">issues</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-aura-repo</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">emberjs/ember.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">issues</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-aura-repo</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">documentcloud/backbone</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Any other component can now emit <code>issues.filter</code>  events that these components will respond to.
+For example in another component that will allow the user to filter the issues lists, we can have :</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="local-variable">this</span>.sandbox.emit(<span class="string"><span class="delimiter">'</span><span class="content">issues.filter</span><span class="delimiter">'</span></span>, { <span class="key">state</span>: <span class="string"><span class="delimiter">'</span><span class="content">closed</span><span class="delimiter">'</span></span> });
+</pre></td>
+</tr></table>
+</div></div>
+<p>You can find a <a href="http://github.com/sbellity/aura-github">Github client demo app based on AuraJS + a bunch of Github components here</a></p>
+
+<h2>Contribute</h2>
+
+<p>We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) At this time we are primarily focusing on improving the stability of AuraJS. Please keep this in mind if submitting feature requests, which we&#39;re happy to consider for future versions.</p>
+
+<h3>Issue submission</h3>
+
+<p>In order for us to help you please check that you&#39;ve completed the following steps:</p>
+
+<ul>
+<li>Made sure you&#39;re on the latest version in master</li>
+<li>Used the search feature to ensure that the bug hasn&#39;t been reported before</li>
+<li>Included as much information about the bug as possible, including any output you&#39;ve received, what OS and version you&#39;re on, etc.</li>
+<li>If making a bug report, please post a test case reproducing your issue on jsFiddle.net or jsBin. We will do our best to assist if this is not possible, but please understand this would greatly help improve or ability to help.</li>
+</ul>
+
+<p><a href="https://github.com/aurajs/aura/issues/new">Submit your issue</a></p>
+
+<h3>Pull Request Guidelines</h3>
+
+<ul>
+<li>Please check to make sure that there aren&#39;t existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.</li>
+<li>Non-trivial changes should be discussed in an issue first</li>
+<li>Develop in a topic branch, not master</li>
+<li>Add relevant tests to cover the change</li>
+<li>Squash your commits</li>
+<li>Write a convincing description of your PR and why we should land it</li>
+</ul>
+
+        </div>
+      </div>
+    </article>
+  </section>
+
+</body>
+</html>

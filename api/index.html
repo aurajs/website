@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AuraJS</title>
+  <meta charset="utf-8" />
+  <meta name='viewport' content='width=1000' />
+  <meta name='description' content="" />
+  <meta property='og:title' content="aura" />
+  <meta property='og:type' content='company' />
+  <meta property='og:site_name' content="aura" />
+  <meta property='og:url' content="http://aurajs.com" />
+  <link href="/stylesheets/style.css?1373301170" media="screen" rel="stylesheet" type="text/css" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/javascripts/application.js?1373301169" type="text/javascript"></script>
+  <script src="//d3f5pyioow99x0.cloudfront.net/develop/hull.js"></script>
+<script>Hull.init({"appId":"51da11e01234b56ba0000202","orgUrl":"https://aura.hullapp.io","debug":true});</script>
+
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav" id="secondary-nav" role="navigation">
+  <ul>
+    
+    <li class="">
+      <a href="/" rel="About">
+        About
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/getting-started" rel="Getting Started">
+        Getting Started
+      </a>
+    </li>
+    
+    <li class="active">
+      <a href="/api" rel="API">
+        API
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/guides" rel="Guides">
+        Guides
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/examples" rel="Examples">
+        Examples
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/faq" rel="FAQs">
+        FAQs
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+
+  </header>
+  
+  <aside class="sidebar" role="navigation">
+    <a href="/" class="logo"></a>
+    <div class="tree">    
+  <div class="tree-nav-section">
+    
+      <h3><a href="#class-Aura">Aura</a></h3>
+      <ul>
+        
+        
+        <li>
+          <a href="#method-Aura-components.addSource">
+            components.addSource
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-components.addType">
+            components.addType
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-components.after">
+            components.after
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-components.before">
+            components.before
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Aura-config">
+            config
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Aura-core">
+            core
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Aura-logger">
+            logger
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Aura-ref">
+            ref
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Aura-sandbox">
+            sandbox
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-sandboxes.create">
+            sandboxes.create
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-sandboxes.get">
+            sandboxes.get
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-start">
+            start
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-stop">
+            stop
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Aura-use">
+            use
+          </a>
+        </li>
+        
+        
+      </ul>
+    
+      <h3><a href="#class-Component">Component</a></h3>
+      <ul>
+        
+        
+        <li>
+          <a href="#property-Component-$el">
+            $el
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Component-$find">
+            $find
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Component-_ref">
+            _ref
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Component-html">
+            html
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Component-initialize">
+            initialize
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Component-invokeWithCallbacks">
+            invokeWithCallbacks
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#property-Component-options">
+            options
+          </a>
+        </li>
+        
+        
+      </ul>
+    
+      <h3><a href="#class-Sandbox">Sandbox</a></h3>
+      <ul>
+        
+        
+        <li>
+          <a href="#method-Sandbox-emit">
+            emit
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Sandbox-off">
+            off
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Sandbox-on">
+            on
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Sandbox-once">
+            once
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Sandbox-start">
+            start
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a href="#method-Sandbox-stopListening">
+            stopListening
+          </a>
+        </li>
+        
+        
+      </ul>
+    
+  </div>
+
+
+
+<ul class="tree-nav-section">
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+  </li>
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+  </li>
+  <li>
+    <a class="btn small block faded" href="https://github.com/aurajs/aura">View on Github</a>
+  </li>
+</ul>
+</div>
+  </aside>
+  
+  <section class="documentation" id="content">
+    <article>
+      <div class="row">
+        <header class="documentation-header" id="Api Docs">
+          <h1>Api Docs</h1>
+          <p></p>
+        </header>
+        
+        <div class="documentation-body language-markup">
+          
+
+  <h1>
+    <a href="#class-Aura" name="class-Aura" class="documentation-anchor">
+    &infin;
+    </a>
+    Aura
+  </h1>
+
+  
+  <div><p>Aura constructor and main entry point</p>
+
+<p>Every instance of Aura is an Aura application.
+An Aura application is in charge of loading the various
+extensions that will apply to it (defined either
+programmatically or by way of configuration).</p>
+
+<p>An Aura application is the glue between all the extensions
+and components inside its instance.</p>
+
+<p>Internally an Aura application wraps 4 important objects:</p>
+
+<ul>
+<li><code>config</code> is the object passed as the first param of the apps constructor</li>
+<li><code>core</code>   is a container where the extensions add new features</li>
+<li><code>sandbox</code> is an object that will be used as a prototype, to create fresh sandboxes to the components</li>
+<li><code>extensions</code> An instance of the ExtensionManager. It contains all the extensions that will be loaded in the app.</li>
+</ul>
+
+<p>Extensions are here to provide features that will be used by the components...
+They are meant to extend the apps&#39; core &amp; sandbox.
+They also have access to the apps&#39;s config.</p>
+
+<p>Example of a creation of an Aura Application:</p>
+<div class="highlight javascript "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> app = aura({ <span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span> });
+app.use(<span class="string"><span class="delimiter">'</span><span class="content">ext1</span><span class="delimiter">'</span></span>).use(<span class="string"><span class="delimiter">'</span><span class="content">ext2</span><span class="delimiter">'</span></span>);
+app.components.addSource(<span class="string"><span class="delimiter">'</span><span class="content">supercomponents</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">https://my.extern.al/components/store</span><span class="delimiter">'</span></span>);
+app.start(<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div></div>  
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-components.addSource" name="method-Aura-components.addSource" class="documentation-anchor">
+    &infin;
+  </a>
+  components.addSource( <span class="params">name, baseUrl</span> )    
+</h2>
+<div><p>Adds a new source for components.
+A Component source is an endpoint (basically a URL)
+that is the root of a component repository.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>name</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      the name of the source.
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>baseUrl</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      the base url for those components.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-components.addType" name="method-Aura-components.addType" class="documentation-anchor">
+    &infin;
+  </a>
+  components.addType( <span class="params">type, def</span> )    
+</h2>
+<div><p>Register a Component Type (experimental).
+Components type ca be used to encapsulate many custom components behaviours.
+They will be then used while declaring your components as follows:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="key">type</span>: <span class="string"><span class="delimiter">'</span><span class="content">myComponentType</span><span class="delimiter">'</span></span>,
+  <span class="comment">// component declaration...</span>
+});
+</pre></td>
+</tr></table>
+</div></div></div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>type</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      a string that will identify the component type.
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>def</span>
+    </td>
+    <td width="25%">
+      
+      Function
+    </td>
+    <td width="50%">
+      A constructor the this component type
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-components.after" name="method-Aura-components.after" class="documentation-anchor">
+    &infin;
+  </a>
+  components.after( <span class="params">methodName, fn</span> )    
+</h2>
+<div><p>Same as components.before, but executed after the method invocation.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>methodName</span>
+    </td>
+    <td width="25%">
+      
+      [type]
+    </td>
+    <td width="50%">
+      eg. 'initialize', 'remove'
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>fn</span>
+    </td>
+    <td width="25%">
+      
+      Function
+    </td>
+    <td width="50%">
+      actual function to run
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-components.before" name="method-Aura-components.before" class="documentation-anchor">
+    &infin;
+  </a>
+  components.before( <span class="params">methodName, fn</span> )    
+</h2>
+<div><p>Registers a function that will be executed before the associated
+Component method is called.</p>
+
+<p>Once registered, every time a component method will be called with the
+<code>invokeWithCallbacks</code> method the registered callbacks will execute accordingly.</p>
+
+<p>The callback functions can return a promise if required in order to
+postpone the execution of the called function up to when the all
+registered callbacks results are resolved.</p>
+
+<p>The arguments passed to the callbacks are the same than those which
+with the component will be called. The scope of the callback is
+the component instance itself, as per the component method.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>methodName</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      eg. 'initialize', 'remove'
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>fn</span>
+    </td>
+    <td width="25%">
+      
+      Function
+    </td>
+    <td width="50%">
+      actual function to run
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura property</a>
+  </small>
+  <a href="#property-Aura-config" name="property-Aura-config" class="documentation-anchor">
+    &infin;
+  </a>
+  config
+</h2>
+<div><p>The App&#39;s config object</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura property</a>
+  </small>
+  <a href="#property-Aura-core" name="property-Aura-core" class="documentation-anchor">
+    &infin;
+  </a>
+  core
+</h2>
+<div><p><code>core</code> is just a namespace used by the extensions to add features to the App.</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura property</a>
+  </small>
+  <a href="#property-Aura-logger" name="property-Aura-logger" class="documentation-anchor">
+    &infin;
+  </a>
+  logger
+</h2>
+<div><p>App Logger</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura property</a>
+  </small>
+  <a href="#property-Aura-ref" name="property-Aura-ref" class="documentation-anchor">
+    &infin;
+  </a>
+  ref
+</h2>
+<div><p>The App&#39;s internal unique reference.</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura property</a>
+  </small>
+  <a href="#property-Aura-sandbox" name="property-Aura-sandbox" class="documentation-anchor">
+    &infin;
+  </a>
+  sandbox
+</h2>
+<div><p>Sandboxes are a way to implement the facade pattern on top of the features provided by <code>core</code>.</p>
+
+<p>The <code>sandbox</code> property of an Aura App is just an Object that will be used
+as a blueprint, once the app is started, to create new instances
+of sandboxed environments for the Components.</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-sandboxes.create" name="method-Aura-sandboxes.create" class="documentation-anchor">
+    &infin;
+  </a>
+  sandboxes.create( <span class="params">ref, options</span> )    
+</h2>
+<div><p>Creates a brand new sandbox, using the App&#39;s <code>sandbox</code> object as a prototype.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label '>ref</span>
+    </td>
+    <td width="25%">
+      (optional)
+      String
+    </td>
+    <td width="50%">
+      the Sandbox unique ref
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label '>options</span>
+    </td>
+    <td width="25%">
+      (optional)
+      Object
+    </td>
+    <td width="50%">
+      an object to that directly extends the Sandbox
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-sandboxes.get" name="method-Aura-sandboxes.get" class="documentation-anchor">
+    &infin;
+  </a>
+  sandboxes.get( <span class="params">ref</span> )    
+</h2>
+<div><p>Get a sandbox by reference.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>ref</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      the Sandbox ref to retreive
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-start" name="method-Aura-start" class="documentation-anchor">
+    &infin;
+  </a>
+  start( <span class="params">options</span> )    
+</h2>
+<div><p>Application start.</p>
+
+<p>Bootstraps the extensions loading process.
+All the extensions are resolved and loaded when <code>start</code> id called.
+Start returns a promis e that shall fail if any of the
+extensions fails to load.</p>
+
+<p>The app&#39;s responsibility is to load its extensions,
+make sure they are properly loaded when the app starts
+and eventually make sure they are properly cleaned up when the app stops</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>options</span>
+    </td>
+    <td width="25%">
+      
+      Object | String | Array
+    </td>
+    <td width="50%">
+      start options.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-stop" name="method-Aura-stop" class="documentation-anchor">
+    &infin;
+  </a>
+  stop( <span class="params"></span> )    
+</h2>
+<div><p>Stops the application and unregister its loaded dependencies.</p>
+</div>  
+
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Aura'>Aura method</a>
+  </small>
+  <a href="#method-Aura-use" name="method-Aura-use" class="documentation-anchor">
+    &infin;
+  </a>
+  use( <span class="params">ref</span> )    
+</h2>
+<div><p>Tells the app to load the given extension.</p>
+
+<p>Aura extensions are loaded in the app during init.
+they are responsible for :</p>
+
+<ul>
+<li>resolving &amp; loading external dependencies via requirejs</li>
+<li>they have a direct access to the app&#39;s internals</li>
+<li>they are here to add new features to the app... that are made available through the sandboxes to the components.</li>
+</ul>
+
+<p>This method can only be called before the App is actually started.
+Note that the App is started when its <code>start</code> method is called.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>ref</span>
+    </td>
+    <td width="25%">
+      
+      String | Object | Function
+    </td>
+    <td width="50%">
+      the reference of the extension
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  <h1>
+    <a href="#class-Component" name="class-Component" class="documentation-anchor">
+    &infin;
+    </a>
+    Component
+  </h1>
+
+  
+  <div><p>The base Component constructor...</p>
+</div>  
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component property</a>
+  </small>
+  <a href="#property-Component-$el" name="property-Component-$el" class="documentation-anchor">
+    &infin;
+  </a>
+  $el
+</h2>
+<div><p>A cached jQuery object for the Components&#39;s element.</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component method</a>
+  </small>
+  <a href="#method-Component-$find" name="method-Component-$find" class="documentation-anchor">
+    &infin;
+  </a>
+  $find( <span class="params">selector</span> )    
+</h2>
+<div><p>A helper function to find matching elements within the Component&#39;s root element.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>selector</span>
+    </td>
+    <td width="25%">
+      
+      Selector | jQuery Object | Element
+    </td>
+    <td width="50%">
+      CSS selector or jQuery object.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component property</a>
+  </small>
+  <a href="#property-Component-_ref" name="property-Component-_ref" class="documentation-anchor">
+    &infin;
+  </a>
+  _ref
+</h2>
+<div><p>Internal, unique reference for a Component instance</p>
+</div>  
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component method</a>
+  </small>
+  <a href="#method-Component-html" name="method-Component-html" class="documentation-anchor">
+    &infin;
+  </a>
+  html( <span class="params">markup</span> )    
+</h2>
+<div><p>A helper function to render markup and recursilvely start nested components.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>markup</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      the markup to render in the component's root el
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component method</a>
+  </small>
+  <a href="#method-Component-initialize" name="method-Component-initialize" class="documentation-anchor">
+    &infin;
+  </a>
+  initialize( <span class="params">options</span> )    
+</h2>
+<div><p>Method called on Components&#39; initialization.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>options</span>
+    </td>
+    <td width="25%">
+      
+      Object
+    </td>
+    <td width="50%">
+      options Object passed on Component initialization
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component method</a>
+  </small>
+  <a href="#method-Component-invokeWithCallbacks" name="method-Component-invokeWithCallbacks" class="documentation-anchor">
+    &infin;
+  </a>
+  invokeWithCallbacks( <span class="params">methodName</span> )    
+</h2>
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>methodName</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      the name of the method to invoke with callbacks
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Component'>Component property</a>
+  </small>
+  <a href="#property-Component-options" name="property-Component-options" class="documentation-anchor">
+    &infin;
+  </a>
+  options
+</h2>
+<div><p>The Components&#39; options Object, passed to its constructor.
+TODO: Add explain, how options are set from HTML API + which default options are
+set during the Component initialization.</p>
+</div>  
+
+  
+  
+  <h1>
+    <a href="#class-Sandbox" name="class-Sandbox" class="documentation-anchor">
+    &infin;
+    </a>
+    Sandbox
+  </h1>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Sandbox'>Sandbox method</a>
+  </small>
+  <a href="#method-Sandbox-emit" name="method-Sandbox-emit" class="documentation-anchor">
+    &infin;
+  </a>
+  emit( <span class="params">name, payload</span> )    
+</h2>
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>name</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      Event name to emit
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>payload</span>
+    </td>
+    <td width="25%">
+      
+      Object
+    </td>
+    <td width="50%">
+      Payload emitted
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Sandbox'>Sandbox method</a>
+  </small>
+  <a href="#method-Sandbox-off" name="method-Sandbox-off" class="documentation-anchor">
+    &infin;
+  </a>
+  off( <span class="params">name, listener</span> )    
+</h2>
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>name</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      Pattern of event to subscrbibe to.
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>listener</span>
+    </td>
+    <td width="25%">
+      
+      Function
+    </td>
+    <td width="50%">
+      Listener function to stop.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Sandbox'>Sandbox method</a>
+  </small>
+  <a href="#method-Sandbox-on" name="method-Sandbox-on" class="documentation-anchor">
+    &infin;
+  </a>
+  on( <span class="params">name</span> )    
+</h2>
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>name</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      Pattern of event to subscrbibe to.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Sandbox'>Sandbox method</a>
+  </small>
+  <a href="#method-Sandbox-once" name="method-Sandbox-once" class="documentation-anchor">
+    &infin;
+  </a>
+  once( <span class="params">name</span> )    
+</h2>
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>name</span>
+    </td>
+    <td width="25%">
+      
+      String
+    </td>
+    <td width="50%">
+      Pattern of event to subscrbibe to.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Sandbox'>Sandbox method</a>
+  </small>
+  <a href="#method-Sandbox-start" name="method-Sandbox-start" class="documentation-anchor">
+    &infin;
+  </a>
+  start( <span class="params">list, options</span> )    
+</h2>
+<div><p>Start method.
+This method takes either an Array of Components to start or or DOM Selector to
+target the element that will be parsed to look for Components to start.</p>
+</div>  
+
+<h5>Parameters:</h5>
+<table class='table'>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>list</span>
+    </td>
+    <td width="25%">
+      
+      Array|DOM Selector
+    </td>
+    <td width="50%">
+      Array of Components to start or parent node.
+    </td>
+  </tr>
+  
+  <tr width="100%">
+    <td width="25%">
+      <span class='label label-brand'>options</span>
+    </td>
+    <td width="25%">
+      
+      Object
+    </td>
+    <td width="50%">
+      Available options: `reset` : if true, all current children
+                                     will be stopped before start.
+    </td>
+  </tr>
+  
+</table>
+
+  
+  
+  
+    <h2>
+  <small class="pull-right">
+    <a href='#class-Sandbox'>Sandbox method</a>
+  </small>
+  <a href="#method-Sandbox-stopListening" name="method-Sandbox-stopListening" class="documentation-anchor">
+    &infin;
+  </a>
+  stopListening( <span class="params"></span> )    
+</h2>
+
+
+  
+  
+
+
+        </div>
+      </div>
+    </article>
+  </section>
+
+</body>
+</html>

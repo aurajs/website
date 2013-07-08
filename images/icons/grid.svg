@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="16" height="16"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M3.5,0h-3C0.226,0,0,0.225,0,0.5v3C0,3.775,0.226,4,0.5,4h3
+		C3.775,4,4,3.775,4,3.5v-3C4,0.225,3.775,0,3.5,0"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M3.5,6h-3C0.226,6,0,6.225,0,6.5v3C0,9.775,0.226,10,0.5,10h3
+		C3.775,10,4,9.775,4,9.5v-3C4,6.225,3.775,6,3.5,6"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M3.5,12h-3C0.226,12,0,12.225,0,12.5v3C0,15.775,0.226,16,0.5,16h3
+		C3.775,16,4,15.775,4,15.5v-3C4,12.225,3.775,12,3.5,12"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M9.5,0h-3C6.226,0,6,0.225,6,0.5v3C6,3.775,6.226,4,6.5,4h3
+		C9.775,4,10,3.775,10,3.5v-3C10,0.225,9.775,0,9.5,0"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M9.5,6h-3C6.226,6,6,6.225,6,6.5v3C6,9.775,6.226,10,6.5,10h3
+		C9.775,10,10,9.775,10,9.5v-3C10,6.225,9.775,6,9.5,6"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M9.5,12h-3C6.226,12,6,12.225,6,12.5v3C6,15.775,6.226,16,6.5,16h3
+		c0.275,0,0.5-0.225,0.5-0.5v-3C10,12.225,9.775,12,9.5,12"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M15.5,0h-3C12.227,0,12,0.225,12,0.5v3C12,3.775,12.227,4,12.5,4h3
+		C15.775,4,16,3.775,16,3.5v-3C16,0.225,15.775,0,15.5,0"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M15.5,6h-3C12.227,6,12,6.225,12,6.5v3c0,0.275,0.227,0.5,0.5,0.5h3
+		c0.275,0,0.5-0.225,0.5-0.5v-3C16,6.225,15.775,6,15.5,6"/>
+	<path clip-path="url(#SVGID_2_)" fill="#1D1D1B" d="M15.5,12h-3c-0.273,0-0.5,0.225-0.5,0.5v3c0,0.275,0.227,0.5,0.5,0.5h3
+		c0.275,0,0.5-0.225,0.5-0.5v-3C16,12.225,15.775,12,15.5,12"/>
+</g>
+</svg>

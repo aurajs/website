@@ -1,0 +1,84 @@
+<h2>Yeoman generator</h2>
+
+<p>An Aura scaffolding generator (for Yeoman) is also available at <a href="https://github.com/dotCypress/generator-aura">Aura generator</a>.</p>
+
+<h3>Usage</h3>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre>  # First make a new directory, and `cd` into it:
+  mkdir my-awesome-project &amp;&amp; cd $_
+
+  # Then install `generator-aura`:
+  npm install -g generator-aura
+
+  # Run `yo aura`, optionally passing an app name:
+  yo aura [app-name]
+
+  # Finally, install npm and bower dependencies:
+  npm install &amp;&amp; bower install --dev
+</pre></td>
+</tr></table>
+</div></div>
+<h3>Generators</h3>
+
+<p>Available generators:</p>
+
+<ul>
+<li><a href="#component">aura:component</a></li>
+<li><a href="#extension">aura:extension</a></li>
+<li><a href="#styles">aura:styles</a></li>
+</ul>
+
+<h3>Component</h3>
+
+<p>Generates a component in <code>app/components</code>.</p>
+
+<p>Example:</p>
+<div class="highlight bash "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>yo aura:component sample
+</pre></td>
+</tr></table>
+</div></div>
+<p>Produces <code>app/components/sample/main.js</code></p>
+
+<h3>Extension</h3>
+
+<p>Generates a extension in <code>app/extensions</code>.</p>
+
+<p>Example:
+<code>bash
+yo aura:extension storage
+</code></p>
+
+<p>Produces <code>app/extensions/storage.js</code></p>
+
+<h3>Styles</h3>
+
+<p>Generates cool styles.</p>
+
+<p>Example:
+<code>bash
+yo aura:styles
+</code></p>
+
+<h5>Supported types:</h5>
+
+<ul>
+<li>Default (normalize.css)</li>
+<li>Twitter Bootstrap</li>
+<li>Twitter Bootstrap for Compass</li>
+<li>Zurb Foundation</li>
+</ul>

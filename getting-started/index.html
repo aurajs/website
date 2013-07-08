@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AuraJS</title>
+  <meta charset="utf-8" />
+  <meta name='viewport' content='width=1000' />
+  <meta name='description' content="" />
+  <meta property='og:title' content="aura" />
+  <meta property='og:type' content='company' />
+  <meta property='og:site_name' content="aura" />
+  <meta property='og:url' content="http://aurajs.com" />
+  <link href="/stylesheets/style.css?1373301170" media="screen" rel="stylesheet" type="text/css" />
+  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/javascripts/application.js?1373301169" type="text/javascript"></script>
+  <script src="//d3f5pyioow99x0.cloudfront.net/develop/hull.js"></script>
+<script>Hull.init({"appId":"51da11e01234b56ba0000202","orgUrl":"https://aura.hullapp.io","debug":true});</script>
+
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav" id="secondary-nav" role="navigation">
+  <ul>
+    
+    <li class="">
+      <a href="/" rel="About">
+        About
+      </a>
+    </li>
+    
+    <li class="active">
+      <a href="/getting-started" rel="Getting Started">
+        Getting Started
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/api" rel="API">
+        API
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/guides" rel="Guides">
+        Guides
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/examples" rel="Examples">
+        Examples
+      </a>
+    </li>
+    
+    <li class="">
+      <a href="/faq" rel="FAQs">
+        FAQs
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+
+  </header>
+  
+  <aside class="sidebar" role="navigation">
+    <a href="/" class="logo"></a>
+    <div class="tree">  <div class="tree-nav-section">
+    <h3><a href="#concepts">Concepts</a></h3><p><a href="#aura-app">Aura App</a></p><p><a href="#extension">Extension</a></p><p><a href="#core">Core</a></p><p><a href="#sandbox">Sandbox</a></p><p><a href="#component">Component</a></p><h3><a href="#components">Components</a></h3><p><a href="#creating-and-starting-an-application">Creating and starting an application</a></p><p><a href="#creating-a-component">Creating a component</a></p><p><a href="#starting-components">Starting components</a></p><p><a href="#nesting-components">Nesting components</a></p><p><a href="#communication-between-components">Communication between components</a></p><p><a href="#component-sources">Component sources</a></p><h3><a href="#extending-aura">Extending Aura</a></h3><p><a href="#creating-extensions">Creating extensions</a></p><p><a href="#extensions-formats">Extensions formats</a></p><p><a href="#requiring-amd-modules">"requiring" AMD modules</a></p><p><a href="#dealing-with-asynchronicity-and-start-process">Dealing with asynchronicity and start process</a></p><p><a href="#using-extensions">Using extensions</a></p><h3><a href="#misc">Misc</a></h3><p><a href="#debugging">Debugging</a></p><p><a href="#building-aura">Building Aura</a></p>
+  </div>
+
+
+
+<ul class="tree-nav-section">
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+  </li>
+  <li>
+    <a class="btn small block" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+  </li>
+  <li>
+    <a class="btn small block faded" href="https://github.com/aurajs/aura">View on Github</a>
+  </li>
+</ul>
+</div>
+  </aside>
+  
+  <section class="documentation" id="content">
+    <article>
+      <div class="row">
+        <header class="documentation-header" id="Getting Started">
+          <h1>Getting Started</h1>
+          <p></p>
+        </header>
+        
+        <div class="documentation-body language-markup">
+          <h1>Concepts</h1>
+
+<h2>Aura App</h2>
+
+<p>Your application will be an instance of the <code>Aura</code> object.</p>
+
+<p>Its responsibilities are to load extensions when the app starts and clean them up when the app stops.</p>
+
+<h2>Extension</h2>
+
+<p>Extensions are loaded in your application when it starts. They allow you to add features to the application, and are available to the components through their <code>sandbox</code>.</p>
+
+<h2>Core</h2>
+
+<p>The <code>core</code> implements aliases for DOM manipulation, templating and other lower-level utilities that pipe back to a library of choice. Aliases allow switching libraries with minimum impact on your application.</p>
+
+<h2>Sandbox</h2>
+
+<p>A <code>sandbox</code> is just a way to implement the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#facadepatternjavascript">facade</a> pattern on top of features provided by <code>core</code>. It lets you expose the parts of a JavaScript library that are safe to use instead of exposing the entire API. This is particularly useful when working in teams.</p>
+
+<p>When your app starts, it will create an instance of <code>sandbox</code> in each of your components.</p>
+
+<h2>Component</h2>
+
+<p>A component represents a unit of a page. Each component is independent.
+This means that they know nothing about each other. To make them communicate, a <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript">Publish/Subscribe (Mediator)</a> pattern is used.</p>
+
+<h1>Components</h1>
+
+<p>The simplest usable Aura application using a component and extension can be found in our <a href="https://github.com/aurajs/boilerplate">boilerplate</a> repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.</p>
+
+<h2>Creating and starting an application</h2>
+
+<p>The first step in creating an Aura application is to make an instance of <code>Aura</code>.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre>require([<span class="string"><span class="delimiter">'</span><span class="content">aura</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>() {
+  <span class="keyword">var</span> app = <span class="keyword">new</span> Aura();
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Now that we have our <code>app</code>, we can start it.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>app.start();
+</pre></td>
+</tr></table>
+</div></div>
+<p>This starts the <code>app</code> by saying that it should search for components anywhere in the <code>body</code> of your HTML document.</p>
+
+<p>If you want to restrict to scope to your application to a particular element, or set of elements in your document, you can pass a selector to start : </p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>app.start(<span class="string"><span class="delimiter">'</span><span class="content">#container</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<h3>App configuration</h3>
+
+<p>Aura&#39;s contructor take take a configuration object, that will be available as <code>app.config</code> in the the extensions.</p>
+
+<p>Currently, the only config entry available on a barebone Aura application is <code>debug</code> (cf. <a href="#debugging">debug section</a>)</p>
+
+<h2>Creating a component</h2>
+
+<p>By default components are loaded from a this path : <code>./aura_components</code>, relative to your current document.</p>
+
+<p>Let&#39;s say we want to create an &quot;hello&quot; component. To do that we need to create a <code>aura_components/hello</code> directory</p>
+
+<p>This directory must contain:</p>
+
+<ul>
+<li>A <code>main.js</code> file. It will bootstrap and describe the component. It is mandatory, no matter how small it can be.</li>
+<li>All the other files that your component needs (models, templates, …).</li>
+</ul>
+
+<p>For our &quot;hello&quot; component the <code>main.js</code> will be:</p>
+
+<p><strong>aura_components/hello/main.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span> () {
+    <span class="local-variable">this</span>.<span class="predefined">$el</span>.html(<span class="string"><span class="delimiter">'</span><span class="content">&lt;h1&gt;Hello Aura&lt;/h1&gt;</span><span class="delimiter">'</span></span>);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>On start, Aura will call the <code>initialize</code> method for each component instance.</p>
+
+<h2>Starting components</h2>
+
+<h3>Using markup</h3>
+
+<p>By default, your application will look for DOM Elements with a <code>data-aura-component</code> attribute.</p>
+
+<p>example:</p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>Just include them in your page, and Aura will bring them to life automatically on start.</p>
+
+<p>You can also pass options to your component via data-attributes. </p>
+
+<p>example: </p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello</span><span class="delimiter">&quot;</span></span> 
+      <span class="attribute-name">data-aura-foo</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bar</span><span class="delimiter">&quot;</span></span> 
+      <span class="attribute-name">data-aura-other-option</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello again</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>They will then be available in your component instance as : </p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="local-variable">this</span>.options.foo          <span class="comment">// -&gt; bar</span>
+<span class="local-variable">this</span>.options.otherOption  <span class="comment">// -&gt; hello again</span>
+</pre></td>
+</tr></table>
+</div></div>
+<h3>&quot;Manually&quot;</h3>
+
+<p>The other way to start components on application start is to explicitly pass a list to the <code>app.start</code> method. </p>
+
+<p>example:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>app.start([{ <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">hello</span><span class="delimiter">'</span></span>, <span class="key">options</span>: { <span class="key">el</span>: <span class="string"><span class="delimiter">'</span><span class="content">#hello</span><span class="delimiter">'</span></span> } }]);
+</pre></td>
+</tr></table>
+</div></div>
+<p>All listed components MUST have at least the <code>name</code> and <code>options.el</code> defined. Where <code>name</code> is the name of the component to start and <code>options.el</code> is a DOM selector to target the DOM Element that will be the root of your component.</p>
+
+<p>All other values passed to the options object, will be availaible in your component in <code>this.options</code>.</p>
+
+<h2>Nesting components</h2>
+
+<p>This really starts to get interesting if you use templating and use Aura&#39;s superpower to nest components.</p>
+
+<p>Let&#39;s take an example (using underscore templating) : </p>
+
+<p><strong>aura_components/parent/template.html</strong></p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;ul&gt;</span>
+  <span class="error">&lt;</span>% _.each(children, function(child) { %<span class="error">&gt;</span>
+  <span class="tag">&lt;li</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">'</span><span class="content">child</span><span class="delimiter">'</span></span> <span class="attribute-name">data-aura-my-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">&lt;%= child.name %</span></span><span class="error">&gt;</span>'<span class="error">&gt;</span><span class="tag">&lt;/li&gt;</span>
+  <span class="error">&lt;</span>% }); %<span class="error">&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p><strong>aura_components/parent/main.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td>
+  <td class="code"><pre>define([<span class="string"><span class="delimiter">'</span><span class="content">text!./template.html</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>(tpl) {
+  <span class="keyword">var</span> template = _.template(tpl);
+  <span class="keyword">return</span> {
+    <span class="function">initialize</span>: <span class="keyword">function</span>() {
+      <span class="keyword">var</span> children = <span class="local-variable">this</span>.options.children.split(<span class="string"><span class="delimiter">&quot;</span><span class="content">,</span><span class="delimiter">&quot;</span></span>);
+      <span class="local-variable">this</span>.html(template({ <span class="key">children</span>: children }));
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p><strong>aura_components/child/main.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.html(<span class="string"><span class="delimiter">&quot;</span><span class="content">I am </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.options.myName);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Then if you include your <code>parent</code> component : </p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">parent</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-aura-chilren</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">one,two,three</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>The result will be : </p>
+<div class="highlight html "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">parent</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-aura-chilren</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">one,two,three</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;ul&gt;</span>
+    <span class="tag">&lt;li</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">'</span><span class="content">child</span><span class="delimiter">'</span></span> <span class="attribute-name">data-aura-my-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">one</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>I am one<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">'</span><span class="content">child</span><span class="delimiter">'</span></span> <span class="attribute-name">data-aura-my-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">two</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>I am two<span class="tag">&lt;/li&gt;</span>
+    <span class="tag">&lt;li</span> <span class="attribute-name">data-aura-component</span>=<span class="string"><span class="delimiter">'</span><span class="content">child</span><span class="delimiter">'</span></span> <span class="attribute-name">data-aura-my-name</span>=<span class="string"><span class="delimiter">'</span><span class="content">three</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>I am three<span class="tag">&lt;/li&gt;</span>
+  <span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div></div>
+<p>This means that you can truly build your applications, one component at a time, and literaly assemble them with markup.</p>
+
+<h3>Nesting &quot;manually&quot;</h3>
+
+<p>Components can also start children via they <code>this.sandbox.start</code> method, which can, like the <code>app.start</code> method start nested components by passing a list of component descriptions. </p>
+
+<p>example: </p>
+
+<p><strong>aura_components/my_component/main.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.<span class="predefined">$el</span>.html(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div id='a-child-component'&gt;&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>);
+    <span class="local-variable">this</span>.sandbox.start([{ <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">child</span><span class="delimiter">'</span></span>, <span class="key">options</span>: { <span class="key">el</span>: <span class="string"><span class="delimiter">'</span><span class="content">#a-child-component</span><span class="delimiter">'</span></span> }}]);
+  }
+})
+</pre></td>
+</tr></table>
+</div></div>
+<p>The <code>this.html</code> method actually does just that and this would be the exact equivalent of doing :</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.html(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div data-aura-component='child'&gt;&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>);
+  }
+})
+</pre></td>
+</tr></table>
+</div></div>
+<h2>Communication between components</h2>
+
+<p>The Aura <a href="https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js">Mediator</a> allows components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:</p>
+
+<ul>
+<li><code>sandbox.on(name, listener, context)</code></li>
+<li><code>sandbox.off(name, listener)</code></li>
+<li><code>sandbox.emit(data)</code></li>
+</ul>
+
+<p>Below we can see an example of a component from our TodoMVC example using the Mediator to emit a notification when tasks have been cleared and subscribing to changes from <code>tasks.stats</code> in order to render when they are updated.</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre>define([<span class="string"><span class="delimiter">'</span><span class="content">hbs!./stats</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>(template) {
+  <span class="keyword">return</span> {
+    <span class="function">initialize</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.sandbox.on(<span class="string"><span class="delimiter">'</span><span class="content">tasks.stats</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>.render, <span class="local-variable">this</span>);
+    },
+    <span class="function">render</span>: <span class="keyword">function</span>(stats) {
+      <span class="local-variable">this</span>.html(template(stats || {}));
+      <span class="local-variable">this</span>.<span class="predefined">$el</span>.find(<span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>).on(<span class="string"><span class="delimiter">'</span><span class="content">click</span><span class="delimiter">'</span></span>, _.bind(<span class="local-variable">this</span>.clearCompleted, <span class="local-variable">this</span>));
+    },
+    <span class="function">clearCompleted</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.sandbox.emit(<span class="string"><span class="delimiter">'</span><span class="content">tasks.clear</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<h2>Component sources</h2>
+
+<p>TODO...</p>
+
+<h1>Extending Aura</h1>
+
+<p>So far our components can render markup and bring children to life, but that&#39;s probably not enough.</p>
+
+<p>We could teach them how to load templates easily or talk to Github&#39;s API.</p>
+
+<p>Let&#39;s get to the basics first.</p>
+
+<p>First, extensions are loaded and run when the application starts. It means that Aura guarantees that when your first component is loaded, all the extensions have already beed loaded.</p>
+
+<p>All extensions have access to the internals of your app, and can do pretty much what they want at this stage, but they are really only supposed to provide features to the components via the <code>sandbox</code> object, available on the app&#39;s instance.</p>
+
+<p>This <code>sandbox</code>, is like a blueprint that gets augmented by the extensions during the app initialization process. Afterwards, each components will get a new fresh clone of this object.</p>
+
+<p>This instance of <code>sandbox</code>, available via <code>this.sandbox</code> inside our component and is the ONLY thing it knows about the outside world.</p>
+
+<h2>Creating extensions</h2>
+
+<p>Imagine that we need an helper to reverse a string. In order to accomplish that and make it available to your components, let&#39;s create a very simple extension.</p>
+
+<p><strong>aura_extensions/reverse.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span> (app) {
+    app.sandbox.<span class="function">reverse</span> = <span class="keyword">function</span> (string) {
+      <span class="keyword">return</span> string.split(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>).reverse().join(<span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>);
+    };
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Then to use it within a component : </p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> reversed = <span class="local-variable">this</span>.sandbox.reverse(<span class="string"><span class="delimiter">&quot;</span><span class="content">reverse me</span><span class="delimiter">&quot;</span></span>);
+    <span class="local-variable">this</span>.html(reversed);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<h2>Extensions formats</h2>
+
+<h3>Function</h3>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> <span class="function">ext</span> = <span class="keyword">function</span>(app) {
+  app.core.<span class="function">hello</span> = <span class="keyword">function</span>() {  alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>) };
+}
+aura().use(ext).start(<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<h3>Object litteral</h3>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre>aura().use({
+  <span class="key">require</span>: {
+    <span class="key">paths</span>: {
+      <span class="key">my_module</span>: <span class="string"><span class="delimiter">'</span><span class="content">bower_components/my_module</span><span class="delimiter">'</span></span>
+    }
+  },
+  <span class="function">initialize</span>: <span class="keyword">function</span>(app) {
+    <span class="keyword">var</span> MyModule = require(<span class="string"><span class="delimiter">'</span><span class="content">my_module</span><span class="delimiter">'</span></span>);
+    app.core.<span class="function">hello</span> = <span class="keyword">function</span>() {  alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>) };
+  },
+  <span class="function">afterAppStart</span>: <span class="keyword">function</span>() {
+    console.warn(<span class="string"><span class="delimiter">&quot;</span><span class="content">My Aura App is now started !</span><span class="delimiter">&quot;</span></span>);
+  }
+}).start(<span class="string"><span class="delimiter">'</span><span class="content">body</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>The Object litteral form allows to add AMD dependencies Application lifecycle callbacks like <code>afterAppStart</code>.</p>
+
+<h2>&quot;requiring&quot; AMD modules</h2>
+
+<p>Extensions can be defined as AMD module themselves and use the <code>define([], function() {})</code> syntax to load dependencies. This is totally fine, but you still need to configure requirejs (or any other AMD loader) to teach it where to find those dependencies. </p>
+
+<p>We have found that requirejs central config files can grow pretty dramatically and become hard to manage. It also means that your extensions are not easily portable from one app to the other, since you have to track down all their dependencies and configure require with the right paths.</p>
+
+<p>We think we have a solution for that : Extensions can define their AMD dependencies, paths, shims and all other AMD config themselves. Combined with sane defaults based on <a href="https://github.com/bower/bower">Bower</a>, we can do things like : </p>
+
+<p><strong>aura_extensions/my_extension_that_needs_backbone.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="key">require</span>: {
+    <span class="key">paths</span>: {
+      <span class="key">backbone</span>:   <span class="string"><span class="delimiter">'</span><span class="content">bower_components/backbone/backbone</span><span class="delimiter">'</span></span>,
+      <span class="key">underscore</span>: <span class="string"><span class="delimiter">'</span><span class="content">bower_components/underscore/underscore</span><span class="delimiter">'</span></span>,
+      <span class="key">jquery</span>:     <span class="string"><span class="delimiter">'</span><span class="content">bower_components/jquery/jquery</span><span class="delimiter">'</span></span>
+    },
+    <span class="key">shim</span>:   { <span class="key">backbone</span>: { <span class="key">exports</span>: <span class="string"><span class="delimiter">'</span><span class="content">Backbone</span><span class="delimiter">'</span></span>, <span class="key">deps</span>: [<span class="string"><span class="delimiter">'</span><span class="content">underscore</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">jquery</span><span class="delimiter">'</span></span>] } }
+  },
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="keyword">var</span> Backbone = require(<span class="string"><span class="delimiter">'</span><span class="content">backbone</span><span class="delimiter">'</span></span>);
+    <span class="comment">//... do stuff now ...</span>
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>When <code>initialize</code> is called, Aura ensures that all the dependencies listed in require.paths are already loaded. So we can use the &#39;synchonous&#39; require directly.</p>
+
+<p>Actually what Aura does corresponds to (pseudo-code):</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="keyword">function</span> <span class="function">requireExtension</span>(ext) {
+  require.config({ <span class="key">paths</span>: { ... }, <span class="key">shim</span>: { ... } });
+  require([<span class="string"><span class="delimiter">'</span><span class="content">jquery</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">backbone</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">underscore</span><span class="delimiter">'</span></span>], <span class="keyword">function</span>(Backbone, _) {
+    <span class="predefined">$</span>.when(ext.initialize(app)).then( ... load next extension ... );
+  })
+}
+</pre></td>
+</tr></table>
+</div></div>
+<p><em>Note. This is not available yet, but in the near future, Aura will provide <a href="http://gruntjs.com">grunt</a>-based build tools to extract this requirejs config from your extensions and make it available to the r.js optimizer.</em></p>
+
+<h2>Dealing with asynchronicity and start process</h2>
+
+<p>If your app needs to wait for resources to be loaded (or wait for anything really) before it is able to actually start, the extensions system allows you to do it in one place using Promises.</p>
+
+<p>Let&#39;s take for example a Facebook extension that wraps, loads Facebook javascript SDK, and provides <code>auth.login</code> and <code>auth.logout</code> method to our components.</p>
+
+<p>Let&#39;s also say that we want to wait for facebook js lib to be loaded and initialized to actually start our app. </p>
+
+<p>We could do something like : </p>
+
+<p><strong>aura_extensions/facebook.js</strong></p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+<strong>20</strong>
+21
+22
+23
+24
+25
+26
+</pre></td>
+  <td class="code"><pre>define({
+  <span class="key">require</span>: {
+    <span class="key">paths</span>: { <span class="key">facebook</span>: <span class="string"><span class="delimiter">'</span><span class="content">http://connect.facebook.net/en_US/all.js</span><span class="delimiter">'</span></span> },
+    <span class="key">shim</span>:  { <span class="key">facebook</span>: { <span class="reserved">export</span>: <span class="string"><span class="delimiter">'</span><span class="content">FB</span><span class="delimiter">'</span></span> } }
+  },
+
+  <span class="function">initialize</span>: <span class="keyword">function</span>(app) {
+    <span class="keyword">var</span> status = app.core.data.deferred();
+    app.sandbox.auth = {
+      <span class="key">login</span>:  FB.login,
+      <span class="key">logout</span>: FB.logout
+    };
+    FB.init(app.config.facebook);
+
+    FB.getLoginStatus(<span class="keyword">function</span>(res) {
+      app.sandbox.auth.loginStatus = res;
+      status.resolve(res);
+    }, <span class="predefined-constant">true</span>);
+
+    <span class="keyword">return</span> status.promise();
+  },
+
+  <span class="function">afterAppStart</span>: <span class="keyword">function</span>(app) {
+    console.warn(<span class="string"><span class="delimiter">&quot;</span><span class="content">The app is started and I am : </span><span class="delimiter">&quot;</span></span>, app.sandbox.auth.loginStatus);
+  }
+});
+</pre></td>
+</tr></table>
+</div></div>
+<p>The <code>initialize</code> method here returns a <a href="http://wiki.commonjs.org/wiki/Promises/A">Promise</a>. Aura will then automatically wait for the resolution of this promise to actually finish the initialization process.</p>
+
+<p>Actually, when you have multiple extensions, each extension will wait for the resolution of the previous one to call its initialize method. </p>
+
+<p>Eeach extension can also define a <code>afterAppStart</code> method that will be called after the initialization process. Those callbacks will also be called sequentially, keeping the same order as the extensions load order.</p>
+
+<h2>Using extensions</h2>
+
+<p>To make our <code>reverse</code> helper available in our app, run the following code:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> app = <span class="keyword">new</span> Aura();
+app.use(<span class="string"><span class="delimiter">'</span><span class="content">aura_extensions/reverse</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>This will call the <code>initialize</code> function of our <code>reverse</code> extension.</p>
+
+<p>Note: Calling <code>use</code> when your <code>app</code> is already started will throw an error. 
+You CANNOT load extension after the start method has been called. In fact you SHOULD not even keep a reference to your <code>app</code> instance to use it outside of a component.</p>
+
+<h1>Misc</h1>
+
+<h2>Debugging</h2>
+
+<p>To make <code>app.logger</code> available, pass <code>{debug: true}</code> into Aura constructor:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> app = <span class="keyword">new</span> Aura({ <span class="key">debug</span>: <span class="predefined-constant">true</span> });
+</pre></td>
+</tr></table>
+</div></div>
+<p>Logger usage:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+</pre></td>
+  <td class="code"><pre><span class="comment">// You can use logger from components or extensions</span>
+<span class="keyword">var</span> logger = sandbox.logger;
+
+logger.log(<span class="string"><span class="delimiter">'</span><span class="content">Hey</span><span class="delimiter">'</span></span>);
+logger.warn(<span class="string"><span class="delimiter">'</span><span class="content">Hey</span><span class="delimiter">'</span></span>);
+logger.error(<span class="string"><span class="delimiter">'</span><span class="content">Hey</span><span class="delimiter">'</span></span>);
+</pre></td>
+</tr></table>
+</div></div>
+<p>If you want to enable event logging, do this:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+</pre></td>
+  <td class="code"><pre>  <span class="keyword">var</span> app = <span class="keyword">new</span> Aura({<span class="key">debug</span>: <span class="predefined-constant">true</span>, <span class="key">logEvents</span>: <span class="predefined-constant">true</span>});
+</pre></td>
+</tr></table>
+</div></div>
+<p>Also, when parameter <code>debug</code> is true, you can declare following function for any debug purposes:</p>
+<div class="highlight js "><div class="ribbon"></div><div class="scroller"><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td>
+  <td class="code"><pre><span class="comment">// Function will be called for all Aura apps in your project</span>
+window.<span class="function">attachDebugger</span> = <span class="keyword">function</span> (app) {
+  <span class="comment">// Do cool stuff with app object</span>
+  console.log(app);
+
+  <span class="comment">// Maybe you want to have access to Aura app via developer console?</span>
+  window.aura = app;
+};
+</pre></td>
+</tr></table>
+</div></div>
+<h2>Building Aura</h2>
+
+<h4>Requirements</h4>
+
+<ol>
+<li><a href="http://twitter.github.com/bower/">bower</a>: run <code>npm install -g bower</code> if needed</li>
+<li><a href="https://github.com/gruntjs/grunt-cli">grunt-cli</a>: run <code>npm install -g grunt-cli</code> if needed</li>
+</ol>
+
+<h4>Building Aura.js</h4>
+
+<ol>
+<li>Run <code>npm install</code> to install build dependencies.</li>
+<li>Run <code>bower install</code> to install lib dependencies.</li>
+<li>Run <code>grunt build</code> and <code>aura.js</code> will be placed in <code>dist/</code>.</li>
+</ol>
+
+<h3>Running Tests</h3>
+
+<h4>Browser</h4>
+
+<p>Run <code>grunt</code>. Then visit <code>http://localhost:8899/spec/</code>.</p>
+
+<h4>CLI</h4>
+
+<p>Run <code>npm test</code>.</p>
+
+        </div>
+      </div>
+    </article>
+  </section>
+
+</body>
+</html>
