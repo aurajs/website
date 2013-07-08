@@ -10,7 +10,7 @@ title: Guides
         <% if article.data.author %>
           &ndash;
           <strong>
-            by: <%= article.data.author %>
+            by: <a href="https://github.com/<%= article.data.author %>" target="gh"><%= article.data.author %></a>
           </strong>
         <% end%>
       </span>

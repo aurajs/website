@@ -1,9 +1,6 @@
 <% if current_page.data.markdown_navigation %>
   <div class="tree-nav-section">
-    <h3><a href="#<%= title %>"><%= title %></a></h3>
-    <ul>
-      <%= markdown_navigation(current_page) %>
-    </ul>
+    <%= markdown_navigation(current_page) %>
   </div>
 
 

@@ -85,7 +85,7 @@ classes:
     plugin_for: []
     extension_for: []
     file: lib/aura.js
-    line: 380
+    line: 278
 classitems:
 - file: lib/ext/components.js
   line: 15
@@ -429,45 +429,25 @@ classitems:
   class: Aura
 - file: lib/aura.js
   line: 133
-  description: ! "Tells the app to load the given extension.\n\nAura extensions are
-    loaded in the app during init.\nthey are responsible for :\n\n- resolving & loading
-    external dependencies via requirejs\n- they have a direct access to the app's
-    internals\n- they are here to add new features to the app... that are made available
-    through the sandboxes to the components.\n\nExtensions can have multiple forms
-    :\n\n#### AMD Module name\n\n```js\naura().use('extensions/my_super_extension').start('body')\n```\n\n####
-    Function\n\n```js\nvar ext = function(app) {\n  app.core.hello = function() {
-    \ alert(\"Hello World\") };\n}\naura().use(ext).start('body');\n````\n\n#### Object
-    litteral\n\n```js\naura().use({\n  require: {\n    paths: {\n      my_module:
-    'bower_components/my_module'\n    }\n  },\n  initialize: function(app) {\n    var
-    MyModule = require('my_module');\n    app.core.hello = function() {  alert(\"Hello
-    World\") };\n  },\n  afterAppStart: function() {\n    console.warn(\"My Aura App
-    is now started !\");\n  }\n}).start('body');\n````\n\nThe Object litteral form
-    allows :\n\n* to add AMD dependencies\n* to add App lifecycle callbacks (ex. `afterAppStart`)\n\nThe
-    extension provides the path mapping of its dependencies (backbone).\nWhen the
-    extension is used in an app, the ExtManager configures\nrequirejs with the right
-    paths and requires all of them.\n\nActually what it will do corresponds to (pseudo-code):\n\n```\nfunction
-    requireExtension(ext) {\n  require.config({ paths: { ... }, shim: { ... } })\n
-    \ require(['backbone', 'underscore'], function(Backbone, _) {\n    $.when(ext.initialize(app)).then(
-    ... load next extension ... );\n  })\n}\n```\n\nWhen all the extension's dependencies
-    are required, the extension's `initialized` method is called.\n`ext.initialize`
-    may return a promise, ExtManager wait for the result of `ext.initialize` resolution
-    to load the next extension.\n\nWhen all the app's extensions are finally loaded,
-    the extensions `afterAppStart` methods are then called.\nthen the app is considered
-    ready and starts loading the Components !\n\nNote that after `app.start` has been
-    called, it is not possible to register new extensions.\n\n*Example of an extension
-    with an initialize method that returns a promise*\n\nLet's wrap Facebook's sdk
-    as an Aura extension :\n\n```js\nvar facebookExtension = {\n  require: {\n    paths:
-    {\n      facebook: 'http://connect.facebook.net/en_US/all.js'\n    }\n  },\n\n
-    \ initialize: function(app) {\n    var status = app.core.data.deferred();\n    app.sandbox.auth
-    = {\n      login: FB.login,\n      logout: FB.logout\n    };\n    FB.init({ appId:
-    'xxx' });\n\n    FB.getLoginStatus(function(res) {\n      app.sandbox.auth.loginStatus
-    = res;\n      status.resolve(res);\n    }, true);\n\n    return status;\n  },\n\n
-    \ afterAppStart: function(app) {\n    console.warn(\"The app is started and I
-    am : \", app.sandbox.auth.loginStatus);\n  }\n}\n\naura().use(facebookExtension).start().then(function()
-    {\n  console.warn(\"My app is now started... and I am sure that getLoginStatus
-    has been called and has returned somthing...\");\n});\n```\n\nThis method can
-    only be called before the App is actually started.\nNote that the App is started
-    when its `start` method is called."
+  description: ! 'Tells the app to load the given extension.
+
+
+    Aura extensions are loaded in the app during init.
+
+    they are responsible for :
+
+
+    - resolving & loading external dependencies via requirejs
+
+    - they have a direct access to the app''s internals
+
+    - they are here to add new features to the app... that are made available through
+    the sandboxes to the components.
+
+
+    This method can only be called before the App is actually started.
+
+    Note that the App is started when its `start` method is called.'
   itemtype: method
   name: use
   params:
@@ -480,12 +460,12 @@ classitems:
   chainable: 1
   class: Aura
 - file: lib/aura.js
-  line: 258
+  line: 156
   description: Namespace for components related methods.
   type: ! '{Object}'
   class: Aura
 - file: lib/aura.js
-  line: 265
+  line: 163
   description: ! 'Adds a new source for components.
 
     A Component source is an endpoint (basically a URL)
@@ -502,7 +482,7 @@ classitems:
     type: String
   class: Aura
 - file: lib/aura.js
-  line: 282
+  line: 180
   description: ! '`core` is just a namespace used by the extensions to add features
     to the App.'
   itemtype: property
@@ -510,7 +490,7 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 289
+  line: 187
   description: ! 'Application start.
 
 
@@ -539,7 +519,7 @@ classitems:
     type: Promise
   class: Aura
 - file: lib/aura.js
-  line: 352
+  line: 250
   description: Stops the application and unregister its loaded dependencies.
   itemtype: method
   name: stop
@@ -548,7 +528,7 @@ classitems:
     type: Void
   class: Aura
 - file: lib/aura.js
-  line: 363
+  line: 261
   description: ! 'Sandboxes are a way to implement the facade pattern on top of the
     features provided by `core`.
 
@@ -563,14 +543,14 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 373
+  line: 271
   description: App Logger
   itemtype: property
   name: logger
   type: Logger
   class: Aura
 - file: lib/aura.js
-  line: 384
+  line: 282
   description: ! 'Stop method for a Sandbox.
 
     If no arguments provided, the sandbox itself and all its children are stopped.
@@ -621,7 +601,7 @@ warnings:
 - message: ! 'Missing item type
 
     Namespace for components related methods.'
-  line: ! ' lib/aura.js:258'
+  line: ! ' lib/aura.js:156'
 - message: ! 'Missing item type
 
     Stop method for a Sandbox.
@@ -629,4 +609,4 @@ warnings:
     If no arguments provided, the sandbox itself and all its children are stopped.
 
     If a DOM Selector is provided, all matching children will be stopped.'
-  line: ! ' lib/aura.js:384'
+  line: ! ' lib/aura.js:282'

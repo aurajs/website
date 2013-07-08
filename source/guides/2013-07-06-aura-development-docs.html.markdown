@@ -5,9 +5,7 @@ tags:
 author: sbellity
 ---
 
-# A new, higher level of abstraction for the web ?
-
-## (re)Introducing AuraJS: an extensible, widget-friendly architecture for building reusable components and apps.
+## (re)Introducing AuraJS: A framework-agnostic, extensible architecture for decoupled and reusable components.
 
 The key word here is reusable. But making reusable stuff is hard, actually it's kind of the Graal of software development.
 
@@ -21,27 +19,27 @@ Web apps are all about the end user experience, UI, DOM elements. The web develo
 
 ### A higher level of abstraction for the web
 
-Widgets are just that, **complete packaged and reusable pieces of user experience**. You already see them all around the web : Disqus comments, Twitter cards, Facebook social plugins. We all know how easy it is the plug them inside our apps and we should all be able to make stuff like that. 
+Components are just that, **complete packaged and reusable pieces of user experience**. You already see them all around the web : Disqus comments, Twitter cards, Facebook social plugins. We all know how easy it is the plug them inside our apps and we should all be able to make stuff like that. 
 
-But it should not stop to widgets for public consumption, we should actually be able to build our apps this way : by assembling / stitching those pieces together. 
+But it should not stop to components for public consumption, we should actually be able to build our apps this way : by assembling / stitching those pieces together. 
 
 
 ### Yet another framework ?
 
-Nope, AuraJS is not another web framework, it's more like an architecture that you can use to structure your apps and make reusable components. AuraJS Widgets can be Backbone, EmberJS or Angular views or even complete apps.
+Nope, AuraJS is not another web framework, it's more like an architecture that you can use to structure your apps and make reusable components. AuraJS Components can be Backbone, EmberJS or Angular views or even complete apps.
 
 ### How does it work ?
 
-Widgets are completely decoupled, they only can talk to each other via events. You can't have a handle on them from the outside, and themselves are just aware of what you explicitely make available throught their `sandboxes`.
+Components are completely decoupled, they only can talk to each other via events. You can't have a handle on them from the outside, and themselves are just aware of what you explicitely make available throught their `sandboxes`.
 
-To build your app, you can assemble widgets via AuraJS's HTML API, by using the `data-aura-widget` attribute.
+To build your app, you can assemble components via AuraJS's HTML API, by using the `data-aura-component` attribute.
 
 Let's take an example. Let's say that we want to build a Github Issues app. We need to be able to :
 
 * Display lists of issues from specific repos
 * Filter those issues
 
-Now let's make some widgets, but first we need a way to talk to [Github's API](http://developer.github.com/v3/issues/).
+Now let's make some components, but first we need a way to talk to [Github's API](http://developer.github.com/v3/issues/).
 
 Here is a simple [AuraJS extension](https://github.com/aurajs/aura/blob/master/notes/extensions.md) that does just that :
 
@@ -71,7 +69,7 @@ Here is a simple [AuraJS extension](https://github.com/aurajs/aura/blob/master/n
       }
     });
 
-This extension exposes in all our widgets a way to talk to Github's API via the `this.sandbox.github` method.
+This extension exposes in all our components a way to talk to Github's API via the `this.sandbox.github` method.
 
  To use it in your aura app : 
  
@@ -81,11 +79,11 @@ This extension exposes in all our widgets a way to talk to Github's API via the 
       github: { token: 'current-user-token-here' }
     });
     app.use('extensions/aura-github');
-    app.start({ widgets: 'body' });
+    app.start({ components: 'body' });
 
-And now, let's write the `issues` widget : 
+And now, let's write the `issues` component : 
 
-**widgets/issues/main.js**
+**components/issues/main.js**
 
     define(['underscore', 'text!./issues.html'], function(_, tpl) {
     
@@ -122,58 +120,58 @@ And now, let's write the `issues` widget :
     });
 
 
-Now we can place this widget everywhere in our app by using Aura's HTML API based on data-attributes.
+Now we can place this component everywhere in our app by using Aura's HTML API based on data-attributes.
     
-    <div data-aura-widget="issues" data-aura-repo="aurajs/aura"></div>
+    <div data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
 
-You can even have multiple instances of this widget in you page : 
+You can even have multiple instances of this component in you page : 
 
     <div class='row'>
-      <div class='span4' data-aura-widget="issues" data-aura-repo="aurajs/aura"></div>
-      <div class='span4' data-aura-widget="issues" data-aura-repo="emberjs/ember.js"></div>
-      <div class='span4' data-aura-widget="issues" data-aura-repo="documentcloud/backbone"></div>
+      <div class='span4' data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
+      <div class='span4' data-aura-component="issues" data-aura-repo="emberjs/ember.js"></div>
+      <div class='span4' data-aura-component="issues" data-aura-repo="documentcloud/backbone"></div>
     </div>
 
-Any other widget can now emit `issues.filter`  events that these widgets will respond to.
-For example in another widget that will allow the user to filter the issues lists, we can have : 
+Any other component can now emit `issues.filter`  events that these components will respond to.
+For example in another component that will allow the user to filter the issues lists, we can have : 
 
     this.sandbox.emit('issues.filter', { state: 'closed' });
 
-You can find a [Github client demo app based on AuraJS + a bunch of Github widgets here](http://github.com/sbellity/aura-github).
+You can find a [Github client demo app based on AuraJS + a bunch of Github components here](http://github.com/sbellity/aura-github).
 
 ### Building an ecosystem
 
-Now that we have this `aura-github` extension and these widgets, we can distribute them easily (either via package managers like [Bower](http://twitter.github.com/bower/) or by publishing an AuraJS `WidgetSource` and anyone can start assembling Github Apps just by inserting `data-aura-widget` powered elements in their markup.
+Now that we have this `aura-github` extension and these components, we can distribute them easily (either via package managers like [Bower](http://twitter.github.com/bower/) or by publishing an AuraJS `ComponentSource` and anyone can start assembling Github Apps just by inserting `data-aura-component` powered elements in their markup.
 
 AuraJS in itself is a pretty small library but it's been lovingly designed to be the basis of an ecosystem.
-Everyone can now start creating and publishing extensions and widgets that should be ready to use. We even added a pretty powerful feature : the ability to created `WidgetSources` : basically, it allows anyone to publish a collection of ready to use widgets somewhere on the web. 
+Everyone can now start creating and publishing extensions and components that should be ready to use. We even added a pretty powerful feature : the ability to created `ComponentSources` : basically, it allows anyone to publish a collection of ready to use components somewhere on the web. 
 
 To use this, just declare your source in your app's config :
 
     var app = Aura({ 
       github: { token: 'current-user-token' },
-      widgets: { 
+      components: { 
         sources: { 
-          github: 'https://path.to/github/widgets',
-          default: '/widgets'
+          github: 'https://path.to/github/components',
+          default: '/components'
         }
       }
     });
     app.use('http://path.to/github/extensions/aura-github');
-    app.start({ widgets: 'body' });
+    app.start({ components: 'body' });
 
-Then you can start using github powered widgets in your app : 
+Then you can start using github powered components in your app : 
 
-    <div data-aura-widget="issues@github" data-aura-repo="aurajs/aura"></div>
+    <div data-aura-component="issues@github" data-aura-repo="aurajs/aura"></div>
 
-Note the `@github` appended to the widget name ? It's there to tell you app to use the `issues` widget from the `github` `WidgetSource`.
-Just drop the `@xxx` suffix to use widgets defined as the `default` source. 
+Note the `@github` appended to the component name ? It's there to tell you app to use the `issues` component from the `github` `ComponentSource`.
+Just drop the `@xxx` suffix to use components defined as the `default` source. 
 
 ### Hull ♥ AuraJS
 
 How do we use AuraJS at Hull ?
 
-Basically, [HullJs](http://hull.io/docs/Hull.js/introduction/), our client side javascript library, is just and AuraJS app with a bunch of extensions, and a collection of [packaged, ready to use widgets](http://hull.io/docs/widgets/packaged_widgets/) that are configured to talk to [our APIs](http://hull.io/docs/api/introduction/).
+Basically, [HullJs](http://hull.io/docs/Hull.js/introduction/), our client side javascript library, is just and AuraJS app with a bunch of extensions, and a collection of [packaged, ready to use components](http://hull.io/docs/components/packaged_components/) that are configured to talk to [our APIs](http://hull.io/docs/api/introduction/).
 
 
 ### What's next ?
@@ -183,9 +181,9 @@ We are currently in the process of writing a more extensive documentation with t
 
 A few additional stuff we are investigating : 
 
-* [Web components](http://html5-demos.appspot.com/static/webcomponents/index.html). We think AuraJS Widgets are a great fit to start working with web components. We'll start experimenting with them soon.
+* [Web components](http://html5-demos.appspot.com/static/webcomponents/index.html). We think AuraJS Components are a great fit to start working with web components. We'll start experimenting with them soon.
 * [postal.js](https://github.com/postaljs). Currently, AursJS mediator is implemented with [EventEmitter2](https://github.com/hij1nx/EventEmitter2), but postal's extensible architecture would allow us to have apps that could communicate seamlessly [accross frames or windows](https://github.com/postaljs/postal.xframe) or even [accross the web via WebSockets](https://github.com/postaljs/postal.socket)
-* Extensions to make it easy to write Backbone, EmberJS or Angular powered widgets. 
+* Extensions to make it easy to write Backbone, EmberJS or Angular powered components. 
 
 
 What do you think ? We'd love to have your feedback.

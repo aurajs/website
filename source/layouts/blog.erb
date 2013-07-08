@@ -70,10 +70,6 @@
         <div class="documentation-body language-markup">
           <%= yield %>
         </div>
-        <% if current_article %>
-        <h3>Comments</h3>
-        <div data-hull-widget='comments@hull' data-hull-uid="<%= current_article.url %>">Loading comments...</div>
-        <% end %>
       </div>
     </article>
   </section>

@@ -31,7 +31,7 @@ A component represents a unit of a page. Each component is independent.
 This means that they know nothing about each other. To make them communicate, a [Publish/Subscribe (Mediator)](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript) pattern is used.
 
 
-# Introduction
+# Components
 
 The simplest usable Aura application using a component and extension can be found in our [boilerplate](https://github.com/aurajs/boilerplate) repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.
 
@@ -42,7 +42,7 @@ The first step in creating an Aura application is to make an instance of `Aura`.
 
 ```js
 require(['aura'], function() {
-  var app = new Aura();  
+  var app = new Aura();
 });
 ```
 
@@ -60,7 +60,14 @@ If you want to restrict to scope to your application to a particular element, or
 app.start('#container');
 ```
 
-## Creating a Component
+### App configuration
+
+Aura's contructor take take a configuration object, that will be available as `app.config` in the the extensions.
+
+Currently, the only config entry available on a barebone Aura application is `debug` (cf. [debug section](#debugging))
+
+
+## Creating a component
 
 By default components are loaded from a this path : `./aura_components`, relative to your current document.
 
@@ -85,7 +92,7 @@ define({
 
 On start, Aura will call the `initialize` method for each component instance.
 
-## Starting Components
+## Starting components
 
 ### Using markup
 
@@ -190,9 +197,69 @@ The result will be :
 
 This means that you can truly build your applications, one component at a time, and literaly assemble them with markup.
 
+
+### Nesting "manually"
+
+Components can also start children via they `this.sandbox.start` method, which can, like the `app.start` method start nested components by passing a list of component descriptions. 
+
+example: 
+
+__aura_components/my_component/main.js__
+
+```js
+define({
+  initialize: function() {
+    this.$el.html("<div id='a-child-component'></div>");
+    this.sandbox.start([{ name: 'child', options: { el: '#a-child-component' }}]);
+  }
+})
+```
+
+The `this.html` method actually does just that and this would be the exact equivalent of doing :
+
+```js
+define({
+  initialize: function() {
+    this.html("<div data-aura-component='child'></div>");
+  }
+})
+```
+
+## Communication between components
+
+The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js) allows components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:
+
+* `sandbox.on(name, listener, context)`
+* `sandbox.off(name, listener)`
+* `sandbox.emit(data)`
+
+Below we can see an example of a component from our TodoMVC example using the Mediator to emit a notification when tasks have been cleared and subscribing to changes from `tasks.stats` in order to render when they are updated.
+
+```js
+define(['hbs!./stats'], function(template) {
+  return {
+    initialize: function() {
+      this.sandbox.on('tasks.stats', this.render, this);
+    },
+    render: function(stats) {
+      this.html(template(stats || {}));
+      this.$el.find('button').on('click', _.bind(this.clearCompleted, this));
+    },
+    clearCompleted: function() {
+      this.sandbox.emit('tasks.clear');
+    }
+  }
+});
+```
+
+## Component sources
+
+TODO...
+
+
 # Extending Aura
 
-So far our components can only do so much. They can render markup and bring children to life, but that's probably not enough.
+So far our components can render markup and bring children to life, but that's probably not enough.
 
 We could teach them how to load templates easily or talk to Github's API.
 
@@ -200,7 +267,7 @@ Let's get to the basics first.
 
 First, extensions are loaded and run when the application starts. It means that Aura guarantees that when your first component is loaded, all the extensions have already beed loaded.
 
-All extensions have access to the internals of your app, and can do pretty much what they want at this stage, but they are really only supposed to provide features to the components via the `sandbox` object, available on the apps' instance.
+All extensions have access to the internals of your app, and can do pretty much what they want at this stage, but they are really only supposed to provide features to the components via the `sandbox` object, available on the app's instance.
 
 This `sandbox`, is like a blueprint that gets augmented by the extensions during the app initialization process. Afterwards, each components will get a new fresh clone of this object.
 
@@ -233,6 +300,40 @@ define({
 });
 ```
 
+## Extensions formats
+
+
+### Function
+
+```js
+var ext = function(app) {
+  app.core.hello = function() {  alert("Hello World") };
+}
+aura().use(ext).start('body');
+````
+
+### Object litteral
+
+```js
+aura().use({
+  require: {
+    paths: {
+      my_module: 'bower_components/my_module'
+    }
+  },
+  initialize: function(app) {
+    var MyModule = require('my_module');
+    app.core.hello = function() {  alert("Hello World") };
+  },
+  afterAppStart: function() {
+    console.warn("My Aura App is now started !");
+  }
+}).start('body');
+````
+
+The Object litteral form allows to add AMD dependencies Application lifecycle callbacks like `afterAppStart`.
+
+
 ## "requiring" AMD modules
 
 Extensions can be defined as AMD module themselves and use the `define([], function() {})` syntax to load dependencies. This is totally fine, but you still need to configure requirejs (or any other AMD loader) to teach it where to find those dependencies. 
@@ -262,6 +363,17 @@ define({
 
 When `initialize` is called, Aura ensures that all the dependencies listed in require.paths are already loaded. So we can use the 'synchonous' require directly.
 
+Actually what Aura does corresponds to (pseudo-code):
+
+```js
+function requireExtension(ext) {
+  require.config({ paths: { ... }, shim: { ... } });
+  require(['jquery', 'backbone', 'underscore'], function(Backbone, _) {
+    $.when(ext.initialize(app)).then( ... load next extension ... );
+  })
+}
+```
+
 _Note. This is not available yet, but in the near future, Aura will provide [grunt](http://gruntjs.com)-based build tools to extract this requirejs config from your extensions and make it available to the r.js optimizer._
 
 
@@ -269,7 +381,7 @@ _Note. This is not available yet, but in the near future, Aura will provide [gru
 
 If your app needs to wait for resources to be loaded (or wait for anything really) before it is able to actually start, the extensions system allows you to do it in one place using Promises.
 
-Let's take for example a Facebook extension that wraps loads Facebook javascript SDK, and provides `auth.login` and `auth.logout` method to our components.
+Let's take for example a Facebook extension that wraps, loads Facebook javascript SDK, and provides `auth.login` and `auth.logout` method to our components.
 
 Let's also say that we want to wait for facebook js lib to be loaded and initialized to actually start our app. 
 
@@ -318,50 +430,18 @@ To make our `reverse` helper available in our app, run the following code:
 
 ```js
 var app = new Aura();
-app.use('extensions/reverse');
+app.use('aura_extensions/reverse');
 ```
 
 This will call the `initialize` function of our `reverse` extension.
 
-Note: Calling `use` when your `app` is already started will throw an error.
+Note: Calling `use` when your `app` is already started will throw an error. 
+You CANNOT load extension after the start method has been called. In fact you SHOULD not even keep a reference to your `app` instance to use it outside of a component.
 
 
-## Event notifications
+# Misc
 
-The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js) allows Components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:
-
-* `sandbox.on(name, listener, context)`
-* `sandbox.off(name, listener)`
-* `sandbox.emit(data)`
-
-Below we can see an example of a Backbone view using the Mediator to emit a notification when tasks have been cleared and subscribing to changes from `tasks.stats` in order to render when they are updated.
-
-```js
-define(['hbs!./stats'], function(template) {
-  return {
-    type: 'Backbone',
-    events: {
-      'click button': 'clearCompleted'
-    },
-    initialize: function() {
-      this.render();
-      this.sandbox.on('tasks.stats', _.bind(this.render, this));
-    },
-    render: function(stats) {
-      this.html(template(stats || {}));
-    },
-    clearCompleted: function() {
-      this.sandbox.emit('tasks.clear');
-    }
-  }
-});
-```
-
-# Component sources
-
-
-
-# Debugging
+## Debugging
 
 To make `app.logger` available, pass `{debug: true}` into Aura constructor:
 

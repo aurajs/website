@@ -26,11 +26,13 @@ activate :array_navigation
 
 # page "/extensions*",        layout: 'layouts/default'
 page "/",                   layout: 'layouts/default'
-page "/getting-started",    layout: 'layouts/default'
+page "/getting-started*",   layout: 'layouts/default'
+page "/faq*",               layout: 'layouts/default'
 page "/api*",               layout: 'layouts/default'
 # page "/resources",          layout: 'layouts/default'
-page "/examples",           layout: 'layouts/default'
+page "/examples*",           layout: 'layouts/default'
 page "/guides*",            layout: 'layouts/blog'
+
 
 page "/sitemap.xml", :layout => false
 
