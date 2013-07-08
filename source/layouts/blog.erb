@@ -13,6 +13,7 @@
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="alternate" type="application/atom+xml" title="Aura Guides" href="/guides/feed.xml" />
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' %>
+  <%= partial "partials/hull_init" %>
   <%= javascript_include_tag 'application' %>
 </head>
 
@@ -69,6 +70,10 @@
         <div class="documentation-body language-markup">
           <%= yield %>
         </div>
+        <% if current_article %>
+        <h3>Comments</h3>
+        <div data-hull-widget='comments@hull' data-hull-uid="<%= current_article.url %>">Loading comments...</div>
+        <% end %>
       </div>
     </article>
   </section>

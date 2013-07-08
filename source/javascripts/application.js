@@ -17,11 +17,8 @@ $(function() {
     $el.prepend(anchor);
   });
 
-  console.warn("Hash: ", document.location.hash);
-
   var currentHash = document.location.hash;
   if (currentHash) {
-    var anchor = $('a.documentation-anchor[name="' + currentHash.substring(1) + '"]');
-    
+    var anchor = $('a.documentation-anchor[name="' + currentHash.substring(1) + '"]'); 
   }
 });

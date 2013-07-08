@@ -19,16 +19,16 @@ set :markdown, :fenced_code_blocks => true,
                :pattern            => '```',
                :renderer           => CodeRenderer
 
-activate :livereload
+# activate :livereload
 activate :directory_indexes
 activate :markdown_navigation
 activate :array_navigation
 
-page "/extensions*",        layout: 'layouts/default'
+# page "/extensions*",        layout: 'layouts/default'
 page "/",                   layout: 'layouts/default'
 page "/getting-started",    layout: 'layouts/default'
 page "/api*",               layout: 'layouts/default'
-page "/resources",          layout: 'layouts/default'
+# page "/resources",          layout: 'layouts/default'
 page "/examples",           layout: 'layouts/default'
 page "/guides*",            layout: 'layouts/blog'
 
