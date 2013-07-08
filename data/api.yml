@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.0
   url: http://aurajs.com
-  sha: 1022aee
+  sha: 449f5fe
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
@@ -85,7 +85,7 @@ classes:
     plugin_for: []
     extension_for: []
     file: lib/aura.js
-    line: 378
+    line: 380
 classitems:
 - file: lib/ext/components.js
   line: 15
@@ -97,7 +97,32 @@ classitems:
   description: Components Callbacks
   class: Component
 - file: lib/ext/components.js
-  line: 85
+  line: 79
+  description: ! 'The Components'' options Object, passed to its constructor.
+
+    TODO: Add explain, how options are set from HTML API + which default options are
+
+    set during the Component initialization.'
+  itemtype: property
+  name: options
+  type: Object
+  class: Component
+- file: lib/ext/components.js
+  line: 88
+  description: Internal, unique reference for a Component instance
+  itemtype: property
+  name: _ref
+  type: String
+  class: Component
+- file: lib/ext/components.js
+  line: 95
+  description: A cached jQuery object for the Components's element.
+  itemtype: property
+  name: $el
+  type: Object
+  class: Component
+- file: lib/ext/components.js
+  line: 106
   description: Method called on Components' initialization.
   itemtype: method
   name: initialize
@@ -107,7 +132,7 @@ classitems:
     type: Object
   class: Component
 - file: lib/ext/components.js
-  line: 93
+  line: 114
   description: A helper function to render markup and recursilvely start nested components.
   itemtype: method
   name: html
@@ -120,7 +145,21 @@ classitems:
     type: Component
   class: Component
 - file: lib/ext/components.js
-  line: 110
+  line: 131
+  description: A helper function to find matching elements within the Component's
+    root element.
+  itemtype: method
+  name: $find
+  params:
+  - name: selector
+    description: CSS selector or jQuery object.
+    type: Selector | jQuery Object | Element
+  return:
+    description: ''
+    type: JQuery Object
+  class: Component
+- file: lib/ext/components.js
+  line: 142
   itemtype: method
   name: invokeWithCallbacks
   params:
@@ -133,7 +172,7 @@ classitems:
     type: Promise
   class: Component
 - file: lib/ext/components.js
-  line: 143
+  line: 175
   description: Component loader.
   params:
   - name: name
@@ -147,8 +186,10 @@ classitems:
     type: Promise
   class: Component
 - file: lib/ext/components.js
-  line: 237
+  line: 270
   description: Parses the component's options from its element's data attributes.
+  access: private
+  tagname: ''
   params:
   - name: el
     description: the element
@@ -164,8 +205,10 @@ classitems:
     type: Object
   class: Component
 - file: lib/ext/components.js
-  line: 267
+  line: 301
   description: Parses the component's options from its element's data attributes.
+  access: private
+  tagname: ''
   params:
   - name: name
     description: the Component's name
@@ -178,12 +221,13 @@ classitems:
     type: Object
   class: Component
 - file: lib/ext/components.js
-  line: 293
+  line: 328
   description: ! 'Returns a list of component.
 
     If the first argument is a String, it is considered as a DomNode reference
 
     We then parse its content to find aura-components inside of it.'
+  static: 1
   params:
   - name: components
     description: a list of components or a reference to a root dom node
@@ -193,8 +237,9 @@ classitems:
     type: Array
   class: Component
 - file: lib/ext/components.js
-  line: 331
+  line: 367
   description: Actual start method for a list of components.
+  static: 1
   params:
   - name: components
     description: cf. `Component.parseList`
@@ -204,15 +249,15 @@ classitems:
     type: Promise
   class: Component
 - file: lib/ext/components.js
-  line: 363
+  line: 400
   description: ! 'Registers a function that will be executed before the associated
 
     Component method is called.
 
 
-    Once registered, every time a component method will be executed,
+    Once registered, every time a component method will be called with the
 
-    the registered callbacks will execute accordingly.
+    `invokeWithCallbacks` method the registered callbacks will execute accordingly.
 
 
     The callback functions can return a promise if required in order to
@@ -224,7 +269,7 @@ classitems:
 
     The arguments passed to the callbacks are the same than those which
 
-    with the component will be executed. The scope of the callback is
+    with the component will be called. The scope of the callback is
 
     the component instance itself, as per the component method.'
   itemtype: method
@@ -238,7 +283,7 @@ classitems:
     type: Function
   class: Aura
 - file: lib/ext/components.js
-  line: 387
+  line: 424
   description: Same as components.before, but executed after the method invocation.
   itemtype: method
   name: components.after
@@ -251,11 +296,11 @@ classitems:
     type: Function
   class: Aura
 - file: lib/ext/components.js
-  line: 404
-  description: ! "Register a Component Type.\nComponents type ca be used to encapsulate
-    many custom\ncomponents behaviours.\nThey will be then used while declaring your
-    components as follows:\n\n```js\ndefine({\n  type: 'myComponentType',\n  // component
-    declaration...\n});\n```"
+  line: 442
+  description: ! "Register a Component Type (experimental).\nComponents type ca be
+    used to encapsulate many custom components behaviours.\nThey will be then used
+    while declaring your components as follows:\n\n```js\ndefine({\n  type: 'myComponentType',\n
+    \ // component declaration...\n});\n```"
   itemtype: method
   name: components.addType
   params:
@@ -267,7 +312,7 @@ classitems:
     type: Function
   class: Aura
 - file: lib/ext/components.js
-  line: 433
+  line: 470
   description: ! 'Start method.
 
     This method takes either an Array of Components to start or or DOM Selector to
@@ -333,7 +378,7 @@ classitems:
   class: Sandbox
 - file: lib/aura.js
   line: 53
-  description: The App's ref
+  description: The App's internal unique reference.
   itemtype: property
   name: ref
   type: String
@@ -494,7 +539,7 @@ classitems:
     type: Promise
   class: Aura
 - file: lib/aura.js
-  line: 350
+  line: 352
   description: Stops the application and unregister its loaded dependencies.
   itemtype: method
   name: stop
@@ -503,7 +548,7 @@ classitems:
     type: Void
   class: Aura
 - file: lib/aura.js
-  line: 361
+  line: 363
   description: ! 'Sandboxes are a way to implement the facade pattern on top of the
     features provided by `core`.
 
@@ -518,14 +563,14 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 371
+  line: 373
   description: App Logger
   itemtype: property
   name: logger
   type: Logger
   class: Aura
 - file: lib/aura.js
-  line: 382
+  line: 384
   description: ! 'Stop method for a Sandbox.
 
     If no arguments provided, the sandbox itself and all its children are stopped.
@@ -548,15 +593,15 @@ warnings:
 - message: ! 'Missing item type
 
     Component loader.'
-  line: ! ' lib/ext/components.js:143'
+  line: ! ' lib/ext/components.js:175'
 - message: ! 'Missing item type
 
     Parses the component''s options from its element''s data attributes.'
-  line: ! ' lib/ext/components.js:237'
+  line: ! ' lib/ext/components.js:270'
 - message: ! 'Missing item type
 
     Parses the component''s options from its element''s data attributes.'
-  line: ! ' lib/ext/components.js:267'
+  line: ! ' lib/ext/components.js:301'
 - message: ! 'Missing item type
 
     Returns a list of component.
@@ -564,11 +609,11 @@ warnings:
     If the first argument is a String, it is considered as a DomNode reference
 
     We then parse its content to find aura-components inside of it.'
-  line: ! ' lib/ext/components.js:293'
+  line: ! ' lib/ext/components.js:328'
 - message: ! 'Missing item type
 
     Actual start method for a list of components.'
-  line: ! ' lib/ext/components.js:331'
+  line: ! ' lib/ext/components.js:367'
 - message: ! 'Missing item type
 
     Namespace for sanboxes related methods.'
@@ -584,4 +629,4 @@ warnings:
     If no arguments provided, the sandbox itself and all its children are stopped.
 
     If a DOM Selector is provided, all matching children will be stopped.'
-  line: ! ' lib/aura.js:382'
+  line: ! ' lib/aura.js:384'
