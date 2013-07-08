@@ -448,7 +448,8 @@ section.documentation {
           font-size: 75%;
           h1, h2, h3, h4, h5, h6 {
             border-bottom: none;
-            margin-bottom: .25em;
+            margin: .25em 0;
+            padding-left: 0;
             padding-top: .25em;
             line-height: 1.2;
           }
