@@ -7,12 +7,18 @@ $gray:   #555555;
 $green:  #007700;
 
 code {
-  color: darken($brand-blue, 10%);
-  background-color: $secondary-color;
+  font-family: Menlo, monospace;
+  color: #777777;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0px 5px;
+  margin: 0 2px;
+  font-size: 95%;
+  border-radius: 3px;
 }
 
 .highlight {
-  background-image: url('/images/code_background.gif');
+  // background-image: url('/images/code_background.gif');
   border: 1px solid #d1d1d1;
   @include border-radius($border-radius);
   font-size: 12px;
