@@ -501,7 +501,37 @@ section.documentation {
   .component {
     max-width: 720px;
     .pull-left:first-child {
-      max-width: 42px;
+      img {
+        max-width: 42px;
+        @include border-radius(4px);
+      }
+    }
+    .hull-comments__form,
+    .hull-comments__list {
+      &:after {
+        content: '';
+        clear: both;
+        display: block;
+      }
+    }
+    .hull-comments__list {
+      list-style: none;
+      padding-left: 0;
+      .pull-left {
+        img {
+          @include rhythm(1,0,0,0);
+        }
+      }
+      .pull-right {
+        padding-top: 1em;
+      }
+      h4 {
+        margin-bottom: 0;
+        font-weight: 500;
+      }
+      .hull-comments__description {
+        color: $font-color;
+      }
     }
     .media-body {
       float: left;
@@ -512,23 +542,13 @@ section.documentation {
       color: $gray-color;
       line-height: 2.2;
       border-bottom: solid 1px lighten($border-color, 10);
-      @include rhythm(0,0,1,1);
+      @include rhythm(0,0,1,0);
     }
     textarea[name="description"] {
       vertical-align: top;
-      // margin-left: 1em;
       width: 100%;
-      // max-width: 450px;
-      // min-width: 200px;
       resize: vertical;
       margin-bottom: 1em;
-      // clear: left;
-      // float: left;
-      // &:after {
-      //   display: block;
-      //   clear: left;
-      //   content: '';
-      // }
     }
     button {
       padding: .5em 1.5em;
