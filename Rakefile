@@ -53,9 +53,9 @@ task :aura_path do
 end
 
 # desc "Generate API Docs"
-# task :generate_docs do
-#   generate_docs
-# end
+task :generate_docs do
+  generate_docs
+end
 
 # desc "Build the website"
 # task :build => :generate_docs do
