@@ -255,8 +255,56 @@ define(['hbs!./stats'], function(template) {
 
 ## Component sources
 
-TODO...
+Aura comes with the awesome ability to load components on demand from different sources. 
+A "component source" is just a http endpoint that serves components. It can be hosted anywhere on the web !
 
+Aura comes preconfigured with one 'source' called 'default' and corresponds to `./aura_components` (relative to the current document).
+
+This can be overriden through your app's config like this : 
+
+```js
+aura({ sources: { default: '/path/to/my/components' } }).start();
+```
+
+or even : 
+
+```js
+aura({ sources: { default: 'https://another.doma.in/path/to/my/components' } }).start();
+```
+
+You can add other sources in this `config.sources` object.
+
+Let's say that we have a source for github components : 
+
+```js
+aura({ sources: { github: 'https://another.doma.in/path/to/my/github/components' } }).start();
+```
+
+You can then reference and load them by appending @[source] after them. For the 'default' source, this is optional.
+
+For example, if under our 'github' source, we have an `issues` component and a `user-profile` component under our 'default' source : 
+
+```html
+<div data-aura-component='issues@github' data-aura-repo='aurajs/aura'></div>
+<div data-aura-component='user-profile' data-aura-user='addyosmani'></div>
+```
+
+The equivalent in javascript would be : 
+
+__aura_components/my-component/main.js__
+
+```js
+define({
+  initialize: function() {
+    var markup = "<div id='issues'></div><div id='user-profile'></div>";
+    this.$el.html(markup);
+    this.sandbox.start([
+      { name: 'issues@github', options: { el: '#issues' } },
+      { name: 'user-profile', options: { el: '#user-profile' } }
+    ]);
+  }
+});
+```
 
 # Extending Aura
 
