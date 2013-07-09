@@ -34,6 +34,7 @@
   </header>
   
   <aside class="sidebar" role="navigation">
+    <div>
       <a href="/" class="logo"></a>
       <div class="tree">
         <div class="tree-nav-section">
@@ -57,18 +58,37 @@
           </li>
         </ul>
       </div>
-    </aside>
+    </div>
+  </aside>
   
   <section class="documentation">
     <article>
       <div class="row">
         <header class="documentation-header">
           <h1><%= current_page.data.title %></h1>
-          <p><%= current_page.data.subtitle %></p>
+          <% if current_page.data.subtitle %>
+            <p><%= current_page.data.subtitle %></p>
+          <% end %>
+          <% if current_page.data.author %>
+            <cite>by: <a href="//github.com/<%= current_page.data.author %>"><%= current_page.data.author %></a></cite>
+          <% end %>
+          <% if current_page.data.date %>
+            <time class="pull-right"><%= current_page.date.strftime('%b %d, %Y') %></time>
+          <% end %>
         </header>
         
         <div class="documentation-body language-markup">
           <%= yield %>
+
+          <% if current_article %>
+          <section class="component">
+            <h1>Comments</h1>
+            <article>
+              <div data-hull-widget='comments@hull' data-hull-uid="<%= current_article.url %>">Loading comments...</div>
+            </article>
+          </section>
+          <% end %>
+
         </div>
       </div>
     </article>

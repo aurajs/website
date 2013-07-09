@@ -1,20 +1,17 @@
 ---
 title: Guides
+subtitle: A collection of useful tutorials and articles.
 ---
 
 <% blog.articles.each_with_index do |article, i| %>
-  <article class="guides">
-    <h2><%= link_to article.title, article %>
-      <span class="small pull-right">
-        <time><%= article.date.strftime('%b %d, %Y') %></time>
-        <% if article.data.author %>
-          &ndash;
-          <strong>
-            by: <a href="https://github.com/<%= article.data.author %>" target="gh"><%= article.data.author %></a>
-          </strong>
-        <% end%>
-      </span>
-    </h2>
+  <article>
+    <header>
+      <h2><%= link_to article.title, article %></h2>
+      <% if article.data.author %>
+        <cite>by: <a href="//github.com/<%= article.data.author %>" target="gh"><%= article.data.author %></a></cite>
+      <% end%>
+      <time class="pull-right"><%= article.date.strftime('%b %d, %Y') %></time>
+    </header>
     
     <div class="summary">
       <%= article.summary %>
@@ -22,3 +19,4 @@ title: Guides
     </div>
   </article>
 <% end %>
+
