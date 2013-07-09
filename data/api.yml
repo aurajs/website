@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.0
   url: http://aurajs.com
-  sha: 524e568
+  sha: cad335f
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
@@ -65,11 +65,11 @@ classes:
       an object that will be used as a prototype, to create fresh sandboxes to the
       components\n- `extensions` An instance of the ExtensionManager. It contains
       all the extensions that will be loaded in the app.\n\nExtensions are here to
-      provide features that will be used by the components...\nThey are meant to extend
-      the apps' core & sandbox.\nThey also have access to the apps's config.\n\nExample
-      of a creation of an Aura Application:\n\n    var app = aura({ key: 'value' });\n
-      \   app.use('ext1').use('ext2');\n    app.components.addSource('supercomponents',
-      'https://my.extern.al/components/store');\n    app.start('body');"
+      provide features that will be used by the components.\nThey are meant to extend
+      the apps' core & sandbox.\nThey also have full access to the apps's config.\n\nExample
+      of a creation of an Aura Application:\n\n```js\nrequire(['aura'], function()
+      {\n  var app = aura({ key: 'value' });\n  app.use('ext1').use('ext2');\n  app.components.addSource('supercomponents',
+      'https://my.extern.al/components/store');\n  app.start('body');\n})\n```"
     params:
     - name: config
       description: Main App config.
@@ -85,7 +85,7 @@ classes:
     plugin_for: []
     extension_for: []
     file: lib/aura.js
-    line: 278
+    line: 282
 classitems:
 - file: lib/ext/components.js
   line: 15
@@ -377,26 +377,26 @@ classitems:
   name: stopListening
   class: Sandbox
 - file: lib/aura.js
-  line: 53
+  line: 57
   description: The App's internal unique reference.
   itemtype: property
   name: ref
   type: String
   class: Aura
 - file: lib/aura.js
-  line: 60
+  line: 64
   description: The App's config object
   itemtype: property
   name: config
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 76
+  line: 80
   description: Namespace for sanboxes related methods.
   type: ! '{Object}'
   class: Aura
 - file: lib/aura.js
-  line: 83
+  line: 87
   description: Creates a brand new sandbox, using the App's `sandbox` object as a
     prototype.
   itemtype: method
@@ -415,7 +415,7 @@ classitems:
     type: Sandbox
   class: Aura
 - file: lib/aura.js
-  line: 122
+  line: 126
   description: Get a sandbox by reference.
   itemtype: method
   name: sandboxes.get
@@ -428,7 +428,7 @@ classitems:
     type: Sandbox
   class: Aura
 - file: lib/aura.js
-  line: 133
+  line: 137
   description: ! 'Tells the app to load the given extension.
 
 
@@ -460,17 +460,17 @@ classitems:
   chainable: 1
   class: Aura
 - file: lib/aura.js
-  line: 156
+  line: 160
   description: Namespace for components related methods.
   type: ! '{Object}'
   class: Aura
 - file: lib/aura.js
-  line: 163
+  line: 167
   description: ! 'Adds a new source for components.
 
-    A Component source is an endpoint (basically a URL)
+    A Component source is a http endpoint
 
-    that is the root of a component repository.'
+    that is the root of a components repository.'
   itemtype: method
   name: components.addSource
   params:
@@ -482,7 +482,7 @@ classitems:
     type: String
   class: Aura
 - file: lib/aura.js
-  line: 180
+  line: 184
   description: ! '`core` is just a namespace used by the extensions to add features
     to the App.'
   itemtype: property
@@ -490,7 +490,7 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 187
+  line: 191
   description: ! 'Application start.
 
 
@@ -519,7 +519,7 @@ classitems:
     type: Promise
   class: Aura
 - file: lib/aura.js
-  line: 250
+  line: 254
   description: Stops the application and unregister its loaded dependencies.
   itemtype: method
   name: stop
@@ -528,7 +528,7 @@ classitems:
     type: Void
   class: Aura
 - file: lib/aura.js
-  line: 261
+  line: 265
   description: ! 'Sandboxes are a way to implement the facade pattern on top of the
     features provided by `core`.
 
@@ -543,14 +543,14 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 271
+  line: 275
   description: App Logger
   itemtype: property
   name: logger
   type: Logger
   class: Aura
 - file: lib/aura.js
-  line: 282
+  line: 286
   description: ! 'Stop method for a Sandbox.
 
     If no arguments provided, the sandbox itself and all its children are stopped.
@@ -597,11 +597,11 @@ warnings:
 - message: ! 'Missing item type
 
     Namespace for sanboxes related methods.'
-  line: ! ' lib/aura.js:76'
+  line: ! ' lib/aura.js:80'
 - message: ! 'Missing item type
 
     Namespace for components related methods.'
-  line: ! ' lib/aura.js:156'
+  line: ! ' lib/aura.js:160'
 - message: ! 'Missing item type
 
     Stop method for a Sandbox.
@@ -609,4 +609,4 @@ warnings:
     If no arguments provided, the sandbox itself and all its children are stopped.
 
     If a DOM Selector is provided, all matching children will be stopped.'
-  line: ! ' lib/aura.js:282'
+  line: ! ' lib/aura.js:286'
