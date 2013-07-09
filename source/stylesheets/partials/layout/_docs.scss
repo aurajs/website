@@ -134,13 +134,16 @@ section.documentation {
     // border-left: 1px solid lighten($border-color, 10);
     // @include box-shadow(inset 1px 0 3px 0 rgba($border-color, .15));
     // height: auto;
+    position: fixed;
     overflow-y: auto;
     height: 100%;
     width: 102%;
     padding-right: 2%;
+    // @include rhythm(0,0,3,0);
     > .row {
-      padding: 0; 
       margin: 0;
+      padding: 0;
+      @include rhythm(0,0,3,0);
       min-width: 0;
       width: auto;
       // border-left: 1px solid lighten($border-color, 10);
@@ -167,6 +170,9 @@ section.documentation {
         @extend .brand-font;
         @include trailer(0);
         @include padding-leader(.25);
+      }
+      a {
+        color: $brand-dark-color;
       }
     }
 
@@ -307,6 +313,9 @@ section.documentation {
           font-size: 12px;
           line-height: 3.5em;
           font-weight: 300;
+        }
+        > a:not(.btn) {
+          color: $font-color !important;
         }
       }
 
