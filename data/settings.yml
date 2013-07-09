@@ -1,6 +1,9 @@
+domain: aurajs.github.io
 hull: 
   appId:  51da11e01234b56ba0000202
   orgUrl: https://aura.hullapp.io
   debug:  true
 swiftype:
   api_key:    Z619VxpR5vi4c1qrxFS2
+ga: 
+  code: UA-42334008-1
