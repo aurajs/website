@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+subtitle: A framework-agnostic, extensible architecture for decoupled and reusable components.
 markdown_navigation: true
 ---
 

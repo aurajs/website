@@ -9,16 +9,16 @@
   code: |
     <a href="//github.com/sbellity/aura-github" title="GitHub client" target="aura-example">GitHub Repo</a>
 
-'GitHub mobile client':
-  title: 'GitHub Mobile client'
-  description: |
-    A mobile GitHub client.
-  link: |
-    //github.com/hull/Github-Mobile
-  thumb: |
-    //raw.github.com/jakiestfu/Github-Mobile/master/screens/real/repos/repo_v1.png
-  code: |
-    <a href="//github.com/hull/Github-Mobile" title="GitHub mobile client" target="aura-example">GitHub Repo</a>
+# 'GitHub mobile client':
+#   title: 'GitHub Mobile client'
+#   description: |
+#     A mobile GitHub client.
+#   link: |
+#     //github.com/hull/Github-Mobile
+#   thumb: |
+#     //raw.github.com/jakiestfu/Github-Mobile/master/screens/real/repos/repo_v1.png
+#   code: |
+#     <a href="//github.com/hull/Github-Mobile" title="GitHub mobile client" target="aura-example">GitHub Repo</a>
 
 'Hullagram':
   title: 'Hullagram'
