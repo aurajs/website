@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.0
   url: http://aurajs.com
-  sha: 3dd0d4c
+  sha: 524e568
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
