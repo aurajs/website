@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>AuraJS</title>
+  <title>AuraJS - Guides</title>
   <meta charset="utf-8" />
   <meta name='viewport' content='width=1000' />
   <meta name='description' content="<%= data.api.project.description %>" />
@@ -18,19 +18,9 @@
 </head>
 
 <body>
-
+  
   <header>
-    <nav class="nav" id="secondary-nav" role="navigation">
-      <ul>
-        <% data.nav.each do |title, nav| %>
-        <li class="<%= "active" if title == 'Guides' %>">
-          <a href="<%= nav[:url] %>" rel="<%= title %>">
-            <%= title %>
-          </a>
-        </li>
-        <% end %>
-      </ul>
-    </nav>
+    <%= partial 'partials/top_nav' %>
   </header>
   
   <aside class="sidebar" role="navigation">

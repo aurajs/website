@@ -10,4 +10,17 @@ body > header {
   // calculate width of topbar minus width of sidebar
   width: -webkit-calc(100% - 225px);
   width: calc(100% - 225px);
+  
+  form.search {
+    display: inline;
+    
+    input {
+      margin-left: 12px;
+      font-size: 100%;
+      padding: 2px 9px 2px 27px;
+      height: 26px;
+      background-position: 7px 6px;
+      width: 150px;
+    }
+  }
 }

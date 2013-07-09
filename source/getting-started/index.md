@@ -228,9 +228,10 @@ define({
 
 ## Communication between components
 
-The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js) allows components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these three methods are:
+The Aura [Mediator](https://github.com/aurajs/aura/blob/master/lib/ext/mediator.js) allows components to communicate with each other by subscribing, unsubscribing and emitting sandboxed event notifications. The signatures for these four methods are:
 
 * `sandbox.on(name, listener, context)`
+* `sandbox.once(name, listener, context)`
 * `sandbox.off(name, listener)`
 * `sandbox.emit(data)`
 
@@ -263,13 +264,17 @@ Aura comes preconfigured with one 'source' called 'default' and corresponds to `
 This can be overriden through your app's config like this : 
 
 ```js
-aura({ sources: { default: '/path/to/my/components' } }).start();
+aura({ 
+  sources: { default: '/path/to/my/components' } 
+}).start();
 ```
 
 or even : 
 
 ```js
-aura({ sources: { default: 'https://another.doma.in/path/to/my/components' } }).start();
+aura({ 
+  sources: { default: 'https://another.doma.in/path/to/my/components' } 
+}).start();
 ```
 
 You can add other sources in this `config.sources` object.
@@ -277,7 +282,11 @@ You can add other sources in this `config.sources` object.
 Let's say that we have a source for github components : 
 
 ```js
-aura({ sources: { github: 'https://another.doma.in/path/to/my/github/components' } }).start();
+aura({ 
+  sources: { 
+    github: 'https://another.doma.in/path/to/my/github/components' 
+  } 
+}).start();
 ```
 
 You can then reference and load them by appending @[source] after them. For the 'default' source, this is optional.
