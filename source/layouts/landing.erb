@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AuraJS - <%= current_page.data.title %></title>
+    <meta charset="utf-8" />
+    <meta name='viewport' content='width=1000' />
+    <meta name='description' content="<%= data.api.project.description %>" />
+    <meta property='og:title' content="<%= data.api.project.name %>" />
+    <meta property='og:type' content='company' />
+    <meta property='og:site_name' content="<%= data.api.project.name %>" />
+    <meta property='og:url' content="<%= data.api.project.url %>" />
+    <%= stylesheet_link_tag('style') %>
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'modernizr' %>
+    <%= partial "partials/hull_init" %>
+  </head>
+
+  <body class="landing">
+
+    <header>
+      <%= partial 'partials/top_nav' %>
+    </header>
+    
+    <section class="documentation" id="content">
+
+      <div class="header">
+        <div id="particles"></div>
+        <div class="hero-unit">
+          <div class="logo-block">
+            <div class="row">
+              <div class="cell-4 logo">
+                <%= image_tag 'logos/white_halo.png', :height => '220', :width => '220' %>
+              </div>
+              <div class="cell-8">
+                <h1 class="title">
+                  <%= current_page.data.subtitle %>
+                </h1>
+                <div>
+                  <a class="button btn btn-link" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
+                  <a class="button btn btn-link" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <article>
+        <div class="row">
+          <div class="documentation-body language-markup">
+            <%= yield %>
+          </div>
+        </div>
+      </article>
+      
+      <!-- <%= partial 'partials/footer' %> -->
+    </section>
+
+    <%= partial 'partials/analytics' %>
+
+  </body>
+</html>

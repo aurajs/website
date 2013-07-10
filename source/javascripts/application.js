@@ -1,3 +1,7 @@
+//= require_self
+//= require_tree ./vendor
+//= require_tree ./particle
+
 $(function() {
   var titles = $('.documentation-body h2, .documentation-body h1');
 
