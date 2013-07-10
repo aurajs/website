@@ -2,25 +2,22 @@
   title: 'This is the title'
   description: |
     This is the description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor nulla ac scelerisque dignissim.
-  link: |
-    //github.com/sbellity/aura-github
-  thumb: |
-    /images/examples/github_client.png
+  link: '/getting-started'
+  thumb: '/images/examples/github_client.png'
+  icon: 'icon-wand'
 
 'Awesome':
   title: 'This is the title'
   description: |
     This is the description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor nulla ac scelerisque dignissim.
-  link: |
-    //github.com/sbellity/aura-github
-  thumb: |
-    /images/examples/github_client.png
+  link: '/api'
+  thumb: '/images/examples/github_client.png'
+  icon: 'icon-fire'
 
 'Stuff':
   title: 'This is the title'
   description: |
     This is the description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor nulla ac scelerisque dignissim.
-  link: |
-    //github.com/sbellity/aura-github
-  thumb: |
-    /images/examples/github_client.png
+  link: '/guides'
+  thumb: '/images/examples/github_client.png'
+  icon: 'icon-power'

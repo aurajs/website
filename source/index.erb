@@ -6,15 +6,12 @@ subtitle: A framework-agnostic, extensible architecture for decoupled and reusab
 <div class="row">
   <% data.landing.each do |title, item| %>
     <div class="cell-4 gallery-item">
-      <a class="cover" href="<%= item.link %>" target="aura-example">
-        <img src="<%= image_path("#{item.thumb}") %>" height="auto" width="100%" />
-      </a>
-      <h2 class="title">
+      <h2 class="title <%= item.icon %>">
         <%= item.title %>
       </h2>
       <p class="description">
         <%= item.description %>
-        <br/>
+        <br>
         <a href="<%= item.link %>" target="aura-example">See More &raquo;</a>
       </p>
     </div>
