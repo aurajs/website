@@ -55,7 +55,7 @@ app.start();
 
 This starts the `app` by saying that it should search for components anywhere in the `body` of your HTML document.
 
-If you want to restrict to scope to your application to a particular element, or set of elements in your document, you can pass a selector to start : 
+If you want to restrict to scope to your application to a particular element, or set of elements in your document, you can pass a selector to start: 
 
 ```js
 app.start('#container');
@@ -63,14 +63,14 @@ app.start('#container');
 
 ### App configuration
 
-Aura's contructor take take a configuration object, that will be available as `app.config` in the the extensions.
+Aura's contructor can take a configuration object, that will be available as `app.config` in the extensions.
 
 Currently, the only config entry available on a barebone Aura application is `debug` (cf. [debug section](#debugging))
 
 
 ## Creating a component
 
-By default components are loaded from a this path : `./aura_components`, relative to your current document.
+By default components are loaded from a this path: `./aura_components`, relative to your current document.
 
 Let's say we want to create an "hello" component. To do that we need to create a `aura_components/hello` directory
 
@@ -99,7 +99,7 @@ On start, Aura will call the `initialize` method for each component instance.
 
 By default, your application will look for DOM Elements with a `data-aura-component` attribute.
 
-example:
+Example:
 
 ```html
 <div data-aura-component="hello"></div>
@@ -109,7 +109,7 @@ Just include them in your page, and Aura will bring them to life automatically o
 
 You can also pass options to your component via data-attributes. 
 
-example: 
+Example: 
 
 ```html
 <div data-aura-component="hello" 
@@ -117,7 +117,7 @@ example:
       data-aura-other-option="hello again"></div>
 ```
 
-They will then be available in your component instance as : 
+They will then be available in your component instance as: 
 
 ```js
 this.options.foo          // -> bar
@@ -136,13 +136,13 @@ app.start([{ name: 'hello', options: { el: '#hello' } }]);
 
 All listed components MUST have at least the `name` and `options.el` defined. Where `name` is the name of the component to start and `options.el` is a DOM selector to target the DOM Element that will be the root of your component.
 
-All other values passed to the options object, will be availaible in your component in `this.options`.
+All other values passed to the options object, will be available in your component in `this.options`.
 
 ## Nesting components
 
 This really starts to get interesting if you use templating and use Aura's superpower to nest components.
 
-Let's take an example (using underscore templating) : 
+Let's take an example (using underscore templating): 
 
 __aura_components/parent/template.html__
 
@@ -178,16 +178,16 @@ define({
 });
 ```
 
-Then if you include your `parent` component : 
+Then if you include your `parent` component: 
 
 ```html
-<div data-aura-component="parent" data-aura-chilren="one,two,three"></div>
+<div data-aura-component="parent" data-aura-children="one,two,three"></div>
 ```
 
-The result will be : 
+The result will be: 
 
 ```html
-<div data-aura-component="parent" data-aura-chilren="one,two,three">
+<div data-aura-component="parent" data-aura-children="one,two,three">
   <ul>
     <li data-aura-component='child' data-aura-my-name='one'>I am one</li>
     <li data-aura-component='child' data-aura-my-name='two'>I am two</li>
@@ -196,14 +196,14 @@ The result will be :
 </div>
 ```
 
-This means that you can truly build your applications, one component at a time, and literaly assemble them with markup.
+This means that you can truly build your applications, one component at a time and literally assemble them with markup.
 
 
 ### Nesting "manually"
 
-Components can also start children via they `this.sandbox.start` method, which can, like the `app.start` method start nested components by passing a list of component descriptions. 
+Components can also start children via their `this.sandbox.start` method, which can, like the `app.start` method start nested components by passing a list of component descriptions. 
 
-example: 
+Example: 
 
 __aura_components/my_component/main.js__
 
@@ -216,7 +216,7 @@ define({
 })
 ```
 
-The `this.html` method actually does just that and this would be the exact equivalent of doing :
+The `this.html` method actually does just that and this would be the exact equivalent of doing:
 
 ```js
 define({
@@ -257,11 +257,11 @@ define(['hbs!./stats'], function(template) {
 ## Component sources
 
 Aura comes with the awesome ability to load components on demand from different sources. 
-A "component source" is just a http endpoint that serves components. It can be hosted anywhere on the web !
+A "component source" is just a http endpoint that serves components. It can be hosted anywhere on the web!
 
 Aura comes preconfigured with one 'source' called 'default' and corresponds to `./aura_components` (relative to the current document).
 
-This can be overriden through your app's config like this : 
+This can be overridden through your app's config like this: 
 
 ```js
 aura({ 
@@ -269,7 +269,7 @@ aura({
 }).start();
 ```
 
-or even : 
+or even: 
 
 ```js
 aura({ 
@@ -279,7 +279,7 @@ aura({
 
 You can add other sources in this `config.sources` object.
 
-Let's say that we have a source for github components : 
+Let's say that we have a source for github components: 
 
 ```js
 aura({ 
@@ -291,14 +291,14 @@ aura({
 
 You can then reference and load them by appending @[source] after them. For the 'default' source, this is optional.
 
-For example, if under our 'github' source, we have an `issues` component and a `user-profile` component under our 'default' source : 
+For example, if under our 'github' source, we have an `issues` component and a `user-profile` component under our 'default' source: 
 
 ```html
 <div data-aura-component='issues@github' data-aura-repo='aurajs/aura'></div>
 <div data-aura-component='user-profile' data-aura-user='addyosmani'></div>
 ```
 
-The equivalent in javascript would be : 
+The equivalent in javascript would be: 
 
 __aura_components/my-component/main.js__
 
@@ -323,11 +323,11 @@ We could teach them how to load templates easily or talk to Github's API.
 
 Let's get to the basics first.
 
-First, extensions are loaded and run when the application starts. It means that Aura guarantees that when your first component is loaded, all the extensions have already beed loaded.
+First, extensions are loaded and run when the application starts. It means that Aura guarantees that when your first component is loaded, all the extensions have already been loaded.
 
 All extensions have access to the internals of your app, and can do pretty much what they want at this stage, but they are really only supposed to provide features to the components via the `sandbox` object, available on the app's instance.
 
-This `sandbox`, is like a blueprint that gets augmented by the extensions during the app initialization process. Afterwards, each components will get a new fresh clone of this object.
+This `sandbox`, is like a blueprint that gets augmented by the extensions during the app initialization process. Afterwards, each component will get a new fresh clone of this object.
 
 This instance of `sandbox`, available via `this.sandbox` inside our component and is the ONLY thing it knows about the outside world.
 
@@ -347,7 +347,7 @@ define({
 });
 ```
 
-Then to use it within a component : 
+Then to use it within a component: 
 
 ```js
 define({
@@ -370,7 +370,7 @@ var ext = function(app) {
 aura().use(ext).start('body');
 ````
 
-### Object litteral
+### Object literal
 
 ```js
 aura().use({
@@ -389,7 +389,7 @@ aura().use({
 }).start('body');
 ````
 
-The Object litteral form allows to add AMD dependencies Application lifecycle callbacks like `afterAppStart`.
+The Object literal form allows to add AMD dependencies Application lifecycle callbacks like `afterAppStart`.
 
 
 ## "requiring" AMD modules
@@ -398,7 +398,7 @@ Extensions can be defined as AMD module themselves and use the `define([], funct
 
 We have found that requirejs central config files can grow pretty dramatically and become hard to manage. It also means that your extensions are not easily portable from one app to the other, since you have to track down all their dependencies and configure require with the right paths.
 
-We think we have a solution for that : Extensions can define their AMD dependencies, paths, shims and all other AMD config themselves. Combined with sane defaults based on [Bower](https://github.com/bower/bower), we can do things like : 
+We think we have a solution for that. Extensions can define their AMD dependencies, paths, shims and all other AMD config themselves. Combined with sane defaults based on [Bower](https://github.com/bower/bower), we can do things like: 
 
 __aura_extensions/my_extension_that_needs_backbone.js__
 
@@ -421,7 +421,7 @@ define({
 
 When `initialize` is called, Aura ensures that all the dependencies listed in require.paths are already loaded. So we can use the 'synchonous' require directly.
 
-Actually what Aura does corresponds to (pseudo-code):
+Actually, what Aura does corresponds to (pseudo-code):
 
 ```js
 function requireExtension(ext) {
@@ -441,9 +441,9 @@ If your app needs to wait for resources to be loaded (or wait for anything reall
 
 Let's take for example a Facebook extension that wraps, loads Facebook javascript SDK, and provides `auth.login` and `auth.logout` method to our components.
 
-Let's also say that we want to wait for facebook js lib to be loaded and initialized to actually start our app. 
+Let's also say that we want to wait for facebook.js lib to be loaded and initialized to actually start our app. 
 
-We could do something like : 
+We could do something like: 
 
 __aura_extensions/facebook.js__
 
@@ -471,7 +471,7 @@ define({
   },
 
   afterAppStart: function(app) {
-    console.warn("The app is started and I am : ", app.sandbox.auth.loginStatus);
+    console.warn("The app is started and I am: ", app.sandbox.auth.loginStatus);
   }
 });
 ```
@@ -480,7 +480,7 @@ The `initialize` method here returns a [Promise](http://wiki.commonjs.org/wiki/P
 
 Actually, when you have multiple extensions, each extension will wait for the resolution of the previous one to call its initialize method. 
 
-Eeach extension can also define a `afterAppStart` method that will be called after the initialization process. Those callbacks will also be called sequentially, keeping the same order as the extensions load order.
+Each extension can also define an `afterAppStart` method that will be called after the initialization process. Those callbacks will also be called sequentially, keeping the same order as the extensions load order.
 
 ## Using extensions
 
