@@ -3,12 +3,22 @@ module MarkdownNavigation
   class MarkdownNavigationGenerator < Redcarpet::Render::Base
     def header (txt, lvl)
       return if lvl > 2
-      if lvl.to_i == 1
-        el = "h3"
-      elsif lvl.to_i == 2
-        el = "p"
+      @prev_level ||= 1
+      lvl = lvl.to_i
+      tag=""
+      if lvl > @prev_level
+        tag += "<ul>"
       end
-      "<#{el}><a href=\"\##{txt.parameterize}\">#{txt}</a></#{el}>"
+      if lvl < @prev_level
+        tag += "</ul>"
+      end
+      if lvl == 1
+        el = "h3"
+      elsif lvl == 2
+        el = "li"
+      end
+      @prev_level = lvl
+      tag +="<#{el}><a href=\"\##{txt.parameterize}\">#{txt}</a></#{el}>"
     end
   end
 
