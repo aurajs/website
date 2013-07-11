@@ -8,7 +8,7 @@ markdown_navigation: true
 
 Web apps are all about the end user experience (UI, DOM elements). The web development ecosystem is all about much more low level stuff. We need a way to package higher level abstractions and make them truly reusable, and that's what Aura is all about.
 
-Need some more reasons to use Aura?:
+Need some more reasons to use Aura? Let's name a few:
 
 * It's basically **glue** for your application components, making it trivial to tie together a number of independently created components into a fully functional application.
 * A complete event-bus supporting **application-level and component-level communication** mean you have control over what is getting triggered in your app
@@ -25,7 +25,7 @@ Need some more reasons to use Aura?:
 ## In Discussion(s)
 
 * [Where does Aura fit in the MVC workflow?](https://github.com/aurajs/aura/issues/223)
-* [How do you initialize a component with with data objects?](https://github.com/aurajs/aura/issues/222)
+* [How do you initialize a component with data objects?](https://github.com/aurajs/aura/issues/222)
 * [Using multiple views and models in a component](https://github.com/aurajs/aura/issues/224)
 * [Sharing collections of data](https://github.com/karlwestin/aura-example)
 
@@ -41,17 +41,17 @@ Need some more reasons to use Aura?:
 
 ## Other...
 
-* How does Aura recommend I share data between multiple components ?
+* How does Aura recommend I share data between multiple components?
 
 * Aura was originally tightly coupled with Backbone. Can it now be used with any framework and just how easy is this to setup?
 
-* What does the Aura footprint look like? I like everything I get with it, but how much more code is it likely to introduce to my production application? 
+* What does the Aura footprint look like? I like everything I get with it, but how much more code is it likely to introduce to my production application?
 
 * Aura extensions appear to be custom wrappers around a framework. What is the benefit of this and does it need to be done for each framework or library I want to use?
 
 * If I use Aura do I need to also use RequireJS? What if I don’t like AMD or prefer using CommonJS?
 
-* Backbone developers generally end up having to write their own architecture on top of it or using an extension architecture like Marionette. Does Aura work well with Marionette or other Backbone libraries?. 
+* Backbone developers generally end up having to write their own architecture on top of it or using an extension architecture like Marionette. Does Aura work well with Marionette or other Backbone libraries?
 
 * Are Aura apps crawlable? If not, do you recommend using any specific third-party tool for helping make them crawlable? (e.g Rendr)
 
