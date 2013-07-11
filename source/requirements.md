@@ -18,12 +18,12 @@ As per the current version, the following implementations are provided with Aura
 - **AMD**: [requirejs](http://requirejs.org), but it would be nice to test other ones (curl.js for example which is much smaller).
 - **underscore**: we could make a minimal build of [lodash](http://lodash.org) and distribute it with aura.
 - **eventemitter**: [eventEmitter2](https://github.com/hij1nx/EventEmitter2), for the moment. we could also have a look at [postal.js](https://github.com/postaljs/postal.js) which is extensible and may suit more our needs.
-- **selector engine**: Currently [jQuery](http://jquery.com) required by the components extension, which is always included for the moment. but we don't really have to.
+- **selector engine**: Currently [jQuery](http://jquery.com) required by the components extension, which is always included for the moment; but we don't really have to.
 
 ## Minimum requirements
 
-Aura should work everywhere. Aura itself is really tiny !
-Although we recommend to use the latest possible browser for yout computer, you'll always get a better experience.
+Aura should work everywhere. Aura itself is really tiny!
+Although we recommend using the latest possible browser for your computer, you'll always get a better experience.
 
 For the moment the `platform.js` file is a collection of polyfills for older browsers, but it does not really scale...
 Including more featureful polyfills like [es5-shim](https://github.com/kriskowal/es5-shim) is a possibility but the goal was to keep Aura as small as possible.
