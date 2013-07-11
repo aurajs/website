@@ -77,7 +77,8 @@
 
 // .container > .secondary-section{
 .secondary-section{
-  background-color:$secondary-color;
+  // background-color:$secondary-color;
+  background: tint($brand-color, 85);
 }
 
 // .container > .secondary-gradient-section{

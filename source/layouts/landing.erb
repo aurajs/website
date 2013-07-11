@@ -23,41 +23,30 @@
       <%= partial 'partials/top_nav' %>
     </header>
     
-    <section class="documentation" id="content">
-
-      <div class="header">
-        <div id="particles"></div>
-        <div class="hero-unit">
-          <div class="logo-block">
-            <div class="row">
-              <div class="cell-4 logo">
-                <%= image_tag 'logos/white_halo.png', :height => '220', :width => '220' %>
-              </div>
-              <div class="cell-8">
-                <h1 class="title">
-                  <%= current_page.data.subtitle %>
-                </h1>
-                <div>
-                  <a class="button btn btn-link" href="https://github.com/aurajs/aura/zipball/master">Download .zip</a>
-                  <a class="button btn btn-link" href="https://github.com/aurajs/boilerplate/tarball/master">Download boilerplate</a>
-                </div>
-              </div>
-            </div>
+    <section>
+      <div id="particles"></div>
+      
+      <header class="hero-unit row">
+        <div class="logo cell-4">
+          <%= image_tag 'logos/white_halo.png', :height => '220', :width => '220' %>
+        </div>
+        <div class="cell-8">
+          <h1><%= current_page.data.subtitle %></h1>
+          <div class="row">
+            <%= link_to 'Download Aura v0.9', '//github.com/aurajs/aura/zipball/master', :class => 'button btn large' %>
+            <%= link_to 'Download Boilerplate', '//github.com/aurajs/boilerplate/tarball/master', :class => 'button btn' %>
           </div>
         </div>
-      </div>
+      </header>
 
       <article>
-        <div class="row">
-          <div class="documentation-body language-markup">
-            <%= yield %>
-          </div>
-        </div>
+        <%= yield %>
       </article>
-
-      <%= partial 'partials/footer' %>
-      
     </section>
+
+    <footer>
+      <%= partial 'partials/footer' %>
+    </footer>
 
     <%= partial 'partials/analytics' %>
 

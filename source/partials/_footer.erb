@@ -1,3 +1,14 @@
-<footer>
-	<small>2013</small>
-</footer>
+<div class="row">
+  <div class="cell-6">
+    <%= link_to 'GitHub', '//github.com/aurajs/aura', :title => 'View on GitHub', :class => 'icon-github' %>
+    <%= link_to 'Stack Overflow', '//stackoverflow.com/questions/tagged/aura', :title => 'View on Stack Overflow', :class => 'icon-terminal' %>
+  </div>
+  <div class="cell-6 small">
+    <dl>
+      <dt>Currently maintained by:</dt>
+      <% data.footer.each do |title, p| %>
+        <dd class="pull-left"><%= link_to p.name, "//github.com/#{p.github}", :title => p.name %></dd>
+      <% end %>
+    </dl>
+  </div>
+</div>

@@ -5,15 +5,41 @@ subtitle: A framework-agnostic, extensible architecture for decoupled and reusab
 
 <div class="row">
   <% data.landing.each do |title, item| %>
-    <div class="cell-4 gallery-item">
-      <h2 class="title <%= item.icon %>">
-        <%= item.title %>
-      </h2>
-      <p class="description">
-        <%= item.description %>
-        <br>
-        <a href="<%= item.link %>" target="aura-example">See More &raquo;</a>
-      </p>
+    <div class="cell-4">
+      <h2 class="<%= item.icon %>"><%= item.title %></h2>
+      <p><%= item.description %></p>
+      <a href="<%= item.link %>" title="<%= item.title %>">See More <span class="icon-arrow-right"></span></a>
     </div>
   <% end %>
+</div>
+
+<div class="row">
+  <div class="cell-4">
+    <h3>An H3 Headline</h3>
+    <figcaption>
+      <p>Aura is built to be framework agnostic you can use it with or without your favorite JS framework.</p>
+      <p>Works well with other frameworks from Backbone, Ember and Angular to Knockout and more&hellip;</p>
+      <ul class="secret-list island">
+        <li class="row">
+          <span class="cell-6"><%= image_tag '//backbonejs.org/docs/images/backbone.png', :height => 'auto', :width => '200', :alt => 'backbone js' %></span>
+          <span class="cell-6 ember align-center"><%= image_tag '//emberjs.com/images/ember_logo.png', :height => 'auto', :width => '200', :alt => 'ember js' %></span>
+        </li>
+        
+        <li class="row">
+          <span class="cell-6 knockout align-center"><%= image_tag '//knockoutjs.com/img/ko-logo.png', :height => 'auto', :width => '200', :alt => 'knockout js' %></span>
+          <span class="cell-6"><%= image_tag '//angularjs.org/img/AngularJS-large.png', :height => 'auto', :width => '200', :alt => 'angular js' %></span>
+        </li>
+      </ul>
+    </figcaption>
+  </div>
+  <figure class="cell-8">
+    <%= image_tag 'docs/multi.jpg', :height => 'auto', :width => '100%', :alt => "aura's multip-tiered architecture" %>
+  </figure>
+</div>
+
+<div class="secondary-section sub-section">
+  <div class="row align-center">
+    <%= link_to 'Download Aura v0.9', '//github.com/aurajs/aura/zipball/master', :class => 'button btn small' %>
+    <%= link_to 'Download Boilerplate', '//github.com/aurajs/boilerplate/tarball/master', :class => 'button btn small' %>
+  </div>
 </div>

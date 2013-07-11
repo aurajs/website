@@ -1,0 +1,108 @@
+.landing {
+
+  > header {
+    @include position(fixed, 0px 0 0 0px);
+    width: 100%;
+    #secondary-nav li:last-child {
+      float: right;
+      margin-top: 16px;
+      padding-right: 16px;
+    }
+    .swiftype-widget .autocomplete {
+      @include box-shadow(0 0 6px 2px rgba($shadow, .2));
+    }
+  }
+
+  header.hero-unit {
+    // position: relative;
+    // z-index: 99;
+    // margin-top: 60px;
+    height: 320px;
+    .logo {
+      @include rhythm(1,1,1,1);
+      text-align: center;
+    }
+    .btn {
+      background: $white-color;
+      color: $brand-color;
+      @include box-shadow(0 0 1px 1px rgba($brand-dark-color, 0));
+      @include transition(all ease .3s);
+      &:hover,
+      &:focus {
+        @include box-shadow(0 0 1px 1px rgba($brand-dark-color, .25));
+        color: $brand-dark-color
+      }
+    }
+    h1 {
+      color: $white-color;
+      @include text-shadow(0 2px 4px rgba($brand-dark-color, .2));
+      @include rhythm(1);
+      font-weight: 200;
+      @include adjust-font-size-to(36px,2);
+      letter-spacing: .05em;
+    }
+  }
+
+  #particles {
+    @include position(absolute, 0 0 0 0);
+    width: 100%;
+    height: 320px;
+    background: $brand-color;
+    // @include box-shadow(0 2px 8px rgba(0,0,0,0.2));
+  }
+  
+  > section {
+    margin-top: 60px;
+    article {
+      @include rhythm(1,0,0,0);
+      > .row {
+        @include rhythm(0,1,1,0);
+        li {
+          @include rhythm(1);
+          .ember,
+          .knockout {
+            max-width: 120px;
+            @include rhythm(0,.25,.25,0);
+            padding-left: .5em;
+            padding-right: .5em;
+          }
+          .ember {
+            background: #e1563f;
+          }
+          .knockout {
+            background: #A71500;
+          }
+        }
+      }
+    }
+  }
+  
+  footer {
+    @include rhythm(0,1,1,0);
+    background: shade($brand-color, 85);
+    color: tint($brand-color, 95);
+    a {
+      display: inline-block;
+      margin-right: .25em;
+      color: tint($brand-color, 80);
+      @include transition(all ease .3s);
+      &:hover,
+      &:focus {
+        color: tint($brand-color, 95);
+      }
+    }
+    dt {
+      font-weight: 600;
+      border-bottom: 1px solid shade($brand-color, 62.5);
+    }
+    dd {
+      &:after {
+        content: ',';
+        margin-right: .5em;
+      }
+      &:last-child:after {
+        content: '';
+      }
+    }
+  }
+}
