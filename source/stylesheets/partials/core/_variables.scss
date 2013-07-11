@@ -39,8 +39,8 @@ $border-color: #d4d4d4;
 
 // Flat era
 $primary-color:#4587ce;
-$secondary-color:#f1f3f5;
-// $secondary-color: lighten($brand-color, 50);
+// $secondary-color:#f1f3f5;
+$secondary-color: lighten($border-color, 15);
 $tertiary-color:#373f4a;
 $quaternary-color:#1a1e23;
 //$quinary-color:#f6f7fc;
