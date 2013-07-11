@@ -1,9 +1,8 @@
 <% if current_page.data.markdown_navigation %>
   <div class="tree-nav-section">
     <%= markdown_navigation(current_page) %>
+    </ul>
   </div>
-
-
 <% else %>
   <%= yield_content(:tree_nav) %>
 <% end %>

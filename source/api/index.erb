@@ -9,13 +9,13 @@ title: Api Docs
       <h3><a href="#class-<%= name %>"><%= k.name %></a></h3>
       <ul>
         <% k.items.keys.compact.sort.each do |item_name| item = k.items[item_name] %>
-        <% if item_name %>
-        <li>
-          <a href="#<%= item['itemtype'] %>-<%= name %>-<%= item['name'] %>">
-            <%= item_name %>
-          </a>
-        </li>
-        <% end %>
+          <% if item_name %>
+          <li>
+            <a href="#<%= item['itemtype'] %>-<%= name %>-<%= item['name'] %>">
+              <%= item_name %>
+            </a>
+          </li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
