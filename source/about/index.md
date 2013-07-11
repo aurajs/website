@@ -28,18 +28,18 @@ Therefore, a common practice for creating a modular architecture is to decouple 
 
 ## A Quick Example
 
-### How does it work ?
+### How does it work?
 
 To build your app, you can assemble components via AuraJS's HTML API, by using the `data-aura-*` attributes.
 
-Let's take an example. Let's say that we want to build a Github Issues app. We need to be able to :
+Let's take an example. Let's say that we want to build a Github Issues app. We need to be able to:
 
 * Display lists of issues from specific repos
 * Filter those issues
 
 Now let's make some components, but first we need a way to talk to [Github's API](http://developer.github.com/v3/issues/).
 
-Here is a simple [AuraJS extension](/getting-started#extending-aura) that does just that :
+Here is a simple [AuraJS extension](/getting-started#extending-aura) that does just that:
 
 **extensions/aura-github.js**
 
@@ -71,7 +71,7 @@ define({
 
 This extension exposes in all our components a way to talk to Github's API via the `this.sandbox.github` method.
 
-To use it in your aura app :
+To use it in your aura app:
 
 **app.js**
 
@@ -85,7 +85,7 @@ require(['aura'], function(Aura) {
 })
 ```
 
-And now, let's write the issues` component :
+And now, let's write the issues` component:
 
 **aura_components/issues/main.js**
 
@@ -125,17 +125,17 @@ Now we can place this component everywhere in our app by using Aura's HTML API b
 <div data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
 ```
 
-You can even have multiple instances of this component in you page :
+You can even have multiple instances of this component in you page:
 
 
 ```html
 <div data-aura-component="issues" data-aura-repo="aurajs/aura"></div>
-<div data-aura-component="issues" data-aura-repo="emberjs/ember.js"></div>
+<div data-aura-component="issues" data-aura-repo="emberjs/ember"></div>
 <div data-aura-component="issues" data-aura-repo="documentcloud/backbone"></div>
 ```
 
 Any other component can now emit `issues.filter`  events that these components will respond to.
-For example in another component that will allow the user to filter the issues lists, we can have :
+For example in another component that will allow the user to filter the issues lists, we can have:
 
 ```js
 this.sandbox.emit('issues.filter', { state: 'closed' });
@@ -155,15 +155,15 @@ In order for us to help you please check that you've completed the following ste
 * Made sure you're on the latest version in master
 * Used the search feature to ensure that the bug hasn't been reported before
 * Included as much information about the bug as possible, including any output you've received, what OS and version you're on, etc.
-* If making a bug report, please post a test case reproducing your issue on jsFiddle.net or jsBin. We will do our best to assist if this is not possible, but please understand this would greatly help improve or ability to help.
+* If making a bug report, please post a test case reproducing your issue on (jsFiddle.net)[http://jsfiddle.net/] or (JS Bin)[http://jsbin.com/]. We will do our best to assist if this is not possible, but please understand this would greatly help improve or ability to help.
 
 [Submit your issue](https://github.com/aurajs/aura/issues/new)
 
 ### Pull Request Guidelines
 
 * Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
-* Non-trivial changes should be discussed in an issue first
-* Develop in a topic branch, not master
-* Add relevant tests to cover the change
-* Squash your commits
-* Write a convincing description of your PR and why we should land it
+* Non-trivial changes should be discussed in an issue first.
+* Develop in a topic branch, not master.
+* Add relevant tests to cover the change.
+* Squash your commits.
+* Write a convincing description of your PR and why we should land it.
