@@ -1,8 +1,16 @@
 //= require_self
+//= require ./vendor/jquery.scrollTo
+//= require ./vendor/jquery.localscroll
 //= require_tree ./vendor
 //= require_tree ./particle
 
 $(function() {
+  $.localScroll({
+    offset: {
+      top:-70
+    },
+    duration: 100
+  });
   var titles = $('.documentation-body h2, .documentation-body h1');
 
   titles.each(function() {
@@ -25,4 +33,6 @@ $(function() {
   if (currentHash) {
     var anchor = $('a.documentation-anchor[name="' + currentHash.substring(1) + '"]'); 
   }
+
+
 });
