@@ -1,15 +1,12 @@
 body > header {
-  @include position(fixed, 0px 0 0 225px);
+  @include position(fixed, 0px 0 0 $sidebar-width);
   height:60px;
   background: rgba($white-color, .95);
   border-bottom: 1px solid lighten($border-color, 10);
-  z-index:4;
   padding: 0 2em;
   z-index:4;
-  width: 100%;
-  // calculate width of topbar minus width of sidebar
-  width: -webkit-calc(100% - 225px);
-  width: calc(100% - 225px);
+  width: auto;
+  right:0;
   
   form.search {
     display: inline;
