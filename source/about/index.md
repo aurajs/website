@@ -141,7 +141,7 @@ For example in another component that will allow the user to filter the issues l
 this.sandbox.emit('issues.filter', { state: 'closed' });
 ```
 
-You can find a [Github client demo app based on AuraJS + a bunch of Github components here](http://github.com/sbellity/aura-github)
+You can find a [Github client demo app based on AuraJS + a bunch of Github components here](http://github.com/sbellity/aura-github).
 
 
 ## Contribute
