@@ -11,7 +11,7 @@ middleman
 
 ## Building for release
 
-### Regenrating jsdoc from aurajs/aura
+### Generating jsdoc from aurajs/aura
 
 Checkout aurajs/website and aurajs/aura in the same directory, then run `rake generate_docs`.
 
