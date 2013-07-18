@@ -1,23 +1,46 @@
-'Really':
-  title: 'This is the title'
+'Component':
+  title: 'Component'
   description: |
-    This is the description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor nulla ac scelerisque dignissim.
+    An Aura component represents a unit of a page. 
+    An indepdenant block of reusable code, wrapped 
+    up so that it works well on it's own or together with 
+    other components. 
+
+    Specify a component source and you can just start
+    including them in your page on demand
+    with data attributes
+    (e.g <div data-aura-component="chat"></div>)
+
+    A component can contain pretty much any code
+    you want, using any framework and are a little like
+    HTML Imports.
   link: '/getting-started'
   thumb: '/images/examples/github_client.png'
   icon: 'icon-wand'
 
-'Awesome':
-  title: 'This is the title'
+'Extension':
+  title: 'Extension'
   description: |
-    This is the description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor nulla ac scelerisque dignissim.
+    Aura Extensions help you extend the core capabilities of your app 
+    before any of your components load. Want to ensure all of them have 
+    access to a particular library, like Backbone or API wrapper like GitHub? 
+
+    It'll make them available via the component's sandbox so you don't have
+    to worry about importing and setting this up yourself.
   link: '/api'
   thumb: '/images/examples/github_client.png'
   icon: 'icon-fire'
 
-'Stuff':
-  title: 'This is the title'
+'Sandboxing and Events':
+  title: 'Sandboxing and Events'
   description: |
-    This is the description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor nulla ac scelerisque dignissim.
+    An Aura sandbox is the layer between you and your library. 
+    It lets you expose parts of a JavaScript library that are safe to
+    use rather than the entire API.  It's particularly useful in teams, but also means
+    you have the flexibility to switch our libraries with greater ease.
+
+    Aura Events give components a rich way to communicate between each other
+    by subscribing, unsubscribing and emitting sandboxed event notifications.
   link: '/guides'
   thumb: '/images/examples/github_client.png'
   icon: 'icon-power'
