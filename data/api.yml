@@ -4,7 +4,7 @@ project:
   description: ''
   version: 0.9.1
   url: http://aurajs.com
-  sha: cad335f
+  sha: e3b5ebf
 files:
   lib/ext/components.js:
     name: lib/ext/components.js
@@ -56,20 +56,20 @@ classes:
     file: lib/aura.js
     line: 11
     description: ! "Aura constructor and main entry point\n\nEvery instance of Aura
-      is an Aura application.\nAn Aura application is in charge of loading the various\nextensions
-      that will apply to it (defined either\nprogrammatically or by way of configuration).\n\nAn
-      Aura application is the glue between all the extensions\nand components inside
-      its instance.\n\nInternally an Aura application wraps 4 important objects:\n\n-
-      `config` is the object passed as the first param of the apps constructor\n-
-      `core`   is a container where the extensions add new features\n- `sandbox` is
-      an object that will be used as a prototype, to create fresh sandboxes to the
-      components\n- `extensions` An instance of the ExtensionManager. It contains
-      all the extensions that will be loaded in the app.\n\nExtensions are here to
-      provide features that will be used by the components.\nThey are meant to extend
-      the apps' core & sandbox.\nThey also have full access to the apps's config.\n\nExample
-      of a creation of an Aura Application:\n\n```js\nrequire(['aura'], function()
-      {\n  var app = aura({ key: 'value' });\n  app.use('ext1').use('ext2');\n  app.components.addSource('supercomponents',
-      'https://my.extern.al/components/store');\n  app.start('body');\n})\n```"
+      defines an Aura application.\nAn Aura application is in charge of loading the
+      various\nextensions that will apply to it (defined either\nprogrammatically
+      or by way of configuration).\n\nAn Aura application is the glue between all
+      the extensions\nand components inside its instance.\n\nInternally an Aura application
+      wraps 4 important objects:\n\n- `config` is the object passed as the first param
+      of the apps constructor\n- `core`   is a container where the extensions add
+      new features\n- `sandbox` is an object that will be used as a prototype, to
+      create fresh sandboxes to the components\n- `extensions` An instance of the
+      ExtensionManager. It contains all the extensions that will be loaded in the
+      app.\n\nExtensions are here to provide features that will be used by the components...\nThey
+      are meant to extend the apps' core & sandbox.\nThey also have access to the
+      apps's config.\n\nExample of a creation of an Aura Application:\n\n    var app
+      = aura({ key: 'value' });\n    app.use('ext1').use('ext2');\n    app.components.addSource('supercomponents',
+      'https://my.extern.al/components/store');\n    app.start('body');"
     params:
     - name: config
       description: Main App config.
@@ -85,7 +85,7 @@ classes:
     plugin_for: []
     extension_for: []
     file: lib/aura.js
-    line: 282
+    line: 278
 classitems:
 - file: lib/ext/components.js
   line: 15
@@ -100,7 +100,8 @@ classitems:
   line: 79
   description: ! 'The Components'' options Object, passed to its constructor.
 
-    TODO: Add explain, how options are set from HTML API + which default options are
+    TODO: Add explanation of how options are set from HTML API + which default options
+    are
 
     set during the Component initialization.'
   itemtype: property
@@ -222,7 +223,7 @@ classitems:
   class: Component
 - file: lib/ext/components.js
   line: 328
-  description: ! 'Returns a list of component.
+  description: ! 'Returns a list of components.
 
     If the first argument is a String, it is considered as a DomNode reference
 
@@ -329,6 +330,17 @@ classitems:
       be stopped before start."
     type: Object
   class: Sandbox
+- file: lib/ext/components.js
+  line: 505
+  description: ! "When all of an application's extensions are finally loaded, the
+    'extensions' \nafterAppStart methods are then called."
+  itemtype: method
+  name: components.afterAppStart
+  params:
+  - name: an
+    description: Aura application object
+    type: Object
+  class: Sandbox
 - file: lib/ext/mediator.js
   line: 62
   itemtype: method
@@ -377,26 +389,26 @@ classitems:
   name: stopListening
   class: Sandbox
 - file: lib/aura.js
-  line: 57
+  line: 53
   description: The App's internal unique reference.
   itemtype: property
   name: ref
   type: String
   class: Aura
 - file: lib/aura.js
-  line: 64
+  line: 60
   description: The App's config object
   itemtype: property
   name: config
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 80
+  line: 76
   description: Namespace for sanboxes related methods.
   type: ! '{Object}'
   class: Aura
 - file: lib/aura.js
-  line: 87
+  line: 83
   description: Creates a brand new sandbox, using the App's `sandbox` object as a
     prototype.
   itemtype: method
@@ -415,7 +427,7 @@ classitems:
     type: Sandbox
   class: Aura
 - file: lib/aura.js
-  line: 126
+  line: 122
   description: Get a sandbox by reference.
   itemtype: method
   name: sandboxes.get
@@ -428,7 +440,7 @@ classitems:
     type: Sandbox
   class: Aura
 - file: lib/aura.js
-  line: 137
+  line: 133
   description: ! 'Tells the app to load the given extension.
 
 
@@ -439,7 +451,7 @@ classitems:
 
     - resolving & loading external dependencies via requirejs
 
-    - they have a direct access to the app''s internals
+    - they have direct access to the app''s internals
 
     - they are here to add new features to the app... that are made available through
     the sandboxes to the components.
@@ -460,17 +472,17 @@ classitems:
   chainable: 1
   class: Aura
 - file: lib/aura.js
-  line: 160
+  line: 156
   description: Namespace for components related methods.
   type: ! '{Object}'
   class: Aura
 - file: lib/aura.js
-  line: 167
+  line: 163
   description: ! 'Adds a new source for components.
 
-    A Component source is a http endpoint
+    A Component source is an endpoint (basically a URL)
 
-    that is the root of a components repository.'
+    that is the root of a component repository.'
   itemtype: method
   name: components.addSource
   params:
@@ -482,7 +494,7 @@ classitems:
     type: String
   class: Aura
 - file: lib/aura.js
-  line: 184
+  line: 180
   description: ! '`core` is just a namespace used by the extensions to add features
     to the App.'
   itemtype: property
@@ -490,7 +502,7 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 191
+  line: 187
   description: ! 'Application start.
 
 
@@ -498,7 +510,7 @@ classitems:
 
     All the extensions are resolved and loaded when `start` id called.
 
-    Start returns a promis e that shall fail if any of the
+    Start returns a promise that shall fail if any of the
 
     extensions fails to load.
 
@@ -519,7 +531,7 @@ classitems:
     type: Promise
   class: Aura
 - file: lib/aura.js
-  line: 254
+  line: 250
   description: Stops the application and unregister its loaded dependencies.
   itemtype: method
   name: stop
@@ -528,7 +540,7 @@ classitems:
     type: Void
   class: Aura
 - file: lib/aura.js
-  line: 265
+  line: 261
   description: ! 'Sandboxes are a way to implement the facade pattern on top of the
     features provided by `core`.
 
@@ -543,14 +555,14 @@ classitems:
   type: Object
   class: Aura
 - file: lib/aura.js
-  line: 275
+  line: 271
   description: App Logger
   itemtype: property
   name: logger
   type: Logger
   class: Aura
 - file: lib/aura.js
-  line: 286
+  line: 282
   description: ! 'Stop method for a Sandbox.
 
     If no arguments provided, the sandbox itself and all its children are stopped.
@@ -584,7 +596,7 @@ warnings:
   line: ! ' lib/ext/components.js:301'
 - message: ! 'Missing item type
 
-    Returns a list of component.
+    Returns a list of components.
 
     If the first argument is a String, it is considered as a DomNode reference
 
@@ -597,11 +609,11 @@ warnings:
 - message: ! 'Missing item type
 
     Namespace for sanboxes related methods.'
-  line: ! ' lib/aura.js:80'
+  line: ! ' lib/aura.js:76'
 - message: ! 'Missing item type
 
     Namespace for components related methods.'
-  line: ! ' lib/aura.js:160'
+  line: ! ' lib/aura.js:156'
 - message: ! 'Missing item type
 
     Stop method for a Sandbox.
@@ -609,4 +621,4 @@ warnings:
     If no arguments provided, the sandbox itself and all its children are stopped.
 
     If a DOM Selector is provided, all matching children will be stopped.'
-  line: ! ' lib/aura.js:286'
+  line: ! ' lib/aura.js:282'
