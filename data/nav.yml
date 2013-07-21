@@ -4,10 +4,10 @@
   url: /getting-started
 'API':
   url: /api
-'Guides':
-  url: /guides
+# 'Guides':
+#   url: /guides
 'Examples':
   url: /examples
-'FAQs':
-  url: /faq
+# 'FAQs':
+#   url: /faq
 
