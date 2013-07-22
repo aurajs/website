@@ -4,6 +4,19 @@ subtitle: In progress...
 markdown_navigation: true
 ---
 
+## In Discussion(s)
+
+* [Where does Aura fit in the MVC workflow?](https://github.com/aurajs/aura/issues/223)
+* [How do you initialize a component with data objects?](https://github.com/aurajs/aura/issues/222)
+* [Using multiple views and models in a component](https://github.com/aurajs/aura/issues/224)
+* [Sharing collections of data](https://github.com/karlwestin/aura-example)
+* [Starting and stopping components without a HTML element](https://github.com/aurajs/aura/issues/258)
+* [Manually starting and stopping components](https://github.com/aurajs/aura/issues/247)
+* [Communication between sandboxes](https://github.com/aurajs/aura/pull/193)
+* [Accessing components in a central block](https://github.com/aurajs/aura/issues/296)
+* [Multiple instances of a widget](https://github.com/aurajs/aura/issues/167)
+* [Exposing the sandbox in complex components](https://github.com/aurajs/aura/issues/285)
+
 ## Why Aura?
 
 Web apps are all about the end user experience (UI, DOM elements). The web development ecosystem is all about much more low level stuff. We need a way to package higher level abstractions and make them truly reusable, and that's what Aura is all about.
@@ -22,12 +35,6 @@ Need some more reasons to use Aura? Let's name a few:
 * First-class support for the Hull.io platform. If you don't want to create a component yourself, you can easily use them as a component-source and create apps in less time.
 * Extensible via the extensions system, which make a good basis for a rich ecosystem around the project.
 
-## In Discussion(s)
-
-* [Where does Aura fit in the MVC workflow?](https://github.com/aurajs/aura/issues/223)
-* [How do you initialize a component with data objects?](https://github.com/aurajs/aura/issues/222)
-* [Using multiple views and models in a component](https://github.com/aurajs/aura/issues/224)
-* [Sharing collections of data](https://github.com/karlwestin/aura-example)
 
 
 ## Why do developers use us?
