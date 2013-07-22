@@ -1,0 +1,250 @@
+// rwd
+@include tablet-portrait-and-below {
+  .landing {
+    #toggle {
+      background: $white-color;
+      display: block;
+      width: 100%;
+      height: 20px;
+      text-align: center;
+      .icon-arrow-right {
+        display: block;
+        @include rotate(90deg);
+      }
+    }
+    
+    > header {
+      @include position(absolute, -300px 0 0 0);
+      // top: -300px;
+      background: $white-color;
+      height: 340px;
+      -o-animation-name: toggle_up;
+      -o-animation-duration: .6s;
+      -moz-animation-name: toggle_up;
+      -moz-animation-duration: .6s;
+      -webkit-animation-name: toggle_up;
+      -webkit-animation-duration: .6s;
+      animation-name: toggle_up;
+      animation-duration: .6s;
+      &.active {
+        @include box-shadow(0 3px 6px 0 rgba(black, .075), 0 1px 0 0 rgba(black, .15));
+        top: 0;
+        -o-animation-name: toggle_down;
+        -o-animation-duration: .6s;
+        -moz-animation-name: toggle_down;
+        -moz-animation-duration: .6s;
+        -webkit-animation-name: toggle_down;
+        -webkit-animation-duration: .6s;
+        animation-name: toggle_down;
+        animation-duration: .6s;
+        #toggle {
+          .icon-arrow-right {
+            @include rotate(-90deg);
+          }
+        }
+      }
+      #secondary-nav ul {
+        @include rhythm(.25,0,0,.25);
+        li {
+          display: block !important;
+          clear: left !important;
+          float: none !important;
+          margin: 0;
+          a {
+            @include rhythm(0,.5,.25,.25);
+            width: 100%;
+          }
+          form.search input {
+            margin-left: 0;
+            width: auto;
+          }
+        }
+      }
+    }
+
+    > section {
+      margin-top: 40px;
+      #particles {
+        height: 200px;
+      }
+      header.hero-unit {
+        height: auto;
+        @include trailer(1);
+        background: $brand-color;
+        .logo {
+          max-width: 150px;
+          margin: 0 auto;
+        }
+        h1 {
+          @include adjust-font-size-to(20px, 1.625);
+          @include rhythm(.25,0,0,1);
+          + .row {
+            display: none;
+            text-align: center;
+            .btn {
+              @include trailer(.5);
+              &:last-child {
+                @include rhythm(.5,.5,.5,1);
+              }
+            }
+          }
+        }
+      }
+      article {
+        > .row {
+          ul {
+            li {
+              width: (100% / 3) !important;
+              min-width: 220px;
+              display: inline-block;
+              float: left;
+            }
+            &:after {
+              content: '';
+              clear: both;
+              float: none;
+              display: block;
+            }
+          }
+          + .row {
+            @include padding-leader(0);
+          }
+        }
+        h2 {
+          @include adjust-font-size-to(17.333px, 1.5);
+          @include trailer(.25);
+        }
+        .cell-4 {
+          @include trailer(1);
+          &:last-child {
+            @include trailer(0);
+          }
+        }
+        figure {
+          display: none;
+        }
+        .sub-section .btn.small {
+          display: block;
+          margin: 0;
+          @include trailer(1);
+          &:last-child {
+            @include trailer(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet-landscape-only {
+  .landing {
+    .cell-4 {
+      width: (100% / 3) !important;
+      display: inline-block;
+      float: left;
+      @extend .clearfix;
+    }
+    .cell-8 {
+      width: (100% * (8/12)) !important;
+      display: inline-block;
+      float: left;
+      @extend .clearfix;
+    }
+    [class^="cell"] {
+      margin: 0 !important;
+      padding-left: 4.4%;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        float: right !important;
+      }
+    }
+    > header {
+
+    }
+    > section {
+      article {
+
+      }
+    }
+  }
+}
+// end rwd
+
+// ----
+// Top Nav Off Canvas Animation
+// ----
+@-o-keyframes toggle_up {
+  0% {
+    top: 0;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: -300px;
+  }
+}
+@-moz-keyframes toggle_up {
+  0% {
+    top: 0;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: -300px;
+  }
+}
+@-webkit-keyframes toggle_up {
+  0% {
+    top: 0;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: -300px;
+  }
+}
+@keyframes toggle_up {
+  0% {
+    top: 0;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: -300px;
+  }
+}
+
+@-o-keyframes toggle_down {
+  0% {
+    top: -300px;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: 0;
+  }
+}
+@-moz-keyframes toggle_down {
+  0% {
+    top: -300px;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: 0;
+  }
+}
+@-webkit-keyframes toggle_down {
+  0% {
+    top: -300px;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: 0;
+  }
+}
+@keyframes toggle_down {
+  0% {
+    top: -300px;
+  }
+  100% {
+    -webkit-animation-timing-function: ease;
+    top: 0;
+  }
+}
