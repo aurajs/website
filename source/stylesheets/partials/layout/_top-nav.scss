@@ -1,5 +1,5 @@
 body > header {
-  @include position(fixed, 0px 0 0 $sidebar-width);
+  @include position(fixed, 0 0 0 $sidebar-width);
   height:60px;
   background: rgba($white-color, .95);
   border-bottom: 1px solid lighten($border-color, 10);
@@ -7,10 +7,11 @@ body > header {
   z-index:4;
   width: auto;
   right:0;
-  
+  // @include tablet-portrait-and-up {
+  //   @include position(fixed, 0 0 0 0);
+  // }
   form.search {
     display: inline;
-    
     input {
       margin-left: 12px;
       font-size: 100%;

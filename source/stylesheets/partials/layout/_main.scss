@@ -15,6 +15,11 @@
   @include box-sizing(border-box);
 }
 
+// off canvas toggle
+#toggle {
+  display: none;
+}
+
 .container {
   // background:#fff;
   // Helper class
