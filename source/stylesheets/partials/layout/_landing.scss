@@ -54,18 +54,23 @@
         @include rhythm(0,1,1,0);
         li {
           @include rhythm(1);
-          .ember,
-          .knockout {
-            max-width: 120px;
-            @include rhythm(0,.25,.25,0);
-            padding-left: .5em;
-            padding-right: .5em;
+          &:last-child {
+            @include trailer(0);
+          }
+          .js-framework {
+            background: url('/images/js-frameworks.png') no-repeat 0 0;
+            background-size: 200px;
+            height: 60px;
+            width: 100%;
+          }
+          .angular {
+            background-position: 0 0;
+          }
+          .backbone {
+            background-position: 0 -55px;
           }
           .ember {
-            background: #e1563f;
-          }
-          .knockout {
-            background: #A71500;
+            background-position: 0 -105px;
           }
         }
       }
