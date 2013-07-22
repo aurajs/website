@@ -1,20 +1,39 @@
 // rwd
 @include tablet-portrait-and-below {
+  body,
   .landing {
     #toggle {
       background: $white-color;
       display: block;
       width: 100%;
-      height: 20px;
+      height: 30px;
       text-align: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
       .icon-arrow-right {
         display: block;
         @include rotate(90deg);
       }
     }
+
+    .sidebar {
+      display: none;
+    }
+    section.documentation {
+      margin-top: 40px;
+      margin-left: 0;
+      > article .documentation-body {
+        padding-left: $base-font-size;
+        padding-right: $base-font-size;
+        > ul > li {
+          width: auto !important;
+        }
+      }
+    }
     
     > header {
-      @include position(absolute, -300px 0 0 0);
+      @include position(absolute, -300px 0 0 0px);
       // top: -300px;
       background: $white-color;
       height: 340px;
@@ -137,6 +156,7 @@
 }
 
 @include tablet-landscape-only {
+  body,
   .landing {
     .cell-4 {
       width: (100% / 3) !important;
@@ -161,9 +181,23 @@
       }
     }
     > header {
-
+      #secondary-nav li {
+        &:last-child {
+          float: right;
+          margin: 0;
+          input {
+            margin: 18px 0 0;
+          }
+        }
+      }
     }
     > section {
+      &.documentation {
+        > article .documentation-body {
+          padding-left: $base-font-size;
+          padding-right: $base-font-size;
+        }
+      }
       article {
 
       }
