@@ -6,9 +6,9 @@ subtitle: Declarative component sugar for RequireJS apps
 <div class="row">
   <% data.landing.each do |title, item| %>
     <div class="cell-4">
-      <h2 class="<%= item.icon %>"><%= item.title %></h2>
+      <h2><i class="<%= item.icon %>"></i><%= item.title %></h2>
       <p><%= item.description %></p>
-      <a href="<%= item.link %>" title="<%= item.title %>">See More <span class="icon-arrow-right"></span></a>
+      <a href="<%= item.link %>" title="<%= item.title %>">See More <i class="icon-angle-right"></i></a>
     </div>
   <% end %>
 </div>
@@ -20,25 +20,31 @@ subtitle: Declarative component sugar for RequireJS apps
 
 <div class="row">
   <div class="cell-4">
-    <h3>It's framework-agnostic</h3>
+    <h2><i class="icon-wand"></i>It's framework-agnostic</h2>
     <figcaption>
       <p>Aura is built to be framework agnostic you can use it with or without your favorite JS framework.</p>
-      <p>It works well with other frameworks from Backbone, Ember and Angular to Knockout and more&hellip;</p>
+      <p>Aura works well with popular frameworks including Angular, Backbone, Ember and more&hellip;</p>
       <ul class="secret-list island">
-        <li class="row">
-          <span class="cell-6"><%= image_tag '//backbonejs.org/docs/images/backbone.png', :height => 'auto', :width => '200', :alt => 'backbone js' %></span>
-          <span class="cell-6 ember align-center"><%= image_tag '//emberjs.com/images/ember_logo.png', :height => 'auto', :width => '200', :alt => 'ember js' %></span>
+        <li>
+          <a href="//angularjs.org" title="Angular website">
+            <div class="js-framework angular"></div>
+          </a>
         </li>
-        
-        <li class="row">
-          <span class="cell-6 knockout align-center"><%= image_tag '//knockoutjs.com/img/ko-logo.png', :height => 'auto', :width => '200', :alt => 'knockout js' %></span>
-          <span class="cell-6"><%= image_tag '//angularjs.org/img/AngularJS-large.png', :height => 'auto', :width => '200', :alt => 'angular js' %></span>
+        <li>
+          <a href="//backbonejs.org" title="Backbone website">
+            <div class="js-framework backbone"></div>
+          </a>
+        </li>
+        <li>
+          <a href="//emberjs.com/" title="Ember website">
+            <div class="js-framework ember"></div>
+          </a>
         </li>
       </ul>
     </figcaption>
   </div>
   <figure class="cell-8">
-    <%= image_tag 'docs/multi.jpg', :height => 'auto', :width => '100%', :alt => "aura's multip-tiered architecture" %>
+    <%= image_tag 'docs/schema.svg', :height => 'auto', :width => '100%', :alt => "Aura Architecture Diagram" %>
   </figure>
 </div>
 

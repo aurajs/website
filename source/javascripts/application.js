@@ -34,5 +34,12 @@ $(function() {
     var anchor = $('a.documentation-anchor[name="' + currentHash.substring(1) + '"]'); 
   }
 
+  function offCanvas(el) {
+    $(el).on('click', function() {
+      console.log(el);
+      $(el).parents('header').toggleClass('active');
+    });
+  }
+  offCanvas('#toggle');
 
 });

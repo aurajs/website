@@ -7,8 +7,8 @@ $sidebar-width: 225px;
 // Grid
 $grid-max-width:1000px;
 $grid-min-width:1000px;
-$grid-mobile: false;
-$grid-mobile-breakpoint: $grid-min-width + 40px;
+$grid-mobile: true;
+$grid-mobile-breakpoint: $grid-min-width;
 
 $base-font-size: 14px;
 $base-line-height: 20px;
