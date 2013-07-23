@@ -11,9 +11,8 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      .icon-arrow-right {
+      .icon-angle-down {
         display: block;
-        @include rotate(90deg);
       }
     }
 
@@ -57,8 +56,8 @@
         animation-name: toggle_down;
         animation-duration: .6s;
         #toggle {
-          .icon-arrow-right {
-            @include rotate(-90deg);
+          .icon-angle-down {
+            @include rotate(180deg);
           }
         }
       }

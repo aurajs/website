@@ -3,7 +3,7 @@
 <head>
   <title>AuraJS - <%= current_page.data.title %></title>
   <meta charset="utf-8" />
-  <meta name='viewport' content='width=1000' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name='description' content="<%= data.api.project.description %>" />
   <meta property='og:title' content="<%= data.api.project.name %>" />
   <meta property='og:type' content='company' />
@@ -13,6 +13,9 @@
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' %>
   <%= javascript_include_tag 'application' %>
+  <!--[if lte IE 7]>
+    <%= javascript_include_tag 'lte-ie7' %>
+  <![endif]-->
   <%= partial "partials/hull_init" %>
 </head>
 
@@ -20,7 +23,7 @@
 
   <header>
     <%= partial 'partials/top_nav' %>
-    <div id="toggle"><i class="icon-arrow-right"></i></div>
+    <div id="toggle"><i class="icon-angle-down"></i></div>
   </header>
   
   <aside class="sidebar" role="navigation">

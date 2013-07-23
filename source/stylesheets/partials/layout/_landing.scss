@@ -83,12 +83,15 @@
     color: tint($brand-color, 95);
     a {
       display: inline-block;
-      margin-right: .25em;
+      margin-right: ($base-font-size * .25);
       color: tint($brand-color, 80);
       @include transition(all ease .3s);
       &:hover,
       &:focus {
         color: tint($brand-color, 95);
+      }
+      &[class^="icon"] {
+        margin-right: $base-font-size;
       }
     }
     dt {

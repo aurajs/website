@@ -1,15 +1,15 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('/icomoon/icomoon.eot');
-	src:url('/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('/icomoon/icomoon.woff') format('woff'),
-		url('/icomoon/icomoon.ttf') format('truetype'),
-		url('/icomoon/icomoon.svg#icomoon') format('svg');
+	src:url('icomoon/icomoon.eot');
+	src:url('icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('icomoon/icomoon.woff') format('woff'),
+		url('icomoon/icomoon.ttf') format('truetype'),
+		url('icomoon/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
-/* Use the following CSS code if you want to use data attributes for inserting your icons */
+// Use the following CSS code if you want to use data attributes for inserting your icons
 [data-icon]:before {
 	font-family: 'icomoon';
 	content: attr(data-icon);
@@ -21,13 +21,13 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-/* Use the following CSS code if you want to have a class per icon */
-/*
-Instead of a list of all class selectors,
-you can use the generic selector below, but it's slower:
-[class*="icon-"] {
-*/
-.icon-stackoverflow, .icon-github, .icon-firefox, .icon-IE, .icon-chrome, .icon-css3, .icon-html5, .icon-html5-2, .icon-file-css, .icon-file-xml, .icon-safari, .icon-opera, .icon-new-tab, .icon-checkmark-circle, .icon-cancel-circle, .icon-info, .icon-notification, .icon-brightness-medium, .icon-lightning, .icon-globe, .icon-dashboard, .icon-podcast, .icon-file, .icon-copy, .icon-screen, .icon-mobile, .icon-mobile-2, .icon-tablet, .icon-tv, .icon-download, .icon-upload, .icon-cog, .icon-cogs, .icon-wrench, .icon-hammer, .icon-wand, .icon-gift, .icon-rocket, .icon-fire, .icon-lab, .icon-tree, .icon-power-cord, .icon-link, .icon-bookmark, .icon-insert-template, .icon-embed, .icon-code, .icon-console, .icon-mail, .icon-twitter, .icon-facebook, .icon-database, .icon-atom, .icon-code-2, .icon-fork, .icon-chat-alt-stroke, .icon-chat-alt-fill, .icon-mail-2 {
+// Use the following CSS code if you want to have a class per icon
+
+// Instead of a list of all class selectors,
+// you can use the generic selector below, but it's slower:
+// [class*="icon-"] {
+
+.icon-stackoverflow, .icon-github, .icon-firefox, .icon-IE, .icon-chrome, .icon-css3, .icon-html5, .icon-html5-2, .icon-file-css, .icon-file-xml, .icon-safari, .icon-opera, .icon-new-tab, .icon-checkmark-circle, .icon-cancel-circle, .icon-info, .icon-notification, .icon-brightness-medium, .icon-lightning, .icon-globe, .icon-dashboard, .icon-podcast, .icon-file, .icon-copy, .icon-screen, .icon-mobile, .icon-mobile-2, .icon-tablet, .icon-tv, .icon-download, .icon-upload, .icon-cog, .icon-cogs, .icon-wrench, .icon-hammer, .icon-wand, .icon-gift, .icon-rocket, .icon-fire, .icon-lab, .icon-tree, .icon-power-cord, .icon-link, .icon-bookmark, .icon-insert-template, .icon-embed, .icon-code, .icon-console, .icon-mail, .icon-twitter, .icon-facebook, .icon-database, .icon-atom, .icon-code-2, .icon-fork, .icon-chat-alt-stroke, .icon-chat-alt-fill, .icon-mail-2, .icon-menu, .icon-cloud, .icon-briefcase, .icon-angle-left, .icon-angle-right, .icon-angle-up, .icon-angle-down {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -210,4 +210,25 @@ you can use the generic selector below, but it's slower:
 }
 .icon-mail-2:before {
 	content: "\e039";
+}
+.icon-menu:before {
+	content: "\e03a";
+}
+.icon-cloud:before {
+	content: "\e03b";
+}
+.icon-briefcase:before {
+	content: "\e03c";
+}
+.icon-angle-left:before {
+	content: "\f104";
+}
+.icon-angle-right:before {
+	content: "\f105";
+}
+.icon-angle-up:before {
+	content: "\f106";
+}
+.icon-angle-down:before {
+	content: "\f107";
 }

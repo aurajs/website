@@ -3,7 +3,6 @@
   <head>
     <title>AuraJS - <%= current_page.data.title %></title>
     <meta charset="utf-8" />
-    <!-- <meta name='viewport' content='width=1000' /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name='description' content="<%= data.api.project.description %>" />
     <meta property='og:title' content="<%= data.api.project.name %>" />
@@ -15,6 +14,9 @@
     <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'modernizr' %>
+    <!--[if lte IE 7]>
+      <%= javascript_include_tag 'lte-ie7' %>
+    <![endif]-->
     <%= partial "partials/hull_init" %>
   </head>
 
@@ -22,7 +24,7 @@
 
     <header>
       <%= partial 'partials/top_nav' %>
-      <div id="toggle"><i class="icon-arrow-right"></i></div>
+      <div id="toggle"><i class="icon-angle-down"></i></div>
     </header>
     
     <section>
@@ -35,8 +37,8 @@
         <div class="cell-8">
           <h1><%= current_page.data.subtitle %></h1>
           <div class="row">
-            <%= link_to 'Download Aura v0.9.1', '//github.com/aurajs/aura/zipball/master', :class => 'button btn large' %>
-            <%= link_to 'Download Boilerplate', '//github.com/aurajs/boilerplate/tarball/master', :class => 'button btn' %>
+            <%= link_to 'Download Aura v0.9.1', '//github.com/aurajs/aura/zipball/master', :class => 'button btn large', :title => 'Download Aura' %>
+            <%= link_to 'Download Boilerplate', '//github.com/aurajs/boilerplate/tarball/master', :class => 'button btn', :title => 'Download Boilerplate' %>
           </div>
         </div>
       </header>
