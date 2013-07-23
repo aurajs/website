@@ -25,6 +25,7 @@
       > article .documentation-body {
         padding-left: $base-font-size;
         padding-right: $base-font-size;
+        overflow-x: hidden;
         > ul > li {
           width: auto !important;
         }
