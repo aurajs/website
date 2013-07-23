@@ -1,5 +1,4 @@
 .landing {
-
   > header {
     @include position(fixed, 0px 0 0 0px);
     width: 100%;
@@ -14,9 +13,6 @@
   }
 
   header.hero-unit {
-    // position: relative;
-    // z-index: 99;
-    // margin-top: 60px;
     height: 320px;
     .logo {
       @include rhythm(1,1,1,1);
@@ -48,7 +44,6 @@
     width: 100%;
     height: 320px;
     background: $brand-color;
-    // @include box-shadow(0 2px 8px rgba(0,0,0,0.2));
   }
   
   > section {
@@ -59,18 +54,23 @@
         @include rhythm(0,1,1,0);
         li {
           @include rhythm(1);
-          .ember,
-          .knockout {
-            max-width: 120px;
-            @include rhythm(0,.25,.25,0);
-            padding-left: .5em;
-            padding-right: .5em;
+          &:last-child {
+            @include trailer(0);
+          }
+          .js-framework {
+            background: url('/images/js-frameworks.png') no-repeat 0 0;
+            background-size: 200px;
+            height: 60px;
+            width: 100%;
+          }
+          .angular {
+            background-position: 0 0;
+          }
+          .backbone {
+            background-position: 0 -55px;
           }
           .ember {
-            background: #e1563f;
-          }
-          .knockout {
-            background: #A71500;
+            background-position: 0 -105px;
           }
         }
       }
@@ -83,12 +83,15 @@
     color: tint($brand-color, 95);
     a {
       display: inline-block;
-      margin-right: .25em;
+      margin-right: ($base-font-size * .25);
       color: tint($brand-color, 80);
       @include transition(all ease .3s);
       &:hover,
       &:focus {
         color: tint($brand-color, 95);
+      }
+      &[class^="icon"] {
+        margin-right: $base-font-size;
       }
     }
     dt {

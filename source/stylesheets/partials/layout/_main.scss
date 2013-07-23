@@ -15,6 +15,15 @@
   @include box-sizing(border-box);
 }
 
+body {
+  background: $white-color url('/images/light_toast.png') 0 0;
+}
+
+// off canvas toggle
+#toggle {
+  display: none;
+}
+
 .container {
   // background:#fff;
   // Helper class

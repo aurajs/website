@@ -1,5 +1,5 @@
 'Component':
-  title: ' Everything is a Component'
+  title: 'Everything is a Component'
   description: |
     An Aura component represents a unit of a page. 
     An independant block of reusable code, wrapped 
@@ -10,8 +10,7 @@
     including them in your page on demand
     with data attributes.</p>
   link: '/getting-started'
-  thumb: '/images/examples/github_client.png'
-  icon: 'icon-wand'
+  icon: 'icon-atom'
 
 'Sandboxing and Events':
   title: 'Messaging & Sandboxing'
@@ -23,11 +22,10 @@
     It gives you the flexibility to switch our libraries with greater ease.</p>
 
   link: '/guides'
-  thumb: '/images/examples/github_client.png'
-  icon: 'icon-power'
+  icon: 'icon-chat-alt-stroke'
 
 'Extension':
-  title: ' Easily extend capabilities'
+  title: 'Easily extend capabilities'
   description: |
     Aura Extensions help you extend the core capabilities of your app 
     before any of your components load. Want to ensure all of them have 
@@ -36,6 +34,5 @@
     <p>It'll make them available via the component's sandbox so you don't have
     to worry about importing and setting this up yourself.</p>
   link: '/api'
-  thumb: '/images/examples/github_client.png'
-  icon: 'icon-fire'
+  icon: 'icon-rocket'
 
