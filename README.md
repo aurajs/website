@@ -1,10 +1,18 @@
-This is the source for aurajs.com website.
+This repository contains the source for [http://aurajs.com/](http://aurajs.com/) website. Should you be interested in improving our website itself, please feel free. We are accepting pull requests. Get started with instructions below.
 
-It's a [middleman](http://middlemanapp.com/) app. 
+Want to hack principal Aura architecure ? Head on [here](https://github.com/aurajs/aura).
+
+## Prerequisites for local setup
+
+* Ruby - Ruby v1.9.3 with [RVM](https://rvm.io/). Download RVM from [here](https://rvm.io/rvm/install).
+* [Bundler](http://bundler.io/) - Use ```gem install bundler``` to install it.
+* [Middleman](http://middlemanapp.com/) - [http://aurajs.com/](http://aurajs.com/) is a middleman application. Use ```gem install middleman``` to install it.
 
 ## Running locally 
 
 ```
+git clone https://github.com/aurajs/website.git
+cd website
 bundle install
 middleman
 ```
@@ -25,5 +33,3 @@ git add .
 git commit -m "Your commit message..."
 git push origin master
 ```
-
-
