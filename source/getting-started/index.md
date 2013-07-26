@@ -504,7 +504,7 @@ You CANNOT load extension after the start method has been called. In fact you SH
 To make `app.logger` available, pass `{debug: true}` into Aura constructor:
 
 ```js
-var app = new Aura({ debug: true });
+var app = new Aura({ debug: { enable: true } });
 ```
 
 Logger usage:
