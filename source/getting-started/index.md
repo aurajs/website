@@ -10,7 +10,7 @@ markdown_navigation: true
 
 Your application will be an instance of the `Aura` object.
 
-Its responsibilities are to load extensions when the app starts and clean them up when the app stops.
+It is responsible for loading extensions when the app starts and cleaning them up when the app stops.
 
 ## Extension
 
@@ -34,7 +34,7 @@ This means that they know nothing about each other. To make them communicate, a 
 
 # Components
 
-The simplest usable Aura application using a component and extension can be found in our [boilerplate](https://github.com/aurajs/boilerplate) repo. We do however recommend reading the rest of the getting started guide below to get acquainted with the general workflow.
+The simplest usable Aura application using a component and extension can be found in our [boilerplate](https://github.com/aurajs/boilerplate) repo. We do, however, recommend reading the rest of the getting started guide below to get acquainted with the general workflow.
 
 
 ## Creating and starting an application
