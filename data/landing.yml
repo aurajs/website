@@ -3,10 +3,10 @@
   description: |
     An Aura component represents a unit of a page. 
     An independant block of reusable code, wrapped 
-    up so that it works well on it's own or together with 
+    up so that it works well on its own or together with 
     other components. 
 
-    <p>Specify a component source and you can just start
+    <p>Specify a component source, and you can just start
     including them in your page on demand
     with data attributes.</p>
   link: '/getting-started'
@@ -19,7 +19,7 @@
     at a global or local level. Subscribe, unsubscribe and emit sandboxed event notifications.
 
     <p>An Aura sandbox is the layer between you and your library.
-    It gives you the flexibility to switch our libraries with greater ease.</p>
+    It gives you the flexibility to switch out libraries with greater ease.</p>
 
   link: '/guides'
   icon: 'icon-chat-alt-stroke'
@@ -29,7 +29,7 @@
   description: |
     Aura Extensions help you extend the core capabilities of your app 
     before any of your components load. Want to ensure all of them have 
-    access to a particular library, like Backbone or API wrapper like GitHub? 
+    access to a particular library, like Backbone, or an API wrapper, like GitHub?
 
     <p>It'll make them available via the component's sandbox so you don't have
     to worry about importing and setting this up yourself.</p>
