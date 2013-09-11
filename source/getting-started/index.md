@@ -501,7 +501,7 @@ You CANNOT load extensions after the start method has been called. In fact you S
 
 ## Debugging
 
-To make `app.logger` available, pass `{ debug: { enable: true } }` into Aura constructor:
+To make `app.logger` available, pass `{ debug: { enable: true } }` or `{ debug: true } into Aura constructor:
 
 ```js
 var app = new Aura({ debug: { enable: true } });
@@ -521,7 +521,7 @@ logger.error('Hey');
 If you want to enable event logging, do this:
 
 ```js
-  var app = new Aura({ debug: { enable: true } , logEvents: true});
+  var app = new Aura({ debug: { enable: true }});
 ```
 
 
