@@ -521,7 +521,7 @@ logger.error('Hey');
 If you want to enable event logging, do this:
 
 ```js
-  var app = new Aura({debug: true, logEvents: true});
+  var app = new Aura({ debug: { enable: true } , logEvents: true});
 ```
 
 
