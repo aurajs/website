@@ -55,7 +55,7 @@ app.start();
 
 This starts the `app` by saying that it should search for components anywhere in the `body` of your HTML document.
 
-If you want to restrict to scope to your application to a particular element, or set of elements in your document, you can pass a selector to start: 
+If you want to restrict to scope to your application to a particular element, or set of elements in your document, you can pass a selector to start:
 
 ```js
 app.start('#container');
@@ -107,17 +107,17 @@ Example:
 
 Just include them in your page, and Aura will bring them to life automatically on start.
 
-You can also pass options to your component via data-attributes. 
+You can also pass options to your component via data-attributes.
 
-Example: 
+Example:
 
 ```html
-<div data-aura-component="hello" 
-      data-aura-foo="bar" 
+<div data-aura-component="hello"
+      data-aura-foo="bar"
       data-aura-other-option="hello again"></div>
 ```
 
-They will then be available in your component instance as: 
+They will then be available in your component instance as:
 
 ```js
 this.options.foo          // -> bar
@@ -126,7 +126,7 @@ this.options.otherOption  // -> hello again
 
 ### "Manually"
 
-The other way to start components on application start is to explicitly pass a list to the `app.start` method. 
+The other way to start components on application start is to explicitly pass a list to the `app.start` method.
 
 example:
 
@@ -142,7 +142,7 @@ All other values passed to the options object, will be available in your compone
 
 This really starts to get interesting if you use templating and use Aura's superpower to nest components.
 
-Let's take an example (using underscore templating): 
+Let's take an example (using underscore templating):
 
 __aura_components/parent/template.html__
 
@@ -178,13 +178,13 @@ define({
 });
 ```
 
-Then if you include your `parent` component: 
+Then if you include your `parent` component:
 
 ```html
 <div data-aura-component="parent" data-aura-children="one,two,three"></div>
 ```
 
-The result will be: 
+The result will be:
 
 ```html
 <div data-aura-component="parent" data-aura-children="one,two,three">
@@ -203,7 +203,7 @@ This means that you can truly build your applications one component at a time an
 
 Components can also start children via their `this.sandbox.start` method, which can, like the `app.start` method, start nested components by passing a list of component descriptions.
 
-Example: 
+Example:
 
 __aura_components/my_component/main.js__
 
@@ -256,49 +256,49 @@ define(['hbs!./stats'], function(template) {
 
 ## Component sources
 
-Aura comes with the awesome ability to load components on demand from different sources. 
+Aura comes with the awesome ability to load components on demand from different sources.
 A "component source" is just a http endpoint that serves components. It can be hosted anywhere on the web!
 
 Aura comes preconfigured with one 'source' called 'default', which corresponds to `./aura_components` (relative to the current document).
 
-This can be overridden through your app's config like this: 
+This can be overridden through your app's config like this:
 
 ```js
-aura({ 
-  sources: { default: '/path/to/my/components' } 
+aura({
+  sources: { default: '/path/to/my/components' }
 }).start();
 ```
 
-or even: 
+or even:
 
 ```js
-aura({ 
-  sources: { default: 'https://another.doma.in/path/to/my/components' } 
+aura({
+  sources: { default: 'https://another.doma.in/path/to/my/components' }
 }).start();
 ```
 
 You can add other sources in this `config.sources` object.
 
-Let's say that we have a source for GitHub components: 
+Let's say that we have a source for GitHub components:
 
 ```js
-aura({ 
-  sources: { 
-    github: 'https://another.doma.in/path/to/my/github/components' 
-  } 
+aura({
+  sources: {
+    github: 'https://another.doma.in/path/to/my/github/components'
+  }
 }).start();
 ```
 
 You can then reference and load them by appending @[source] after them. For the 'default' source, this is optional.
 
-For example, if under our 'github' source, we have an `issues` component and a `user-profile` component under our 'default' source: 
+For example, if under our 'github' source, we have an `issues` component and a `user-profile` component under our 'default' source:
 
 ```html
 <div data-aura-component='issues@github' data-aura-repo='aurajs/aura'></div>
 <div data-aura-component='user-profile' data-aura-user='addyosmani'></div>
 ```
 
-The equivalent in javascript would be: 
+The equivalent in javascript would be:
 
 __aura_components/my-component/main.js__
 
@@ -347,7 +347,7 @@ define({
 });
 ```
 
-Then to use it within a component: 
+Then to use it within a component:
 
 ```js
 define({
@@ -394,7 +394,7 @@ The object literal form allows you to add AMD dependencies and application lifec
 
 ## "requiring" AMD modules
 
-Extensions can be defined as AMD module themselves and use the `define([], function() {})` syntax to load dependencies. This is totally fine, but you still need to configure RequireJS (or any other AMD loader) to teach it where to find those dependencies. 
+Extensions can be defined as AMD module themselves and use the `define([], function() {})` syntax to load dependencies. This is totally fine, but you still need to configure RequireJS (or any other AMD loader) to teach it where to find those dependencies.
 
 We have found that RequireJS central config files can grow pretty dramatically and become hard to manage. It also means that your extensions are not easily portable from one app to the other, since you have to track down all their dependencies and configure Require with the right paths.
 
@@ -443,7 +443,7 @@ Let's take, for example, a Facebook extension that wraps and loads the Facebook 
 
 Let's also say that we want to wait for the `facebook.js` library to be loaded and initialized before actually starting our app.
 
-We could do something like: 
+We could do something like:
 
 __aura_extensions/facebook.js__
 
@@ -478,7 +478,7 @@ define({
 
 The `initialize` method here returns a [Promise](http://wiki.commonjs.org/wiki/Promises/A). Aura will then automatically wait for the resolution of this promise to actually finish the initialization process.
 
-Actually, when you have multiple extensions, each extension will wait for the resolution of the previous one to call its initialize method. 
+Actually, when you have multiple extensions, each extension will wait for the resolution of the previous one to call its initialize method.
 
 Each extension can also define an `afterAppStart` method that will be called after the initialization process. Those callbacks will also be called sequentially, keeping the same order as the extensions load order.
 
@@ -493,7 +493,7 @@ app.use('aura_extensions/reverse');
 
 This will call the `initialize` function of our `reverse` extension.
 
-Note: Calling `use` when your app is already started will throw an error. 
+Note: Calling `use` when your app is already started will throw an error.
 You CANNOT load extensions after the start method has been called. In fact you SHOULD not even keep a reference to your `app` instance to use it outside of a component.
 
 
@@ -501,7 +501,7 @@ You CANNOT load extensions after the start method has been called. In fact you S
 
 ## Debugging
 
-To make `app.logger` available, pass `{debug: true}` into Aura constructor:
+To make `app.logger` available, pass `{ debug: { enable: true } }` or `{ debug: true } into Aura constructor:
 
 ```js
 var app = new Aura({ debug: { enable: true } });
@@ -521,7 +521,7 @@ logger.error('Hey');
 If you want to enable event logging, do this:
 
 ```js
-  var app = new Aura({debug: true, logEvents: true});
+  var app = new Aura({ debug: { enable: true }});
 ```
 
 
