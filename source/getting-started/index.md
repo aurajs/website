@@ -308,8 +308,8 @@ define({
     var markup = "<div id='issues'></div><div id='user-profile'></div>";
     this.$el.html(markup);
     this.sandbox.start([
-      { name: 'issues@github', options: { el: '#issues' } },
-      { name: 'user-profile', options: { el: '#user-profile' } }
+      { name: 'issues@github', options: { el: '#issues', repo: 'aurajs/aura' } },
+      { name: 'user-profile', options: { el: '#user-profile', user: 'addyosmani' } }
     ]);
   }
 });
