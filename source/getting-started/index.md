@@ -63,7 +63,7 @@ app.start('#container');
 
 ### App configuration
 
-Aura's contructor can take a configuration object, that will be available as `app.config` in the extensions.
+Aura's constructor can take a configuration object, that will be available as `app.config` in the extensions.
 
 Currently, the only config entry available on a barebone Aura application is `debug` (cf. [debug section](#debugging))
 
