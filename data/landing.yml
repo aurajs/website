@@ -2,7 +2,7 @@
   title: 'Everything is a Component'
   description: |
     An Aura component represents a unit of a page. 
-    An independant block of reusable code, wrapped 
+    An independent block of reusable code, wrapped 
     up so that it works well on its own or together with 
     other components. 
 
