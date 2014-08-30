@@ -16,7 +16,7 @@ A component is something **[atomic](http://juristr.com/blog/2013/04/modularity-i
 
 Consider for example GitHub’s site:
 
-<img src="images/docs/github.jpg"/>
+<img src="/images/docs/github.jpg"/>
 
 Separating your application into smaller parts is essential for keeping your architecture clean, reusable and mainly maintainable. The principle is a known concept in computer science: “divide and conquer”. Divide everything up into smaller parts which have lower complexity, are easier to test and cause fewer headaches. Then compose them together to form your larger application.
 
