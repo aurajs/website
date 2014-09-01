@@ -42,7 +42,7 @@ The simplest usable Aura application using a component and extension can be foun
 The first step in creating an Aura application is to make an instance of `Aura`.
 
 ```js
-require(['aura'], function() {
+require(['aura'], function(Aura) {
   var app = new Aura();
 });
 ```
