@@ -1,6 +1,6 @@
 This repository contains the source for [http://aurajs.com/](http://aurajs.com/) website. Should you be interested in improving our website itself, please feel free. We are accepting pull requests. Get started with instructions below.
 
-Want to hack principal Aura architecure ? Head on [here](https://github.com/aurajs/aura).
+Want to hack principal Aura architecure ? Head on [here](https://github.com/aurajs/aura).awesom
 
 ## Prerequisites for local setup
 
