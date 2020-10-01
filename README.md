@@ -23,7 +23,7 @@ middleman
 
 Checkout aurajs/website and aurajs/aura in the same directory, then run `rake generate_docs`.
 
-### Building and deploying to aurajs/aurajs.github.io
+### Building and deploying to aurajs/aurajs.github.io --- An Amazing Project
 
 ```
 git clone git@github.com:aurajs/aurajs.github.io.git build
